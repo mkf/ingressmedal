@@ -115,9 +115,9 @@ class current:
 				print w, things[w]
 
 if parmetry['interactively'] == 'None':
-	lsdfghkfs = 834975
+	interactively = True
 elif parmetry['interactively'] == None:
-	lkdhfg = 896452
+	interactively = True
 else:
 	interactively = parmetry['interactively']
 hello = current('ArchieT', interactively,parmetry)
