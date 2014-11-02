@@ -116,6 +116,8 @@ class current:
 
 if parmetry['interactively'] == 'None':
 	lsdfghkfs = 834975
+elif parmetry['interactively'] == None:
+	lkdhfg = 896452
 else:
 	interactively = parmetry['interactively']
 hello = current('ArchieT', interactively,parmetry)
