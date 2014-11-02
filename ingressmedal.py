@@ -10,6 +10,7 @@ class current:
 		while isint == False:
 			try:
 				current['ap'] = int(raw_input('Current AP: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -17,6 +18,7 @@ class current:
 		while isint == False:
 			try:
 				current['uniqvis'] = int(raw_input('Current count of unique portals visited: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -24,6 +26,7 @@ class current:
 		while isint == False:
 			try:
 				current['seer'] = int(raw_input('Current count of discovered portals: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -31,6 +34,7 @@ class current:
 		while isint == False:
 			try:
 				current['hack'] = int(raw_input('Current count of hacks: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -38,6 +42,7 @@ class current:
 		while isint == False:
 			try:
 				current['depl'] = int(raw_input('Current count of deployed resonators: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -45,6 +50,7 @@ class current:
 		while isint == False:
 			try:
 				current['link'] = int(raw_input('Current count of created links: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -52,6 +58,7 @@ class current:
 		while isint == False:
 			try:
 				current['field'] = int(raw_input('Current count of created Control Fields: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -59,6 +66,7 @@ class current:
 		while isint == False:
 			try:
 				current['rech'] = int(raw_input('Current count of recharged XM: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -66,6 +74,7 @@ class current:
 		while isint == False:
 			try:
 				current['capt'] = int(raw_input('Current count of captured portals: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -73,6 +82,7 @@ class current:
 		while isint == False:
 			try:
 				current['uniqcapt'] = int(raw_input('Current count of unique portals captured: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -80,6 +90,7 @@ class current:
 		while isint == False:
 			try:
 				current['destr'] = int(raw_input('Current count of destroyed resonators: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -87,6 +98,7 @@ class current:
 		while isint == False:
 			try:
 				current['guard'] = int(raw_input('Current max time portal held in days: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -94,6 +106,7 @@ class current:
 		while isint == False:
 			try:
 				current['destrlink'] = int(raw_input('Current count of enemy links destroyed: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
@@ -101,12 +114,14 @@ class current:
 		while isint == False:
 			try:
 				current['destrfield'] = int(raw_input('Current count of enemy Control Fields destroyed: '))
+				isint = True
 			except ValueError:
 				print "Value is not int"
 				isint = False
 		isintorn = False
 		while isintorn == False:
 			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
+				isintorn = True
 			try:
 				current['photo'] = int(phototry)
 			except ValueError:
@@ -121,6 +136,7 @@ class current:
 			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
 			try:
 				current['edit'] = int(phototry)
+				isintorn = True
 			except ValueError:
 				print "Value is not int"
 				if phototry == "n":
