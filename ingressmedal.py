@@ -124,11 +124,12 @@ class current:
 			try:
 				current['photo'] = int(phototry)
 				isintorn = True
-			except ValueError:
+			except:
 				print "Value is not int"
 				if phototry == "n":
 					current['photo'] = 'n'
 					print "So you don't know, huh?"
+					isintorn = True
 				else:
 					print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 					isintorn = False
@@ -138,11 +139,12 @@ class current:
 			try:
 				current['edit'] = int(phototry)
 				isintorn = True
-			except ValueError:
+			except:
 				print "Value is not int"
 				if phototry == "n":
 					current['edit'] = 'n'
 					print "So you don't know, huh?"
+					isintorn = True
 				else:
 					print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 					isintorn = False
