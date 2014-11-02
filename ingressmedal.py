@@ -179,5 +179,5 @@ class current:
 				print w, things[w]
 
 
-current('ArchieT')
-current.coUNTINGcurapcountable()
+hello = current('ArchieT')
+hello.coUNTINGcurapcountable()
