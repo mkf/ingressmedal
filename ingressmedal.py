@@ -14,9 +14,9 @@ argh = argparse.ArgumentParser()
 from interactive import interactive
 interaktywnosciowo = interactive()
 for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
-	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo])
+	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=(interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo]))
 for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
-	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, choices=(['n']+range(0,99999999999)) help=interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko])
+	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, choices=(['n']+range(0,99999999999)), help=(interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko]))
 argh.add_argument('-i', '--interactively', type=TrueOrFalse)
 parmetry = vars(argh.parse_args())
 
