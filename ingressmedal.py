@@ -17,7 +17,7 @@ for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
 	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=(interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo]))
 for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
 	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, choices=(['n']+range(0,99999999999)), help=(interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko]))
-argh.add_argument('-i', '--interactively', type=TrueOrFalse)
+argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
 parmetry = vars(argh.parse_args())
 
 
