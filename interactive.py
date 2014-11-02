@@ -20,6 +20,8 @@ class interactive:
 		'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 		'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 	}
+	def __init__(self):
+		ldkfghfdslg = 849
 	def gimmecurrentquestionsuredict(self):
 		return currentquestionsuredict
 	def gimmecurrentquestionunsuredict(self):

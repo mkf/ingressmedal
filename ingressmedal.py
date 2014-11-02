@@ -4,25 +4,26 @@ import argparse
 interactively = 'This will disappear from here soon, and remember about that else for interactively below'
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
-	from interactive import *
 	def __init__(self,codename,interactively):
 		from interactive import *
+		interaktywnosc = interactive()
+		self.interaktywnosc = interaktywnosc
 		if interactively == True:
 			print "Input for agent %s" % codename
-			self.current = interactive.current()
+			self.current = interaktywnosc.current()
 		elif interactively == False:
 			print "It can't be False yet."
 		else:
-			for kluczykowo in interactive.gimmecurrentquestionsuredict().keys():
+			for kluczykowo in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
 					bzdurkaldkfh = str(self.current[kluczykowo])
 				except:
-					self.current[kluczykowo] = interactive.currentwyrywki(kluczykowo)
-			for kluczykowo in interactive.gimmecurrentquestionunsuredict().keys():
+					self.current[kluczykowo] = interaktywnosc.currentwyrywki(kluczykowo)
+			for kluczykowo in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
 					bzdurkafdhgljsdk = str(self.current[kluczykowo])
 				except:
-					self.current[kluczykowo] = interactive.currentwyrywki(kluczykowo)
+					self.current[kluczykowo] = interaktywnosc.currentwyrywki(kluczykowo)
 	def rjeturncount(self):
 		return self.current
 	def coUNTINGcurapcountable(self):
