@@ -43,29 +43,50 @@ class current:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
 					bzdurkaldkfh = str(self.current[kluczykoa])
+					if bzdurkaldkfh == None:
+						print "Interactively is False. There is no %s, exiting." % kluczykoa
+						quit()
 				except:
 					print "Interactively is False. There is no %s, exiting." % kluczykoa
 					quit()
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
 					bzdurkafdhgljsdk = str(self.current[kluczykoa])
+					if bzdurkaldkfh == None:
+						print "Interactively is False. There is no %s, exiting." % kluczykoa
+						quit()
+				
 				except:
 					print "Interactively is False. There is no %s, exiting. Next time put in at least an 'n' character." % kluczykoa
 					quit()
 		elif interactively == True:
 			kluczykoal = []
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
+				print kluczykoa
+				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkaldkfh = str(self.current[kluczykoa])
+					if bzdurkaldkfh == None:
+						kluczykoal.append(kluczykoa)
 				except:
 					kluczykoal.append(kluczykoa)
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
+				print kluczykoa
+				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkafdhgljsdk = str(self.current[kluczykoa])
+					if bzdurkaldkfh == None:
+						kluczykoal.append(kluczykoa)
 				except:
 					kluczykoal.append(kluczykoa)
 			kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
 			kluczvs = kluczykoal.sort()
+			print "kluczbejs"
+			print kluczbejs
+			print "kluczvs"
+			print kluczvs
+			print "kluczkoal"
+			print kluczykoal
 			if kluczbejs == kluczvs:
 				interaktywnosc.current()
 			else:
