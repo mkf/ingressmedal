@@ -6,6 +6,7 @@ class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
 	from interactive import *
 	def __init__(self,codename,interactively):
+		from interactive import *
 		if interactively == True:
 			print "Input for agent %s" % codename
 			self.current = interactive.current()
