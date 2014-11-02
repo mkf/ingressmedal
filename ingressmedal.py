@@ -145,11 +145,11 @@ class current:
 				'destrlink': (current['destrlink']*187),
 				'destrfield': (current['destrfield']*750),
 			}
-			if current['photo'] = 'n':
+			if current['photo'] == 'n':
 				print "That's your fault you don't know how much AP you've gained on photos."
 			else:
 				curapcountable['photo'] = (current['photo']*500)
-			if current['edit'] = 'n':
+			if current['edit'] == 'n':
 				print "That's your fault you don't know how much AP you've gained on edits."
 			else:
 				curapcountable['edit'] = (current['edit']*200)
