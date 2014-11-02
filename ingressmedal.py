@@ -1,154 +1,27 @@
-#!/usr/bin/python2
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
+import argparse
+from interactive import *
 
 class current:
-	"This class applies only to current stats, it doen't compare anything to the past"
+	"This class applies only to current stats, it doesn't compare anything to the past"
 	def __init__(self,codename):
-		print "Input for agent %s" % codename
-		current = {}
-		isint = False
-		while isint == False:
-			try:
-				current['ap'] = int(raw_input('Current AP: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['uniqvis'] = int(raw_input('Current count of unique portals visited: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['seer'] = int(raw_input('Current count of discovered portals: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['hack'] = int(raw_input('Current count of hacks: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['depl'] = int(raw_input('Current count of deployed resonators: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['link'] = int(raw_input('Current count of created links: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['field'] = int(raw_input('Current count of created Control Fields: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['rech'] = int(raw_input('Current count of recharged XM: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['capt'] = int(raw_input('Current count of captured portals: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['uniqcapt'] = int(raw_input('Current count of unique portals captured: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['destr'] = int(raw_input('Current count of destroyed resonators: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['guard'] = int(raw_input('Current max time portal held in days: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['destrlink'] = int(raw_input('Current count of enemy links destroyed: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isint = False
-		while isint == False:
-			try:
-				current['destrfield'] = int(raw_input('Current count of enemy Control Fields destroyed: '))
-				isint = True
-			except ValueError:
-				print "Value is not int"
-				isint = False
-		isintorn = False
-		while isintorn == False:
-			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
-			try:
-				current['photo'] = int(phototry)
-				isintorn = True
-			except:
-				print "Value is not int"
-				if phototry == "n":
-					current['photo'] = 'n'
-					print "So you don't know, huh?"
-					isintorn = True
-				else:
-					print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
-					isintorn = False
-		isintorn = False
-		while isintorn == False:
-			phototry = raw_input("Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
-			try:
-				current['edit'] = int(phototry)
-				isintorn = True
-			except:
-				print "Value is not int"
-				if phototry == "n":
-					current['edit'] = 'n'
-					print "So you don't know, huh?"
-					isintorn = True
-				else:
-					print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
-					isintorn = False
-		self.current = current
+		if interactively == True:
+			print "Input for agent %s" % codename
+			self.current = interactive.current()
+		elif interactively == False:
+			print "It can't be False yet."
+		else:
+			for kluczykowo in interactive.gimmecurrentquestionsuredict().keys():
+				try:
+					bzdurkaldkfh = str(self.current[kluczykowo])
+				except:
+					self.current[kluczykowo] = interactive.currentwyrywki(kluczykowo)
+			for kluczykowo in interactive.gimmecurrentquestionunsuredict().keys():
+				try:
+					bzdurkafdhgljsdk = str(self.current[kluczykowo])
+				except:
+					self.current[kluczykowo] = interactive.currentwyrywki(kluczykowo)
 	def rjeturncount(self):
 		return self.current
 	def coUNTINGcurapcountable(self):
