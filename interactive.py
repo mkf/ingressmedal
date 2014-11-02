@@ -1,6 +1,6 @@
 class interactive:
 	"This is a class of interactively entering your data"
-	currentquestionsuredict = {
+	self.currentquestionsuredict = {
 		'ap': 'Current AP: ',
 		'uniqvis': 'Current count of unique portals visited: ',
 		'seer': 'Current count of discovered portals: ',
@@ -16,16 +16,18 @@ class interactive:
 		'destrlink': 'Current count of enemy links destroyed: ',
 		'destrfield': 'Current count of enemy Control Fields destroyed: ',
 	}
-	currentquestionunsuredict = {
+	self.currentquestionunsuredict = {
 		'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 		'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 	}
+	currentquestionsuredict = self.currentquestionsuredict
+	currentquestionunsuredict = self.currentquestionunsuredict
 	def __init__(self):
 		ldkfghfdslg = 849
 	def gimmecurrentquestionsuredict(self):
-		return currentquestionsuredict
+		return self.currentquestionsuredict
 	def gimmecurrentquestionunsuredict(self):
-		return currentquestionunsuredict
+		return self.currentquestionunsuredict
 	def current(self):
 		questionsuredict = self.currentquestionsuredict
 		questionunsuredict = self.currentquestionunsuredict
@@ -77,7 +79,7 @@ class interactive:
 			isint = False
 			while isint == False:
 				try:
-					zmienna = int(raw_input(currentquestionsuredict[dawajkeya]))
+					zmienna = int(raw_input(self.currentquestionsuredict[dawajkeya]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
@@ -86,7 +88,7 @@ class interactive:
 			kluczyk = dawajkeya
 			isintorn = False
 			while isintorn == False:
-				phototry = raw_input(questionunsuredict[kluczyk])
+				phototry = raw_input(self.currentquestionunsuredict[kluczyk])
 				try:
 					zmienna = int(phototry)
 					isintorn = True
