@@ -52,5 +52,5 @@ class current:
 				print w, things[w]
 
 
-hello = current('ArchieT')
+hello = current('ArchieT', interactively)
 hello.coUNTINGcurapcountable()
