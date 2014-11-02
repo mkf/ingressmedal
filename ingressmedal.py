@@ -5,7 +5,7 @@ interactively = 'This will disappear from here soon, and remember about that els
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
 	def __init__(self,codename,interactively):
-		from interactive import *
+		from interactive import interactive
 		interaktywnosc = interactive()
 		self.interaktywnosc = interaktywnosc
 		if interactively == True:
