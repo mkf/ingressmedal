@@ -114,7 +114,9 @@ class current:
 			for w in sorted(things, key=things.get, reverse=True):
 				print w, things[w]
 
-if parmetry['interactively'] =! 'None':
+if parmetry['interactively'] == 'None':
+	lsdfghkfs = 834975
+else:
 	interactively = parmetry['interactively']
 hello = current('ArchieT', interactively,parmetry)
 hello.coUNTINGcurapcountable()
