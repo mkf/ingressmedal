@@ -9,12 +9,13 @@ for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
 	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo])
 for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
 	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, help=interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko])
-parmetry = argh.parse_args()
-print parmetry
+parmetry = vars(argh.parse_args())
+
 
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
-	def __init__(self,codename,interactively):
+	def __init__(self,codename,interactively,current):
+		self.current = current
 		from interactive import interactive
 		interaktywnosc = interactive()
 		self.interaktywnosc = interaktywnosc
@@ -81,5 +82,5 @@ class current:
 				print w, things[w]
 
 
-hello = current('ArchieT', interactively)
+hello = current('ArchieT', interactively,parmetry)
 hello.coUNTINGcurapcountable()
