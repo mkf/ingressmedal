@@ -154,3 +154,7 @@ class current:
 			else:
 				curapcountable['edit'] = (current['edit']*200)
 			return curapcountable
+	def percent(self):
+			things = self.coUNTINGcurapcountable()
+			for w in sorted(things, key=things.get, reverse=True):
+				print w, things[w]
