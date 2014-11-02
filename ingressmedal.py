@@ -1,11 +1,11 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 import argparse
-from interactive import *
-
+interactively = 'This will disappear from here soon, and remember about that else for interactively below'
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
-	def __init__(self,codename):
+	from interactive import *
+	def __init__(self,codename,interactively):
 		if interactively == True:
 			print "Input for agent %s" % codename
 			self.current = interactive.current()
