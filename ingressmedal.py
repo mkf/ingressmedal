@@ -15,8 +15,10 @@ from interactive import interactive
 interaktywnosciowo = interactive()
 for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
 	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=(interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo]))
+	print keyowo #debug
 for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
 	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, choices=(['n']+range(0,99999999999)), help=(interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko]))
+	print keyowko #debug
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
 parmetry = vars(argh.parse_args())
 
@@ -42,16 +44,27 @@ class current:
 					print "Interactively is False. There is no %s, exiting. Next time put in at least an 'n' character." % kluczykoa
 					quit()
 		elif interactively == True:
+			kluczykoal = []
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
 					bzdurkaldkfh = str(self.current[kluczykoa])
 				except:
-					self.current[kluczykoa] = interaktywnosc.currentwyrywki(kluczykoa)
+					kluczykoal.append(kluczykoa)
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
 					bzdurkafdhgljsdk = str(self.current[kluczykoa])
 				except:
-					self.current[kluczykoa] = interaktywnosc.currentwyrywki(kluczykoa)
+					kluczykoal.append(kluczykoa)
+			kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			kluczvs = kluczykoal.sort()
+			if kluczbejs == kluczvs:
+				interaktywnosc.current()
+			else:
+				try:
+					for kluczykob in kluczykoal:
+						self.current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
+				except:
+					dkfjlghfflfsdhg = "dflgh"
 		else:
 			print "Interactively can't be: "
 			try:
