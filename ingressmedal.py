@@ -111,7 +111,7 @@ class current:
 				current['photo'] = int(phototry)
 			except ValueError:
 				print "Value is not int"
-				if phototry = "n":
+				if phototry == "n":
 					current['photo'] = 'n'
 					print "So you don't know, huh?"
 				else:
