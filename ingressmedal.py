@@ -121,9 +121,9 @@ class current:
 		isintorn = False
 		while isintorn == False:
 			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
-				isintorn = True
 			try:
 				current['photo'] = int(phototry)
+				isintorn = True
 			except ValueError:
 				print "Value is not int"
 				if phototry == "n":
@@ -132,6 +132,7 @@ class current:
 				else:
 					print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 					isintorn = False
+		isintorn = False
 		while isintorn == False:
 			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
 			try:
