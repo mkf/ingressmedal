@@ -135,7 +135,7 @@ class current:
 					isintorn = False
 		isintorn = False
 		while isintorn == False:
-			phototry = raw_input("Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
+			phototry = raw_input("Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ")
 			try:
 				current['edit'] = int(phototry)
 				isintorn = True
