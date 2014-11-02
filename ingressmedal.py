@@ -114,6 +114,7 @@ class current:
 			for w in sorted(things, key=things.get, reverse=True):
 				print w, things[w]
 
-interactively = parmetry['interactively']
+if parmetry['interactively'] =! 'None':
+	interactively = parmetry['interactively']
 hello = current('ArchieT', interactively,parmetry)
 hello.coUNTINGcurapcountable()
