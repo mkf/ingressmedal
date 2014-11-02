@@ -1,29 +1,56 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 import argparse
-interactively = 'This will disappear from here soon, and remember about that else for interactively below'
+
+argh = argparse.ArgumentParser()
+from interactive import interactive
+interaktywnosciowo = interactive()
+for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
+	argh.add_argument(('-'+keyowo), ('--'+keyowo), type=int, help=interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo])
+for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
+	argh.add_argument(('-'+keyowko), ('--'+keyowko), type=str, help=interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko])
+parmetry = argh.parse_args()
+print parmetry
+
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
 	def __init__(self,codename,interactively):
 		from interactive import interactive
 		interaktywnosc = interactive()
 		self.interaktywnosc = interaktywnosc
-		if interactively == True:
-			print "Input for agent %s" % codename
-			self.current = interaktywnosc.current()
-		elif interactively == False:
-			print "It can't be False yet."
+		if interactively == False:
+			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
+				try:
+					bzdurkaldkfh = str(self.current[kluczykoa])
+				except:
+					print "Interactively is False. There is no %s, exiting." % kluczykoa
+					quit()
+			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
+				try:
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
+				except:
+					print "Interactively is False. There is no %s, exiting. Next time put in at least an 'n' character." % kluczykoa
+					quit()
+		elif interactively == True:
+			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
+				try:
+					bzdurkaldkfh = str(self.current[kluczykoa])
+				except:
+					self.current[kluczykoa] = interaktywnosc.currentwyrywki(kluczykoa)
+			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
+				try:
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
+				except:
+					self.current[kluczykoa] = interaktywnosc.currentwyrywki(kluczykoa)
 		else:
-			for kluczykowo in interaktywnosc.gimmecurrentquestionsuredict().keys():
-				try:
-					bzdurkaldkfh = str(self.current[kluczykowo])
-				except:
-					self.current[kluczykowo] = interaktywnosc.currentwyrywki(kluczykowo)
-			for kluczykowo in interaktywnosc.gimmecurrentquestionunsuredict().keys():
-				try:
-					bzdurkafdhgljsdk = str(self.current[kluczykowo])
-				except:
-					self.current[kluczykowo] = interaktywnosc.currentwyrywki(kluczykowo)
+			print "Interactively can't be: "
+			try:
+				print interactively
+			except:
+				print "<unreadable>"
+			print "   because such value is unsuitable for the situation."
+			print "Exiting"
+			quit()
 	def rjeturncount(self):
 		return self.current
 	def coUNTINGcurapcountable(self):
