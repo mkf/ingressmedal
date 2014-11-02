@@ -17,8 +17,8 @@ class interactive:
 		'destrfield': 'Current count of enemy Control Fields destroyed: ',
 	}
 	currentquestionunsuredict = {
-		'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): "
-		'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): "
+		'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
+		'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 	}
 	def gimmecurrentquestionsuredict(self):
 		return currentquestionsuredict
