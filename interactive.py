@@ -2,28 +2,28 @@ class interactive:
 	"This is a class of interactively entering your data"
 	def __init__(self):
 		ldkfghfdslg = 849
-			self.currentquestionsuredict = {
-				'ap': 'Current AP: ',
-				'uniqvis': 'Current count of unique portals visited: ',
-				'seer': 'Current count of discovered portals: ',
-				'hack': 'Current count of hacks: ',
-				'depl': 'Current count of deployed resonators: ',
-				'link': 'Current count of created links: ',
-				'field': 'Current count of created Control Fields: ',
-				'rech': 'Current count of recharged XM: ',
-				'capt': 'Current count captured portals: ',
-				'uniqcapt': 'Current count of unique portals captured: ',
-				'destr': 'Current count of destroyed resonators: ',
-				'guard': 'Current max time portal held in days: ',
-				'destrlink': 'Current count of enemy links destroyed: ',
-				'destrfield': 'Current count of enemy Control Fields destroyed: ',
-			}
-			self.currentquestionunsuredict = {
-				'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
-				'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
-			}
-			currentquestionsuredict = self.currentquestionsuredict
-			currentquestionunsuredict = self.currentquestionunsuredict
+		self.currentquestionsuredict = {
+			'ap': 'Current AP: ',
+			'uniqvis': 'Current count of unique portals visited: ',
+			'seer': 'Current count of discovered portals: ',
+			'hack': 'Current count of hacks: ',
+			'depl': 'Current count of deployed resonators: ',
+			'link': 'Current count of created links: ',
+			'field': 'Current count of created Control Fields: ',
+			'rech': 'Current count of recharged XM: ',
+			'capt': 'Current count captured portals: ',
+			'uniqcapt': 'Current count of unique portals captured: ',
+			'destr': 'Current count of destroyed resonators: ',
+			'guard': 'Current max time portal held in days: ',
+			'destrlink': 'Current count of enemy links destroyed: ',
+			'destrfield': 'Current count of enemy Control Fields destroyed: ',
+		}
+		self.currentquestionunsuredict = {
+			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
+			'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
+		}
+		currentquestionsuredict = self.currentquestionsuredict
+		currentquestionunsuredict = self.currentquestionunsuredict
 	def gimmecurrentquestionsuredict(self):
 		return self.currentquestionsuredict
 	def gimmecurrentquestionunsuredict(self):
