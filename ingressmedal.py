@@ -158,3 +158,7 @@ class current:
 			things = self.coUNTINGcurapcountable()
 			for w in sorted(things, key=things.get, reverse=True):
 				print w, things[w]
+
+
+current('ArchieT')
+current.coUNTINGcurapcountable()
