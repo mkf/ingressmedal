@@ -67,9 +67,11 @@ class current:
 					bzdurkaldkfh = str(current[kluczykoa])
 					print bzdurkaldkfh
 					if bzdurkaldkfh == None:
-						kluczykoal.append(kluczykoa)
+						kluczykoal.append(str(kluczykoa))
+						print "jestnolnem"
 				except:
-					kluczykoal.append(kluczykoa)
+					kluczykoal.append(str(kluczykoa))
+					print "niema"
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				print kluczykoa
 				#Why it doesn't append the kluczykoa at the kluczykoal??
@@ -77,16 +79,22 @@ class current:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
 					print bzdurkafdhgljsdk
 					if bzdurkafdhgljsdk == None:
-						kluczykoal.append(kluczykoa)
+						kluczykoal.append(str(kluczykoa))
+						print "jestNolnem"
 				except:
-					kluczykoal.append(kluczykoa)
+					kluczykoal.append(str(kluczykoa))
+					print "NiMa"
 			kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			kluczbejs = []
+			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
+			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
+			kluczbejs.sort()
 			kluczvs = kluczykoal.sort()
 			print "kluczbejs"
 			print kluczbejs
 			print "kluczvs"
 			print kluczvs
-			print "kluczkoal"
+			print "kluczykoal"
 			print kluczykoal
 			if kluczbejs == kluczvs:
 				interaktywnosc.current()
