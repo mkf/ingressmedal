@@ -35,14 +35,13 @@ parmetry = vars(argh.parse_args())
 class current:
 	"This class applies only to current stats, it doesn't compare anything to the past"
 	def __init__(self,codename,interactively,current):
-		self.current = current
 		from interactive import interactive
 		interaktywnosc = interactive()
 		self.interaktywnosc = interaktywnosc
 		if interactively == False:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
-					bzdurkaldkfh = str(self.current[kluczykoa])
+					bzdurkaldkfh = str(current[kluczykoa])
 					if bzdurkaldkfh == None:
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -51,7 +50,7 @@ class current:
 					quit()
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
-					bzdurkafdhgljsdk = str(self.current[kluczykoa])
+					bzdurkafdhgljsdk = str(current[kluczykoa])
 					if bzdurkaldkfh == None:
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -65,7 +64,8 @@ class current:
 				print kluczykoa
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkaldkfh = str(self.current[kluczykoa])
+					bzdurkaldkfh = str(current[kluczykoa])
+					print bzdurkaldkfh
 					if bzdurkaldkfh == None:
 						kluczykoal.append(kluczykoa)
 				except:
@@ -74,8 +74,9 @@ class current:
 				print kluczykoa
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkafdhgljsdk = str(self.current[kluczykoa])
-					if bzdurkaldkfh == None:
+					bzdurkafdhgljsdk = str(current[kluczykoa])
+					print bzdurkafdhgljsdk
+					if bzdurkafdhgljsdk == None:
 						kluczykoal.append(kluczykoa)
 				except:
 					kluczykoal.append(kluczykoa)
@@ -90,6 +91,7 @@ class current:
 			if kluczbejs == kluczvs:
 				interaktywnosc.current()
 			else:
+			#if True:
 				try:
 					for kluczykob in kluczykoal:
 						self.current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
@@ -104,6 +106,7 @@ class current:
 			print "   because such value is unsuitable for the situation."
 			print "Exiting"
 			quit()
+		self.current = current
 	def rjeturncount(self):
 		return self.current
 	def coUNTINGcurapcountable(self):
