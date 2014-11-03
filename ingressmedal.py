@@ -42,7 +42,7 @@ class current:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
-					if bzdurkaldkfh == None:
+					if bzdurkaldkfh == None or bzdurkaldkfh == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
 				except:
@@ -51,7 +51,7 @@ class current:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
-					if bzdurkaldkfh == None:
+					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
 				
@@ -60,42 +60,48 @@ class current:
 					quit()
 		elif interactively == True:
 			kluczykoal = []
+			print interaktywnosc.gimmecurrentquestionsuredict().keys() #debug
+			print interaktywnosc.gimmecurrentquestionunsuredict().keys() #debug
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				print kluczykoa
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
-					print bzdurkaldkfh
-					if bzdurkaldkfh == None:
+					print "jesttraj" #debug
+					print bzdurkaldkfh #debug
+					print "----------------" #debug
+					if bzdurkaldkfh == None or bzdurkaldkfh == "None":
 						kluczykoal.append(str(kluczykoa))
-						print "jestnolnem"
+						print "jestnolnem" #debug
 				except:
 					kluczykoal.append(str(kluczykoa))
-					print "niema"
+					print "niema" #debug
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				print kluczykoa
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
-					print bzdurkafdhgljsdk
-					if bzdurkafdhgljsdk == None:
+					print "jestTrajProba" #debug
+					print bzdurkafdhgljsdk #debug
+					print "--------" #debug
+					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None":
 						kluczykoal.append(str(kluczykoa))
-						print "jestNolnem"
+						print "jestNolnem" #debug
 				except:
 					kluczykoal.append(str(kluczykoa))
-					print "NiMa"
+					print "NiMa" #debug
 			kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
 			kluczbejs.sort()
 			kluczvs = kluczykoal.sort()
-			print "kluczbejs"
-			print kluczbejs
-			print "kluczvs"
-			print kluczvs
-			print "kluczykoal"
-			print kluczykoal
+			print "kluczbejs" #debug
+			print kluczbejs #debug
+			print "kluczvs" #debug
+			print kluczvs #debug
+			print "kluczykoal" #debug
+			print kluczykoal #debug
 			if kluczbejs == kluczvs:
 				interaktywnosc.current()
 			else:
