@@ -60,48 +60,48 @@ class current:
 					quit()
 		elif interactively == True:
 			kluczykoal = []
-			print interaktywnosc.gimmecurrentquestionsuredict().keys() #debug
-			print interaktywnosc.gimmecurrentquestionunsuredict().keys() #debug
+			#print interaktywnosc.gimmecurrentquestionsuredict().keys() #debug
+			#print interaktywnosc.gimmecurrentquestionunsuredict().keys() #debug
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
-				print kluczykoa
+				#print kluczykoa #debug
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
-					print "jesttraj" #debug
-					print bzdurkaldkfh #debug
-					print "----------------" #debug
+					#print "jesttraj" #debug
+					#print bzdurkaldkfh #debug
+					#print "----------------" #debug
 					if bzdurkaldkfh == None or bzdurkaldkfh == "None":
 						kluczykoal.append(str(kluczykoa))
-						print "jestnolnem" #debug
+						#print "jestnolnem" #debug
 				except:
 					kluczykoal.append(str(kluczykoa))
-					print "niema" #debug
+					#print "niema" #debug
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
-				print kluczykoa
+				#print kluczykoa #debug
 				#Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
-					print "jestTrajProba" #debug
-					print bzdurkafdhgljsdk #debug
-					print "--------" #debug
+					#print "jestTrajProba" #debug
+					#print bzdurkafdhgljsdk #debug
+					#print "--------" #debug
 					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None":
 						kluczykoal.append(str(kluczykoa))
-						print "jestNolnem" #debug
+						#print "jestNolnem" #debug
 				except:
 					kluczykoal.append(str(kluczykoa))
-					print "NiMa" #debug
+					#print "NiMa" #debug
 			kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
 			kluczbejs.sort()
 			kluczvs = kluczykoal.sort()
-			print "kluczbejs" #debug
-			print kluczbejs #debug
-			print "kluczvs" #debug
-			print kluczvs #debug
-			print "kluczykoal" #debug
-			print kluczykoal #debug
+			#print "kluczbejs" #debug
+			#print kluczbejs #debug
+			#print "kluczvs" #debug
+			#print kluczvs #debug
+			#print "kluczykoal" #debug
+			#print kluczykoal #debug
 			if kluczbejs == kluczvs:
 				interaktywnosc.current()
 			else:
