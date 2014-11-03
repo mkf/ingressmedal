@@ -70,7 +70,7 @@ class current:
 					#print "jesttraj" #debug
 					#print bzdurkaldkfh #debug
 					#print "----------------" #debug
-					if bzdurkaldkfh == None or bzdurkaldkfh == "None":
+					if bzdurkaldkfh == None or bzdurkaldkfh == "None" or self.CzyLiczbaZeroDoPiecDziewiatek(bzdurkaldkfh) == False:
 						kluczykoal.append(str(kluczykoa))
 						#print "jestnolnem" #debug
 				except:
@@ -84,7 +84,7 @@ class current:
 					#print "jestTrajProba" #debug
 					#print bzdurkafdhgljsdk #debug
 					#print "--------" #debug
-					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None":
+					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None" or self.CzyLiczbaZeroDoPiecDziewiatekLUBn(bzdurkafdhgljsdk) == False:
 						kluczykoal.append(str(kluczykoa))
 						#print "jestNolnem" #debug
 				except:
@@ -123,6 +123,21 @@ class current:
 		self.current = current
 	def rjeturncount(self):
 		return self.current
+	def TrueczyFalse(self,wart):
+		if ((str(ciag == "True")) or (ciag == "y") or (ciag == "yes")) or ((ciag == "False") or (ciag == "n") or (ciag == "no")):
+			return True
+		else:
+			return False
+	def CzyLiczbaZeroDoPiecDziewiatek(self,wart):
+		if (range(0,99999).index(int(ciag)) > 0) or (range(0,99999).index(int(ciag)) == 0):
+			return True
+		else:
+			return False
+	def CzyLiczbaZeroDoPiecDziewiatekLUBn(self,wart):
+		if (range(0,99999).index(int(ciag)) > 0) or (range(0,99999).index(int(ciag)) == 0) or (str(ciag) == 'n'):
+			return True
+		else:
+			return False
 	def coUNTINGcurapcountable(self):
 			current = self.current
 			curapcountable = {
