@@ -29,18 +29,21 @@ argh = argparse.ArgumentParser()
 from interactive import interactive
 
 interaktywnosciowo = interactive()
+argumentydodane = []
 for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
 	argh.add_argument(
 		('-' + keyowo),
 		('--' + keyowo),
 		type=int,
 		help=(interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo]))
+	argumentydodane.append(keyowo)
 for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
 	argh.add_argument(
 		('-' + keyowko),
 		('--' + keyowko),
 		type=BigNumberORn,
 		help=(interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko]))
+	argumentydodane.append(keyowo)
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
 parmetry = vars(argh.parse_args())
 
@@ -48,7 +51,7 @@ parmetry = vars(argh.parse_args())
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactively, current):
+	def __init__(self, codename, interactively, current, argdod):
 		from interactive import interactive
 
 		interaktywnosc = interactive()
@@ -57,7 +60,7 @@ class Current:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
-					if bzdurkaldkfh == None or bzdurkaldkfh == "None":
+					if bzdurkaldkfh is None or bzdurkaldkfh == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
 				except:
@@ -66,7 +69,7 @@ class Current:
 			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
 				try:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
-					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None":
+					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
 
@@ -85,7 +88,7 @@ class Current:
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
-					if bzdurkaldkfh == None or bzdurkaldkfh == "None" or self.CzyLiczbaZeroDoPiecDziewiatek(
+					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or self.CzyLiczbaZeroDoPiecDziewiatek(
 							bzdurkaldkfh) == False:
 						kluczykoal.append(str(kluczykoa))
 					# print "jestnolnem" #debug
@@ -100,27 +103,27 @@ class Current:
 					# print "jestTrajProba" #debug
 					# print bzdurkafdhgljsdk #debug
 					# print "--------" #debug
-					if bzdurkafdhgljsdk == None or bzdurkafdhgljsdk == "None" or self.CzyLiczbaZeroDoPiecDziewiatekLUBn(
+					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None" or self.CzyLiczbaZeroDoPiecDziewiatekLUBn(
 							bzdurkafdhgljsdk) == False:
 						kluczykoal.append(str(kluczykoa))
 					# print "jestNolnem" #debug
 				except:
 					kluczykoal.append(str(kluczykoa))
 				# print "NiMa" #debug
-			#kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			# kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
-			print kluczbejs   # debug
+			print kluczbejs  # debug
 			kluczbejs.sort()
-			print kluczbejs   # debug
+			print kluczbejs  # debug
 			kluczykoal.sort()
 			# print "kluczbejs" #debug
 			# print kluczbejs #debug
 			# print "kluczvs" #debug
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
-			print kluczykoal #debug
+			print kluczykoal  # debug
 			if kluczbejs == kluczykoal:
 				interaktywnosc.current()
 			else:
@@ -129,7 +132,7 @@ class Current:
 					for kluczykob in kluczykoal:
 						self.current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
 				except:
-					dkfjlghfflfsdhg = "dflgh"
+					pass
 		else:
 			print "Interactively can't be: "
 			try:
@@ -144,20 +147,23 @@ class Current:
 	def rjeturncount(self):
 		return self.current
 
-	def TrueczyFalse(self, ciag):
+	@staticmethod
+	def TrueczyFalse(ciag):
 		if ((str(ciag == "True")) or (ciag == "y") or (ciag == "yes")) or (
 						(ciag == "False") or (ciag == "n") or (ciag == "no")):
 			return True
 		else:
 			return False
 
-	def CzyLiczbaZeroDoPiecDziewiatek(self, ciag):
+	@staticmethod
+	def CzyLiczbaZeroDoPiecDziewiatek(ciag):
 		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0):
 			return True
 		else:
 			return False
 
-	def CzyLiczbaZeroDoPiecDziewiatekLUBn(self, ciag):
+	@staticmethod
+	def CzyLiczbaZeroDoPiecDziewiatekLUBn(ciag):
 		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n'):
 			return True
 		else:
@@ -194,9 +200,9 @@ class Current:
 
 if parmetry['interactively'] == 'None':
 	interactively = True
-elif parmetry['interactively'] == None:
+elif parmetry['interactively'] is None:
 	interactively = True
 else:
 	interactively = parmetry['interactively']
-hello = Current('ArchieT', interactively, parmetry)
+hello = Current('ArchieT', interactively, parmetry, argumentydodane)
 hello.coUNTINGcurapcountable()
