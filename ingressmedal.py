@@ -114,14 +114,14 @@ class current:
 			print kluczbejs   # debug
 			kluczbejs.sort()
 			print kluczbejs   # debug
-			kluczvs = kluczykoal.sort()
+			kluczykoal.sort()
 			# print "kluczbejs" #debug
 			# print kluczbejs #debug
 			# print "kluczvs" #debug
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
 			# print kluczykoal #debug
-			if kluczbejs == kluczvs:
+			if kluczbejs == kluczkoal:
 				interaktywnosc.current()
 			else:
 				# if True:
