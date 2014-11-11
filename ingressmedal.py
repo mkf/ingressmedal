@@ -117,16 +117,16 @@ class Current:
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.GivMeCurQSdict().keys())
 			kluczbejs.extend(interaktywnosc.GivMeCurQUSdict().keys())
-			print kluczbejs  # debug
+			#print kluczbejs  # debug
 			kluczbejs.sort()
-			print kluczbejs  # debug
+			#print kluczbejs  # debug
 			kluczykoal.sort()
 			# print "kluczbejs" #debug
 			# print kluczbejs #debug
 			# print "kluczvs" #debug
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
-			print kluczykoal  # debug
+			#print kluczykoal  # debug
 			if kluczbejs == kluczykoal:
 				current = interaktywnosc.currentraz()
 				self.current.update(current)
