@@ -91,8 +91,7 @@ class Current:
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
-					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or self.CzyLiczbaZeroDoPiecDziewiatek(
-							bzdurkaldkfh) == False:
+					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or not (type(bzdurkaldkfh) == int):
 						kluczykoal.append(str(kluczykoa))
 					# print "jestnolnem" #debug
 				except:
