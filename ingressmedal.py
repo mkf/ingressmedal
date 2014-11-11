@@ -121,7 +121,7 @@ class current:
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
 			# print kluczykoal #debug
-			if kluczbejs == kluczkoal:
+			if kluczbejs == kluczykoal:
 				interaktywnosc.current()
 			else:
 				# if True:
