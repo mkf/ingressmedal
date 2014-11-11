@@ -166,15 +166,15 @@ class current:
 	def coUNTINGcurapcountable(self):
 		current = self.current
 		curapcountable = {
-			'seer': (current['seer'] * 1000),
-			'depllater': ((current['depl'] - current['capt']) * 125),
-			'link': (current['link'] * 313),
-			'field': (current['field'] * 1250),
-			'rechmin': (current['rech'] * 10),
-			'captres': (current['capt'] * 625),
-			'destr': (current['destr'] * 75),
-			'destrlink': (current['destrlink'] * 187),
-			'destrfield': (current['destrfield'] * 750),
+			'seer': (int(current['seer']) * 1000),
+			'depllater': (int((current['depl']) - int(current['capt'])) * 125),
+			'link': (int(current['link']) * 313),
+			'field': (int(current['field']) * 1250),
+			'rechmin': (int(current['rech']) * 10),
+			'captres': (int(current['capt']) * 625),
+			'destr': (int(current['destr']) * 75),
+			'destrlink': (int(current['destrlink']) * 187),
+			'destrfield': (int(current['destrfield']) * 750),
 		}
 		if current['photo'] == 'n':
 			print "That's your fault you don't know how much AP you've gained on photos."
