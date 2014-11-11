@@ -1,4 +1,4 @@
-class interactive:
+class Interactive:
 	"""This is a class of interactively entering your data"""
 
 	def __init__(self):
@@ -103,5 +103,5 @@ class interactive:
 					else:
 						print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 						isintorn = False
-		print zmienna    #debug
+		print zmienna  # debug
 		return zmienna

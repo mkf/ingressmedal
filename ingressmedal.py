@@ -26,9 +26,9 @@ def BigNumberORn(ciag):
 
 
 argh = argparse.ArgumentParser()
-from interactive import interactive
+from interactive import Interactive
 
-interaktywnosciowo = interactive()
+interaktywnosciowo = Interactive()
 argumentydodane = []
 for keyowo in interaktywnosciowo.GivMeCurQSdict().keys():
 	argh.add_argument(
@@ -51,12 +51,12 @@ parmetry = vars(argh.parse_args())
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactively, current, argdod):
-		from interactive import interactive
+	def __init__(self, codename, interactiveliness, current, argdod):
+		from interactive import Interactive
 
-		interaktywnosc = interactive()
+		interaktywnosc = Interactive()
 		self.interaktywnosc = interaktywnosc
-		if interactively == False:
+		if interactiveliness == False:
 			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
@@ -76,7 +76,7 @@ class Current:
 				except:
 					print "Interactively is False. There is no %s, exiting. Next time put in at least an 'n' character." % kluczykoa
 					quit()
-		elif interactively == True:
+		elif interactiveliness == True:
 			kluczykoal = []
 			# print interaktywnosc.GivMeCurQSdict().keys() #debug
 			# print interaktywnosc.GivMeCurQUSdict().keys() #debug
@@ -137,12 +137,13 @@ class Current:
 		else:
 			print "Interactively can't be: "
 			try:
-				print interactively
+				print interactiveliness
 			except:
 				print "<unreadable>"
 			print "   because such value is unsuitable for the situation."
 			print "Exiting"
 			quit()
+		self.codename = codename
 		self.current = current
 
 	def rjeturncount(self):
