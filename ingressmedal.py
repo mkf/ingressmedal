@@ -211,5 +211,4 @@ elif parmetry['interactively'] is None:
 else:
 	interactively = parmetry['interactively']
 curinst = Current('ArchieT', interactively, parmetry, argumentydodane)
-curinst.coUNTINGcurapcountable
 curinst.percent()
