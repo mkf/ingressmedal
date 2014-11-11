@@ -30,19 +30,19 @@ from interactive import interactive
 
 interaktywnosciowo = interactive()
 argumentydodane = []
-for keyowo in interaktywnosciowo.gimmecurrentquestionsuredict().keys():
+for keyowo in interaktywnosciowo.GivMeCurQSdict().keys():
 	argh.add_argument(
 		('-' + keyowo),
 		('--' + keyowo),
 		type=int,
-		help=(interaktywnosciowo.gimmecurrentquestionsuredict()[keyowo]))
+		help=(interaktywnosciowo.GivMeCurQSdict()[keyowo]))
 	argumentydodane.append(keyowo)
-for keyowko in interaktywnosciowo.gimmecurrentquestionunsuredict().keys():
+for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 	argh.add_argument(
 		('-' + keyowko),
 		('--' + keyowko),
 		type=BigNumberORn,
-		help=(interaktywnosciowo.gimmecurrentquestionunsuredict()[keyowko]))
+		help=(interaktywnosciowo.GivMeCurQUSdict()[keyowko]))
 	argumentydodane.append(keyowo)
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
 parmetry = vars(argh.parse_args())
@@ -57,7 +57,7 @@ class Current:
 		interaktywnosc = interactive()
 		self.interaktywnosc = interaktywnosc
 		if interactively == False:
-			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
+			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
 					bzdurkaldkfh = str(current[kluczykoa])
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None":
@@ -66,7 +66,7 @@ class Current:
 				except:
 					print "Interactively is False. There is no %s, exiting." % kluczykoa
 					quit()
-			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
+			for kluczykoa in interaktywnosc.GivMeCurQUSdict().keys():
 				try:
 					bzdurkafdhgljsdk = str(current[kluczykoa])
 					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None":
@@ -78,9 +78,9 @@ class Current:
 					quit()
 		elif interactively == True:
 			kluczykoal = []
-			# print interaktywnosc.gimmecurrentquestionsuredict().keys() #debug
-			# print interaktywnosc.gimmecurrentquestionunsuredict().keys() #debug
-			for kluczykoa in interaktywnosc.gimmecurrentquestionsuredict().keys():
+			# print interaktywnosc.GivMeCurQSdict().keys() #debug
+			# print interaktywnosc.GivMeCurQUSdict().keys() #debug
+			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
@@ -95,7 +95,7 @@ class Current:
 				except:
 					kluczykoal.append(str(kluczykoa))
 				# print "niema" #debug
-			for kluczykoa in interaktywnosc.gimmecurrentquestionunsuredict().keys():
+			for kluczykoa in interaktywnosc.GivMeCurQUSdict().keys():
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
@@ -110,10 +110,10 @@ class Current:
 				except:
 					kluczykoal.append(str(kluczykoa))
 				# print "NiMa" #debug
-			# kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			# kluczbejs = (interaktywnosc.GivMeCurQSdict().keys() + interaktywnosc.GivMeCurQUSdict().keys()).sort()
 			kluczbejs = []
-			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
-			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
+			kluczbejs.extend(interaktywnosc.GivMeCurQSdict().keys())
+			kluczbejs.extend(interaktywnosc.GivMeCurQUSdict().keys())
 			print kluczbejs  # debug
 			kluczbejs.sort()
 			print kluczbejs  # debug

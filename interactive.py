@@ -2,7 +2,7 @@ class interactive:
 	"""This is a class of interactively entering your data"""
 
 	def __init__(self):
-		self.currentquestionsuredict = {
+		self.currentquestionSdict = {
 			'ap': 'Current AP: ',
 			'uniqvis': 'Current count of unique portals visited: ',
 			'seer': 'Current count of discovered portals: ',
@@ -18,34 +18,34 @@ class interactive:
 			'destrlink': 'Current count of enemy links destroyed: ',
 			'destrfield': 'Current count of enemy Control Fields destroyed: ',
 		}
-		self.currentquestionunsuredict = {
+		self.currentquestionUSdict = {
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 			'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 		}
 
-	def gimmecurrentquestionsuredict(self):
-		return self.currentquestionsuredict
+	def GivMeCurQSdict(self):
+		return self.currentquestionSdict
 
-	def gimmecurrentquestionunsuredict(self):
-		return self.currentquestionunsuredict
+	def GivMeCurQUSdict(self):
+		return self.currentquestionUSdict
 
 	def current(self):
-		questionsuredict = self.currentquestionsuredict
-		questionunsuredict = self.currentquestionunsuredict
+		questionSdict = self.currentquestionSdict
+		questionUSdict = self.currentquestionUSdict
 		currentdict = {}
-		for kluczyk in questionsuredict.keys():
+		for kluczyk in questionSdict.keys():
 			isint = False
 			while isint == False:
 				try:
-					currentdict[kluczyk] = int(raw_input(questionsuredict[kluczyk]))
+					currentdict[kluczyk] = int(raw_input(questionSdict[kluczyk]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
 					isint = False
-		for kluczyk in questionunsuredict.keys():
+		for kluczyk in questionUSdict.keys():
 			isintorn = False
 			while isintorn == False:
-				phototry = raw_input(questionunsuredict[kluczyk])
+				phototry = raw_input(questionUSdict[kluczyk])
 				try:
 					currentdict[kluczyk] = int(phototry)
 					isintorn = True
@@ -61,36 +61,36 @@ class interactive:
 		return currentdict
 
 	def currentwyrywki(self, dawajkeya):
-		jestwsure = False
-		jestwunsure = False
-		for a in self.currentquestionsuredict.keys():
+		jestwS = False
+		jestwUS = False
+		for a in self.currentquestionSdict.keys():
 			if a == dawajkeya:
-				jestwsure = True
-		for a in self.currentquestionunsuredict.keys():
+				jestwS = True
+		for a in self.currentquestionUSdict.keys():
 			if a == dawajkeya:
-				jestwunsure = True
-		if ((jestwsure == True) and (jestwunsure == True)) or ((jestwsure == False) and (jestwunsure == False)):
-			print "jestwsure"
-			print jestwsure
-			print "jestwunsure"
-			print jestwunsure
+				jestwUS = True
+		if ((jestwS == True) and (jestwUS == True)) or ((jestwS == False) and (jestwUS == False)):
+			print "jestwS"
+			print jestwS
+			print "jestwUS"
+			print jestwUS
 			print " "
 			print "Exiting."
 			return "Crash"
-		elif jestwsure == True:
+		elif jestwS == True:
 			isint = False
 			while isint == False:
 				try:
-					zmienna = int(raw_input(self.currentquestionsuredict[dawajkeya]))
+					zmienna = int(raw_input(self.currentquestionSdict[dawajkeya]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
 					isint = False
-		elif jestwunsure == True:
+		elif jestwUS == True:
 			kluczyk = dawajkeya
 			isintorn = False
 			while isintorn == False:
-				phototry = raw_input(self.currentquestionunsuredict[kluczyk])
+				phototry = raw_input(self.currentquestionUSdict[kluczyk])
 				try:
 					zmienna = int(phototry)
 					isintorn = True
