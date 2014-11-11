@@ -131,6 +131,7 @@ class Current:
 				try:
 					for kluczykob in kluczykoal:
 						self.current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
+						print self.current[kluczykob]
 				except:
 					pass
 		else:
