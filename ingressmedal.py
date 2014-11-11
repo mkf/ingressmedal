@@ -107,8 +107,8 @@ class current:
 				except:
 					kluczykoal.append(str(kluczykoa))
 				# print "NiMa" #debug
-			kluczbejs = (
-				interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			#kluczbejs = (interaktywnosc.gimmecurrentquestionsuredict().keys() + interaktywnosc.gimmecurrentquestionunsuredict().keys()).sort()
+			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
 			kluczbejs.sort()
