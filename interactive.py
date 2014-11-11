@@ -1,7 +1,7 @@
 class interactive:
-	"This is a class of interactively entering your data"
+	"""This is a class of interactively entering your data"""
+
 	def __init__(self):
-		ldkfghfdslg = 849
 		self.currentquestionsuredict = {
 			'ap': 'Current AP: ',
 			'uniqvis': 'Current count of unique portals visited: ',
@@ -24,10 +24,13 @@ class interactive:
 		}
 		currentquestionsuredict = self.currentquestionsuredict
 		currentquestionunsuredict = self.currentquestionunsuredict
+
 	def gimmecurrentquestionsuredict(self):
 		return self.currentquestionsuredict
+
 	def gimmecurrentquestionunsuredict(self):
 		return self.currentquestionunsuredict
+
 	def current(self):
 		questionsuredict = self.currentquestionsuredict
 		questionunsuredict = self.currentquestionunsuredict
@@ -36,7 +39,7 @@ class interactive:
 			isint = False
 			while isint == False:
 				try:
-					current[kluczyk] = int(raw_input(questionsuredict[kluczyk]))
+					currentdict[kluczyk] = int(raw_input(questionsuredict[kluczyk]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
@@ -46,19 +49,20 @@ class interactive:
 			while isintorn == False:
 				phototry = raw_input(questionunsuredict[kluczyk])
 				try:
-					current[kluczyk] = int(phototry)
+					currentdict[kluczyk] = int(phototry)
 					isintorn = True
 				except:
 					print "Value is not int"
 					if phototry == "n":
-						current[kluczyk] = 'n'
+						currentdict[kluczyk] = 'n'
 						print "So you don't know, huh?"
 						isintorn = True
 					else:
 						print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 						isintorn = False
 		return currentdict
-	def currentwyrywki(self,dawajkeya):
+
+	def currentwyrywki(self, dawajkeya):
 		jestwsure = False
 		jestwunsure = False
 		for a in self.currentquestionsuredict.keys():
