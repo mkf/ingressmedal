@@ -15,8 +15,8 @@ Currently you have to enter the numbers manually. I'm going to implement OCR in 
 Program currently works only in text-only mode.
 
 #####Search GMail for mails:
- * edits: "Ingress Portal Data Edit Accepted:"
- * photos: "Ingress Portal Photo Accepted:"
+ * **edits**: *"Ingress Portal Data Edit Accepted:"*
+ * **photos**: *"Ingress Portal Photo Accepted:"*
 
 Why
 ---------
