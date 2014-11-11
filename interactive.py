@@ -105,4 +105,5 @@ class interactive:
 					else:
 						print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
 						isintorn = False
+		print zmienna    #debug
 		return zmienna
