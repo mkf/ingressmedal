@@ -22,8 +22,6 @@ class interactive:
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 			'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 		}
-		currentquestionsuredict = self.currentquestionsuredict
-		currentquestionunsuredict = self.currentquestionunsuredict
 
 	def gimmecurrentquestionsuredict(self):
 		return self.currentquestionsuredict
