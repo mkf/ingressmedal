@@ -216,7 +216,7 @@ class Current:
 			left = left - things[w]
 			tabelka.append([descripts[w], things[w], percenty[w]])
 		tabelka.append(["Uncomputable", left, ((str(left/self.current['ap']*100))+'%')])
-		print tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
+		print tabulate.tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
 
 if parmetry['interactively'] == 'None':
