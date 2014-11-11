@@ -179,15 +179,15 @@ class Current:
 	def coUNTINGcurapcountable(self):
 		current = self.current
 		curapcountable = {
-			'seer': (int(current['seer']) * 1000),
-			'depllater': (int((current['depl']) - int(current['capt'])) * 125),
-			'link': (int(current['link']) * 313),
-			'field': (int(current['field']) * 1250),
-			'rechmin': (int(current['rech']) * 10),
-			'captres': (int(current['capt']) * 625),
-			'destr': (int(current['destr']) * 75),
-			'destrlink': (int(current['destrlink']) * 187),
-			'destrfield': (int(current['destrfield']) * 750),
+			'seer': int((int(current['seer']) * 1000)),
+			'depllater': int((int((current['depl']) - int(current['capt'])) * 125)),
+			'link': int((int(current['link']) * 313)),
+			'field': int((int(current['field']) * 1250)),
+			'rechmin': int((int(current['rech']) * 10)),
+			'captres': int((int(current['capt']) * 625)),
+			'destr': int((int(current['destr']) * 75)),
+			'destrlink': int((int(current['destrlink']) * 187)),
+			'destrfield': int((int(current['destrfield']) * 750)),
 		}
 		if current['photo'] == 'n':
 			print "That's your fault you don't know how much AP you've gained on photos."
@@ -211,5 +211,6 @@ elif parmetry['interactively'] is None:
 	interactively = True
 else:
 	interactively = parmetry['interactively']
-hello = Current('ArchieT', interactively, parmetry, argumentydodane)
-hello.coUNTINGcurapcountable()
+curinst = Current('ArchieT', interactively, parmetry, argumentydodane)
+curinst.coUNTINGcurapcountable()
+curinst.percent()
