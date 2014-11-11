@@ -179,26 +179,21 @@ class Current:
 	@property
 	def coUNTINGcurapcountable(self):
 		current = self.current
-		curapcountable = dict(seer=int((int(current['seer']) * 1000)),
-							  depllater=int((int((current['depl']) - int(current['capt'])) * 125)),
-							  link=int((int(current['link']) * 313)),
-							  field=int((int(current['field']) * 1250)),
-							  rechmin=int(((int(current['rech']) / 1000) * 10)),
-							  captres=int((int(current['capt']) * 625)),
-							  destr=int((int(current['destr']) * 75)),
-							  destrlink=int((int(current['destrlink']) * 187)),
-							  destrfield=int((int(current['destrfield']) * 750)))
-		self.namesforcurapcountable = dict(seer="Portals discovered (submitted)",
-										   depllater="Deployment of resonators except the capturing one",
-										   link="Links created",
-										   field="Control Fields created",
-										   rechmin="Minimum AP gained on recharging",
-										   captres="Capturing portals + first resonator",
-										   destr="Destroyed resonators",
-										   destrlink="Enemy links destroyed",
-										   destrfield="Enemy Control Fields destroyed",
-										   photo="Photos added to portals",
-										   edit="Edits done to portals' data")
+		curapcountable = {'seer': int((int(current['seer']) * 1000)),
+						  'depllater': int((int((current['depl']) - int(current['capt'])) * 125)),
+						  'link': int((int(current['link']) * 313)), 'field': int((int(current['field']) * 1250)),
+						  'rechmin': int(((int(current['rech']) / 1000) * 10)),
+						  'captres': int((int(current['capt']) * 625)), 'destr': int((int(current['destr']) * 75)),
+						  'destrlink': int((int(current['destrlink']) * 187)),
+						  'destrfield': int((int(current['destrfield']) * 750))}
+		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
+									   'depllater': "Deployment of resonators except the capturing one",
+									   'link': "Links created", 'field': "Control Fields created",
+									   'rechmin': "Minimum AP gained on recharging",
+									   'captres': "Capturing portals + first resonator",
+									   'destr': "Destroyed resonators", 'destrlink': "Enemy links destroyed",
+									   'destrfield': "Enemy Control Fields destroyed",
+									   'photo': "Photos added to portals", 'edit': "Edits done to portals' data"}
 		if current['photo'] == 'n':
 			print "That's your fault you don't know how much AP you've gained on photos."
 		else:
