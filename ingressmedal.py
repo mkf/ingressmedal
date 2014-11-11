@@ -181,9 +181,11 @@ class Current:
 		current = self.current
 		curapcountable = dict(seer=int((int(current['seer']) * 1000)),
 							  depllater=int((int((current['depl']) - int(current['capt'])) * 125)),
-							  link=int((int(current['link']) * 313)), field=int((int(current['field']) * 1250)),
+							  link=int((int(current['link']) * 313)),
+							  field=int((int(current['field']) * 1250)),
 							  rechmin=int(((int(current['rech']) / 1000) * 10)),
-							  captres=int((int(current['capt']) * 625)), destr=int((int(current['destr']) * 75)),
+							  captres=int((int(current['capt']) * 625)),
+							  destr=int((int(current['destr']) * 75)),
 							  destrlink=int((int(current['destrlink']) * 187)),
 							  destrfield=int((int(current['destrfield']) * 750)))
 		if current['photo'] == 'n':
