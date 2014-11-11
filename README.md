@@ -1,7 +1,7 @@
 ingressmedal
 ============
 
-AP and medals counting for Ingress (games from Niantic Labs (a Google company))
+AP and medals counting for Ingress (game from Niantic Labs (a Google company))
 
 Usage
 ---------
