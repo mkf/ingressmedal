@@ -54,6 +54,9 @@ class Current:
 	def __init__(self, codename, interactiveliness, currorg, argdod):
 		from interactive import Interactive
 
+		self.current = {}
+		self.current.update(currorg)
+
 		interaktywnosc = Interactive()
 		self.interaktywnosc = interaktywnosc
 		if interactiveliness == False:
@@ -125,14 +128,16 @@ class Current:
 			# print "kluczykoal" #debug
 			print kluczykoal  # debug
 			if kluczbejs == kluczykoal:
-				interaktywnosc.current()
+				current = interaktywnosc.currentraz()
+				self.current.update(current)
 			else:
 				# if True:
 				try:
 					current = {}
 					for kluczykob in kluczykoal:
 						current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
-						print current[kluczykob]
+						#print current[kluczykob]
+					self.current.update(current)
 				except:
 					pass
 		else:
@@ -145,9 +150,6 @@ class Current:
 			print "Exiting"
 			quit()
 		self.codename = codename
-		self.current = {}
-		self.current.update(currorg)
-		self.current.update(current)
 
 	def rjeturncount(self):
 		return self.current

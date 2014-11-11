@@ -29,7 +29,7 @@ class Interactive:
 	def GivMeCurQUSdict(self):
 		return self.currentquestionUSdict
 
-	def current(self):
+	def currentraz(self):
 		questionSdict = self.currentquestionSdict
 		questionUSdict = self.currentquestionUSdict
 		currentdict = {}
