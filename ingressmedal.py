@@ -51,7 +51,7 @@ parmetry = vars(argh.parse_args())
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactiveliness, current, argdod):
+	def __init__(self, codename, interactiveliness, currorg, argdod):
 		from interactive import Interactive
 
 		interaktywnosc = Interactive()
@@ -59,7 +59,7 @@ class Current:
 		if interactiveliness == False:
 			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
-					bzdurkaldkfh = str(current[kluczykoa])
+					bzdurkaldkfh = str(currorg[kluczykoa])
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -68,7 +68,7 @@ class Current:
 					quit()
 			for kluczykoa in interaktywnosc.GivMeCurQUSdict().keys():
 				try:
-					bzdurkafdhgljsdk = str(current[kluczykoa])
+					bzdurkafdhgljsdk = str(currorg[kluczykoa])
 					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -84,7 +84,7 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkaldkfh = str(current[kluczykoa])
+					bzdurkaldkfh = str(currorg[kluczykoa])
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
@@ -99,7 +99,7 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkafdhgljsdk = str(current[kluczykoa])
+					bzdurkafdhgljsdk = str(currorg[kluczykoa])
 					# print "jestTrajProba" #debug
 					# print bzdurkafdhgljsdk #debug
 					# print "--------" #debug
@@ -129,9 +129,10 @@ class Current:
 			else:
 				# if True:
 				try:
+					current = {}
 					for kluczykob in kluczykoal:
-						self.current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
-						print self.current[kluczykob]
+						current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
+						print current[kluczykob]
 				except:
 					pass
 		else:
@@ -144,7 +145,9 @@ class Current:
 			print "Exiting"
 			quit()
 		self.codename = codename
-		self.current = current
+		self.current = {}
+		self.current.update(currorg)
+		self.current.update(current)
 
 	def rjeturncount(self):
 		return self.current
