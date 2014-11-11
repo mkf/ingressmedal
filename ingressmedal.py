@@ -91,7 +91,8 @@ class Current:
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
-					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or not (type(bzdurkaldkfh) == int):
+					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or not (type(int(bzdurkaldkfh)) == int):
+						print type(bzdurkaldkfh)
 						kluczykoal.append(str(kluczykoa))
 					# print "jestnolnem" #debug
 				except:
@@ -187,6 +188,17 @@ class Current:
 							  destr=int((int(current['destr']) * 75)),
 							  destrlink=int((int(current['destrlink']) * 187)),
 							  destrfield=int((int(current['destrfield']) * 750)))
+		self.namesforcurapcountable = dict(seer="Portals discovered (submitted)",
+										   depllater="Deployment of resonators except the capturing one",
+										   link="Links created",
+										   field="Control Fields created",
+										   rechmin="Minimum AP gained on recharging",
+										   captres="Capturing portals + first resonator",
+										   destr="Destroyed resonators",
+										   destrlink="Enemy links destroyed",
+										   destrfield="Enemy Control Fields destroyed",
+										   photo="Photos added to portals",
+										   edit="Edits done to portals' data")
 		if current['photo'] == 'n':
 			print "That's your fault you don't know how much AP you've gained on photos."
 		else:
@@ -198,9 +210,18 @@ class Current:
 		return curapcountable
 
 	def percent(self):
+		import tabulate
 		things = self.coUNTINGcurapcountable
+		descripts = self.namesforcurapcountable
+		percenty = {}
+		tabelka = []
+		left = things['ap']
 		for w in sorted(things, key=things.get, reverse=True):
-			print w, things[w]
+			percenty[w] = ((str(things[w])/(things['ap']*100))+'%')
+			left = left - things[w]
+			tabelka.append([descripts[w], things[w], percenty[w]])
+		tabelka.append(["Uncomputable", left, ((str(left/things['ap']*100))+'%')])
+		print tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
 
 if parmetry['interactively'] == 'None':
