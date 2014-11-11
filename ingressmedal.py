@@ -136,7 +136,7 @@ class Current:
 					current = {}
 					for kluczykob in kluczykoal:
 						current[kluczykob] = interaktywnosc.currentwyrywki(kluczykob)
-						#print current[kluczykob]
+					# print current[kluczykob]
 					self.current.update(current)
 				except:
 					pass
@@ -176,19 +176,16 @@ class Current:
 		else:
 			return False
 
+	@property
 	def coUNTINGcurapcountable(self):
 		current = self.current
-		curapcountable = {
-			'seer': int((int(current['seer']) * 1000)),
-			'depllater': int((int((current['depl']) - int(current['capt'])) * 125)),
-			'link': int((int(current['link']) * 313)),
-			'field': int((int(current['field']) * 1250)),
-			'rechmin': int((int(current['rech']) * 10)),
-			'captres': int((int(current['capt']) * 625)),
-			'destr': int((int(current['destr']) * 75)),
-			'destrlink': int((int(current['destrlink']) * 187)),
-			'destrfield': int((int(current['destrfield']) * 750)),
-		}
+		curapcountable = dict(seer=int((int(current['seer']) * 1000)),
+							  depllater=int((int((current['depl']) - int(current['capt'])) * 125)),
+							  link=int((int(current['link']) * 313)), field=int((int(current['field']) * 1250)),
+							  rechmin=int(((int(current['rech']) / 1000) * 10)),
+							  captres=int((int(current['capt']) * 625)), destr=int((int(current['destr']) * 75)),
+							  destrlink=int((int(current['destrlink']) * 187)),
+							  destrfield=int((int(current['destrfield']) * 750)))
 		if current['photo'] == 'n':
 			print "That's your fault you don't know how much AP you've gained on photos."
 		else:
@@ -200,7 +197,7 @@ class Current:
 		return curapcountable
 
 	def percent(self):
-		things = self.coUNTINGcurapcountable()
+		things = self.coUNTINGcurapcountable
 		for w in sorted(things, key=things.get, reverse=True):
 			print w, things[w]
 
@@ -212,5 +209,5 @@ elif parmetry['interactively'] is None:
 else:
 	interactively = parmetry['interactively']
 curinst = Current('ArchieT', interactively, parmetry, argumentydodane)
-curinst.coUNTINGcurapcountable()
+curinst.coUNTINGcurapcountable
 curinst.percent()
