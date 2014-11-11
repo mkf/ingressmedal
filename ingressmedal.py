@@ -45,7 +45,7 @@ argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively
 parmetry = vars(argh.parse_args())
 
 
-class current:
+class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
 	def __init__(self, codename, interactively, current):
@@ -120,7 +120,7 @@ class current:
 			# print "kluczvs" #debug
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
-			# print kluczykoal #debug
+			print kluczykoal #debug
 			if kluczbejs == kluczykoal:
 				interaktywnosc.current()
 			else:
@@ -198,5 +198,5 @@ elif parmetry['interactively'] == None:
 	interactively = True
 else:
 	interactively = parmetry['interactively']
-hello = current('ArchieT', interactively, parmetry)
+hello = Current('ArchieT', interactively, parmetry)
 hello.coUNTINGcurapcountable()
