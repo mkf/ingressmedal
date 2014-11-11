@@ -111,7 +111,9 @@ class current:
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionsuredict().keys())
 			kluczbejs.extend(interaktywnosc.gimmecurrentquestionunsuredict().keys())
+			print kluczbejs   # debug
 			kluczbejs.sort()
+			print kluczbejs   # debug
 			kluczvs = kluczykoal.sort()
 			# print "kluczbejs" #debug
 			# print kluczbejs #debug
