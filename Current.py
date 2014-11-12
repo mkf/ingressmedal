@@ -69,16 +69,16 @@ class Current:
 			kluczbejs = []
 			kluczbejs.extend(interaktywnosc.GivMeCurQSdict().keys())
 			kluczbejs.extend(interaktywnosc.GivMeCurQUSdict().keys())
-			#print kluczbejs  # debug
+			# print kluczbejs  # debug
 			kluczbejs.sort()
-			#print kluczbejs  # debug
+			# print kluczbejs  # debug
 			kluczykoal.sort()
 			# print "kluczbejs" #debug
 			# print kluczbejs #debug
 			# print "kluczvs" #debug
 			# print kluczvs #debug
 			# print "kluczykoal" #debug
-			#print kluczykoal  # debug
+			# print kluczykoal  # debug
 			if kluczbejs == kluczykoal:
 				current = interaktywnosc.currentraz()
 				self.current.update(current)
@@ -158,15 +158,16 @@ class Current:
 
 	def percent(self):
 		import tabulate
+
 		things = self.coUNTINGcurapcountable
 		descripts = self.namesforcurapcountable
 		percenty = {}
 		tabelka = []
 		left = self.current['ap']
 		for w in sorted(things, key=things.get, reverse=True):
-			percenty[w] = str("{:.4%}".format((float(things[w]))/(float(self.current['ap']))))
-			left = left - things[w]
+			percenty[w] = str("{:.4%}".format((float(things[w])) / (float(self.current['ap']))))
+			left -= things[w]
 			tabelka.append([descripts[w], things[w], percenty[w]])
-		tabelka.append(["Uncomputable", left, str("{:.4%}".format((float(left))/(float(self.current['ap']))))])
+		tabelka.append(["Uncomputable", left, str("{:.4%}".format((float(left)) / (float(self.current['ap']))))])
 		print "Total AP: %s" % str(self.current['ap'])
 		print tabulate.tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])

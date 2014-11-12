@@ -48,9 +48,6 @@ for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
 parmetry = vars(argh.parse_args())
 
-
-
-
 if parmetry['interactively'] == 'None':
 	interactively = True
 elif parmetry['interactively'] is None:
