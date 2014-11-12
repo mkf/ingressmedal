@@ -212,13 +212,10 @@ class Current:
 		tabelka = []
 		left = self.current['ap']
 		for w in sorted(things, key=things.get, reverse=True):
-			percenty[w] = str("{:.4%}".format((int(things[w]))/(int(self.current['ap']))))
-			print things[w]
-			print self.current['ap']
-			print ((float(things[w]))/(float(self.current['ap'])))   # debug
+			percenty[w] = str("{:.4%}".format((float(things[w]))/(float(self.current['ap']))))
 			left = left - things[w]
 			tabelka.append([descripts[w], things[w], percenty[w]])
-		tabelka.append(["Uncomputable", left, str("{:.4%}".format((int(left))/(int(self.current['ap']))))])
+		tabelka.append(["Uncomputable", left, str("{:.4%}".format((float(left))/(float(self.current['ap']))))])
 		print "Total AP: %s" % str(self.current['ap'])
 		print tabulate.tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
