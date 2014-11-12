@@ -13,11 +13,6 @@
 <edge STYLE="sharp_bezier"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1414936637288" ID="ID_1669918425" MODIFIED="1414938206440" STYLE="bubble" TEXT="Builder &#x2014; resonator deployed">
-<edge STYLE="sharp_bezier"/>
-<linktarget COLOR="#b0b0b0" DESTINATION="ID_1669918425" ENDARROW="Default" ENDINCLINATION="543;0;" ID="Arrow_ID_638238006" SOURCE="ID_310603851" STARTARROW="None" STARTINCLINATION="543;0;"/>
-<font NAME="SansSerif" SIZE="12"/>
-</node>
 <node CREATED="1414936653432" ID="ID_1281121682" MODIFIED="1414938206440" STYLE="bubble" TEXT="Connector &#x2014; links created">
 <edge STYLE="sharp_bezier"/>
 <font NAME="SansSerif" SIZE="12"/>
@@ -26,28 +21,29 @@
 <edge STYLE="sharp_bezier"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1414936695503" ID="ID_1375191998" MODIFIED="1414938206440" STYLE="bubble" TEXT="Liberator &#x2014; portals captured">
+<node CREATED="1414936695503" ID="ID_1375191998" MODIFIED="1415826108376" STYLE="bubble" TEXT="Liberator &#x2014; portals captured">
 <edge STYLE="sharp_bezier"/>
-<linktarget COLOR="#b0b0b0" DESTINATION="ID_1375191998" ENDARROW="Default" ENDINCLINATION="524;0;" ID="Arrow_ID_385137142" SOURCE="ID_310603851" STARTARROW="None" STARTINCLINATION="572;0;"/>
+<linktarget COLOR="#b0b0b0" DESTINATION="ID_1375191998" ENDARROW="Default" ENDINCLINATION="182;5;" ID="Arrow_ID_385137142" SOURCE="ID_310603851" STARTARROW="None" STARTINCLINATION="27;-71;"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 <node CREATED="1414936707031" ID="ID_975188854" MODIFIED="1414938206440" STYLE="bubble" TEXT="Purifier &#x2014; resonator destroyed">
 <edge STYLE="sharp_bezier"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1414936949431" ID="ID_1529846198" MODIFIED="1414938206440" STYLE="bubble" TEXT="destroyed links">
+<node CREATED="1414936949431" ID="ID_1529846198" MODIFIED="1415826133326" STYLE="bubble" TEXT="destroyed links">
 <edge STYLE="sharp_bezier"/>
-<linktarget COLOR="#b0b0b0" DESTINATION="ID_1529846198" ENDARROW="Default" ENDINCLINATION="371;0;" ID="Arrow_ID_1494684419" SOURCE="ID_1401361741" STARTARROW="None" STARTINCLINATION="371;0;"/>
+<linktarget COLOR="#b0b0b0" DESTINATION="ID_1529846198" ENDARROW="Default" ENDINCLINATION="137;4;" ID="Arrow_ID_1494684419" SOURCE="ID_1401361741" STARTARROW="None" STARTINCLINATION="-91;-12;"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 <node CREATED="1414936953751" ID="ID_1539804087" MODIFIED="1414938206440" STYLE="bubble" TEXT="destroyed Control Fields">
 <edge STYLE="sharp_bezier"/>
 <font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1414936964375" ID="ID_1401361741" MODIFIED="1414938206440" STYLE="bubble" TEXT="each 1control fields destroyed = 1 destroyed link">
+<node CREATED="1414936964375" ID="ID_1401361741" MODIFIED="1415826133326" STYLE="bubble" TEXT="each 1control fields destroyed = 1 destroyed link">
 <edge STYLE="sharp_bezier"/>
-<arrowlink DESTINATION="ID_1529846198" ENDARROW="Default" ENDINCLINATION="371;0;" ID="Arrow_ID_1494684419" STARTARROW="None" STARTINCLINATION="371;0;"/>
+<arrowlink DESTINATION="ID_1529846198" ENDARROW="Default" ENDINCLINATION="137;4;" ID="Arrow_ID_1494684419" STARTARROW="None" STARTINCLINATION="-91;-12;"/>
 </node>
 </node>
+<node CREATED="1415826182239" ID="ID_428009152" MODIFIED="1415826192041" TEXT="Resonators AT LEAST upgraded"/>
 </node>
 <node CREATED="1414936580929" ID="ID_1155018395" MODIFIED="1414938206440" STYLE="bubble" TEXT="partly">
 <edge STYLE="sharp_bezier"/>
@@ -65,6 +61,17 @@
 <edge STYLE="sharp_bezier"/>
 </node>
 </node>
+<node CREATED="1415826214356" ID="ID_614546926" MODIFIED="1415826409481" TEXT="&quot;Bonus (60AP) for placing the resonator &#xa;as the first one and choosing the distance&quot;">
+<node CREATED="1414936637288" ID="ID_1669918425" MODIFIED="1415826300614" STYLE="bubble" TEXT="Builder &#x2014; resonator deployed">
+<edge STYLE="sharp_bezier"/>
+<linktarget COLOR="#b0b0b0" DESTINATION="ID_1669918425" ENDARROW="Default" ENDINCLINATION="-24;22;" ID="Arrow_ID_638238006" SOURCE="ID_310603851" STARTARROW="None" STARTINCLINATION="63;-17;"/>
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1415825860173" ID="ID_494327441" MODIFIED="1415826378098" TEXT="Let&apos;s talk about deploy as about &#xa;&quot;upgrading + 60AP bonus&quot;, &#xa;as upgrade=65AP and &#xa;deploy=125AP">
+<node CREATED="1415825937271" ID="ID_33488320" MODIFIED="1415825961316" TEXT="We know how many AP you&apos;ve gained from upgrading"/>
+<node CREATED="1415825961864" ID="ID_736543256" MODIFIED="1415826395785" TEXT="We don&apos;t know how many AP you&apos;ve gained &#xa;on this &quot;60AP bonus for placing the resonator &#xa;as the first one and choosing the place for it&quot;"/>
+</node>
+</node>
+</node>
 </node>
 <node CREATED="1414936600601" ID="ID_870290101" MODIFIED="1414938343467" STYLE="bubble" TEXT="unaccurately">
 <edge STYLE="sharp_bezier"/>
@@ -74,10 +81,10 @@
 </node>
 <node CREATED="1414937089726" ID="ID_441915375" MODIFIED="1414938206439" STYLE="bubble" TEXT="deploying the last resonator (powering up a portal)">
 <edge STYLE="sharp_bezier"/>
-<node CREATED="1414937114717" ID="ID_310603851" MODIFIED="1414938206439" STYLE="bubble" TEXT="maximum is All_deployed&#x2014;portals captured">
+<node CREATED="1414937114717" ID="ID_310603851" MODIFIED="1415826300614" STYLE="bubble" TEXT="maximum is All_deployed&#x2014;portals captured">
 <edge STYLE="sharp_bezier"/>
-<arrowlink DESTINATION="ID_1375191998" ENDARROW="Default" ENDINCLINATION="524;0;" ID="Arrow_ID_385137142" STARTARROW="None" STARTINCLINATION="572;0;"/>
-<arrowlink DESTINATION="ID_1669918425" ENDARROW="Default" ENDINCLINATION="543;0;" ID="Arrow_ID_638238006" STARTARROW="None" STARTINCLINATION="543;0;"/>
+<arrowlink DESTINATION="ID_1375191998" ENDARROW="Default" ENDINCLINATION="182;5;" ID="Arrow_ID_385137142" STARTARROW="None" STARTINCLINATION="27;-71;"/>
+<arrowlink COLOR="#b0b0b0" DESTINATION="ID_1669918425" ENDARROW="Default" ENDINCLINATION="-24;22;" ID="Arrow_ID_638238006" STARTARROW="None" STARTINCLINATION="63;-17;"/>
 </node>
 </node>
 <node CREATED="1414938362833" ID="ID_1198392816" MODIFIED="1414938392228" TEXT="AP bonuses">
