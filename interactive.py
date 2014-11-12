@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Interactive:
 	"""This is a class of interactively entering your data"""
 
