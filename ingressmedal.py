@@ -180,14 +180,14 @@ class Current:
 	def coUNTINGcurapcountable(self):
 		current = self.current
 		curapcountable = {'seer': int((int(current['seer']) * 1000)),
-						  'depllater': int((int((current['depl']) - int(current['capt'])) * 125)),
+						  'depllater': int((int((current['depl']) - int(current['capt'])) * 65)),
 						  'link': int((int(current['link']) * 313)), 'field': int((int(current['field']) * 1250)),
 						  'rechmin': int(((int(current['rech']) / 1000) * 10)),
 						  'captres': int((int(current['capt']) * 625)), 'destr': int((int(current['destr']) * 75)),
 						  'destrlink': int((int(current['destrlink']) * 187)),
 						  'destrfield': int((int(current['destrfield']) * 750))}
 		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
-									   'depllater': "Deployment of resonators except the capturing one",
+									   'depllater': "Sure points from deployment of resonators except the capturing one and from upgrading resonators",
 									   'link': "Links created", 'field': "Control Fields created",
 									   'rechmin': "Minimum AP gained on recharging",
 									   'captres': "Capturing portals + first resonator",
@@ -212,10 +212,14 @@ class Current:
 		tabelka = []
 		left = self.current['ap']
 		for w in sorted(things, key=things.get, reverse=True):
-			percenty[w] = str(((things[w])/(self.current['ap'])*100))+'%'
+			percenty[w] = str("{:.4%}".format((int(things[w]))/(int(self.current['ap']))))
+			print things[w]
+			print self.current['ap']
+			print ((float(things[w]))/(float(self.current['ap'])))   # debug
 			left = left - things[w]
 			tabelka.append([descripts[w], things[w], percenty[w]])
-		tabelka.append(["Uncomputable", left, (str((left)/(self.current['ap'])*100))+'%'])
+		tabelka.append(["Uncomputable", left, str("{:.4%}".format((int(left))/(int(self.current['ap']))))])
+		print "Total AP: %s" % str(self.current['ap'])
 		print tabulate.tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
 
