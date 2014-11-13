@@ -156,9 +156,7 @@ class Current:
 			curapcountable['edit'] = (current['edit'] * 200)
 		return curapcountable
 
-	def percent(self):
-		import tabulate
-
+	def percentofap(self):
 		things = self.coUNTINGcurapcountable
 		descripts = self.namesforcurapcountable
 		percenty = {}
@@ -170,4 +168,29 @@ class Current:
 			tabelka.append([descripts[w], things[w], percenty[w]])
 		tabelka.append(["Uncomputable", left, str("{:.4%}".format((float(left)) / (float(self.current['ap']))))])
 		print "Total AP: %s" % str(self.current['ap'])
-		print tabulate.tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
+		from tabulate import tabulate
+		print tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
+
+	def percentofdest(self):
+		import tabulate
+
+		current = self.current
+		ap = current['ap']
+		self.lvldict = {
+			1: {'ap': 0, 'bene': {'itemy': True, 'xm': 3000, 'rd': 250, 'gamebegun': True}},
+			2: {'ap': 2500, 'bene': {'itemy': True, 'xm': 4000, 'rd': 500, 'gamebegun': False}},
+			3: {'ap': 20000, 'bene': {'itemy': True, 'xm': 5000, 'rd': 750, 'gamebegun': False}},
+			4: {'ap': 70000, 'bene': {'itemy': True, 'xm': 6000, 'rd': 1000, 'gamebegun': False}},
+			5: {'ap': 150000, 'bene': {'itemy': True, 'xm': 7000, 'rd': 1250, 'gamebegun': False}},
+			6: {'ap': 300000, 'bene': {'itemy': True, 'xm': 8000, 'rd': 1500, 'gamebegun': False}},
+			7: {'ap': 600000, 'bene': {'itemy': True, 'xm': 9000, 'rd': 1750, 'gamebegun': False}},
+			8: {'ap': 1200000, 'bene': {'itemy': True, 'xm': 10000, 'rd': 2000, 'gamebegun': False}},
+			9: {'ap': 2400000, 'silver': 4, 'gold': 1, 'bene': {'itemy': False, 'xm': 10900, 'rd': 2250, 'gamebegun': False}},
+			10: {'ap': 4000000, 'silver': 5, 'gold': 2, 'bene': {'itemy': False, 'xm': 11700, 'rd': 2500, 'gamebegun': False}},
+			11: {'ap': 6000000, 'silver': 6, 'gold': 5, 'bene': {'itemy': False, 'xm': 12400, 'rd': 2750, 'gamebegun': False}},
+			12: {'ap': 8400000, 'silver': 7, 'gold': 6, 'bene': {'itemy': False, 'xm': 13000, 'rd': 3000, 'gamebegun': False}},
+			13: {'ap': 12000000, 'gold': 7, 'platinum': 1, 'bene': {'itemy': False, 'xm': 13500, 'rd': 3250, 'gamebegun': False}},
+			14: {'ap': 17000000, 'platinum': 2, 'bene': {'itemy': False, 'xm': 13900, 'rd': 3500, 'gamebegun': False}},
+			15: {'ap': 24000000, 'platinum': 3, 'bene': {'itemy': False, 'xm': 14200, 'rd': 3750, 'gamebegun': False}},
+			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2, 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
+		}
