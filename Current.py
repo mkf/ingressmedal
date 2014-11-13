@@ -247,9 +247,24 @@ class Current:
 		for countmedaltry in curmedals.keys():
 			countofmedalsonce[countmedaltry] += 1
 		countofmedalsmulti = {}
+		realcountofmedalsonce = {}
+		realcountofmedalsmulti = {}
+		for anothercolorpossibility in colorpossibilities:
+			if not (current[anothercolorpossibility] == 'n'):
+				realcountofmedalsonce[anothercolorpossibility] = current[anothercolorpossibility]
+			else:
+				realcountofmedalsonce[anothercolorpossibility] = countofmedalsonce[anothercolorpossibility]
 		for colorpossibilityonceagain in colorpossibilities:
 			countofmedalsmulti[colorpossibilityonceagain] = 0
+			realcountofmedalsmulti[colorpossibilityonceagain] = 0
 			for positionofcolor in range((colorpossibilities.index(colorpossibilityonceagain)+1),5):
 				countofmedalsmulti[colorpossibilityonceagain] += countofmedalsonce[colorpossibilities[positionofcolor]]
+				realcountofmedalsmulti[colorpossibilityonceagain] += realcountofmedalsonce[colorpossibilities[positionofcolor]]
+		diffcountofmedalsonce = {}
+		diffcountofmedalsmulti = {}
+		for yetanothercolorpossibility in colorpossibilities:
+			diffcountofmedalsmulti[yetanothercolorpossibility] = realcountofmedalsmulti[yetanothercolorpossibility] - countofmedalsmulti[yetanothercolorpossibility]
+			diffcountofmedalsonce[yetanothercolorpossibility] = realcountofmedalsonce[yetanothercolorpossibility] - countofmedalsonce[yetanothercolorpossibility]
+
 		if lvlbyap > 8:
 			pass
