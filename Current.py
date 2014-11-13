@@ -217,15 +217,39 @@ class Current:
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2, 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
 		}
 		self.medaldict = {
-			'uniqvis': {'name': 'Explorer', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'False', 'sub': 'False'},
-			'seer': {'name': 'Seer', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'hack': {'name': 'Hacker', 'apable' = False, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'depl': {'name': 'Builder', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'link': {'name': 'Connector', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'field': {'name': 'Mind Controller', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'rech': {'name': 'Recharger', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'capt': {'name': 'Liberator', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'uniqcapt': {'name': 'Pioneer', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'destr': {'name': 'Purifier', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
-			'guard': {'name': 'Guardian', 'apable' = False, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'uniqvis': {'name': 'Explorer', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'hack', 'sub': False},
+			'seer': {'name': 'Seer', 'apable' = True, 'walk': {'bronze': 10, 'silver': 20, 'gold': 200, 'platinum': 500, 'onyx': 5000}, 'over': False, 'sub': False},
+			'hack': {'name': 'Hacker', 'apable' = False, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'uniqvis'},
+			'depl': {'name': 'Builder', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'capt'},
+			'link': {'name': 'Connector', 'apable' = True, 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False, 'sub': 'field'},
+			'field': {'name': 'Mind Controller', 'apable' = True, 'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000}, 'over': 'link', 'sub': False},
+			'rech': {'name': 'Recharger', 'apable' = True, 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000}, 'over': False, 'sub': False},
+			'capt': {'name': 'Liberator', 'apable' = True, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000}, 'over': 'depl', 'sub': 'uniqcapt'},
+			'uniqcapt': {'name': 'Pioneer', 'apable' = True, 'walk': {'bronze': 20, 'silver': 200, 'gold': 1000, 'platinum': 5000, 'onyx': 20000}, 'over': 'capt', 'sub': False},
+			'destr': {'name': 'Purifier', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
+			'guard': {'name': 'Guardian', 'apable' = False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
 		}
+
+		for lvltry in range(1,17):
+			if ap >= self.lvldict[lvltry]['ap']:
+				lvlbyap = lvltry
+		curmedals = {}
+		for medaltry in self.medaldict.keys():
+			curmedals[medaltry] = 'nothing'
+			for colortry in self.medaldict[medaltry]['walk'].keys():
+				if current[medaltry] >= self.medaldict[medaltry]['walk'][colortry]:
+					if self.medaldict[medaltry]['walk'][curmedals[medaltry]] < self.medaldict[medaltry]['walk'][colortry]:
+						curmedals[medaltry] = colortry
+		countofmedalsonce = {}
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		for colorpossibility in colorpossibilities:
+			countofmedalsonce[colorpossibility] = 0
+		for countmedaltry in curmedals.keys():
+			countofmedalsonce[countmedaltry] += 1
+		countofmedalsmulti = {}
+		for colorpossibilityonceagain in colorpossibilities:
+			countofmedalsmulti[colorpossibilityonceagain] = 0
+			for positionofcolor in range((colorpossibilities.index(colorpossibilityonceagain)+1),5):
+				countofmedalsmulti[colorpossibilityonceagain] += countofmedalsonce[colorpossibilities[positionofcolor]]
+		if lvlbyap > 8:
+			pass
