@@ -284,4 +284,13 @@ class Current:
 		for tryreallvl in range(1,17):
 			if ((lvlbyap >= tryreallvl) and (lvlbymed >= tryreallvl)):
 				reallvl = tryreallvl
-		#jeszcze kalkulować lvl dla każdego koloru funkcyjnego levelowo
+		lvlbycol = {}
+		for znowucolorpossible in colorpossibilities:
+			for trycollvl in range(9,17):
+				if znowucolorpossible == 'brown':
+					lvlbycol[znowucolorpossible] = 8
+					break
+				elif int(self.lvldict[trycollvl][znowucolorpossible]) >= realcountofmedalsmulti[znowucolorpossible]:
+					lvlbycol[znowucolorpossible] = trycollvl
+				else:
+					lvlbycol[znowucolorpossible] = 8
