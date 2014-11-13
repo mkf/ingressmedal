@@ -27,7 +27,8 @@ class Interactive:
 			'silver': "Current count of silver medals, you may write 'n' if you don't need them anymore at your level: ",
 			'gold': "Current amount of gold medals, you may write 'n' if you don't need them anymore at your level: ",
 			'platinum': "Current amount of platinum medals, you may write 'n' if you don't need them anymore at your level: ",
-			'onyx': "Current amount of onyx (black) medals, you may write 'n' if you have the maximum level already: "
+			'onyx': "Current amount of onyx (black) medals, you may write 'n' if you have the maximum level already: ",
+			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
 	def GivMeCurQSdict(self):

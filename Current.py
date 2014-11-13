@@ -174,7 +174,29 @@ class Current:
 	def percentofdest(self):
 		import tabulate
 
+		def minapfromact(name, value, apable):
+			if apable == True:
+				if name == 'seer':
+					pass
+				elif name == 'depl':
+					pass
+				elif name == 'link':
+					pass
+				elif name == 'field':
+					pass
+				elif name == 'rech':
+					pass
+				elif name == 'capt':
+					pass
+				elif name == 'uniqcapt':
+					pass
+				elif name == 'destr':
+					pass
+			else:
+				return False
+
 		current = self.current
+		things = self.coUNTINGcurapcountable
 		ap = current['ap']
 		self.lvldict = {
 			1: {'ap': 0, 'bene': {'itemy': True, 'xm': 3000, 'rd': 250, 'gamebegun': True}},
@@ -193,4 +215,17 @@ class Current:
 			14: {'ap': 17000000, 'platinum': 2, 'bene': {'itemy': False, 'xm': 13900, 'rd': 3500, 'gamebegun': False}},
 			15: {'ap': 24000000, 'platinum': 3, 'bene': {'itemy': False, 'xm': 14200, 'rd': 3750, 'gamebegun': False}},
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2, 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
+		}
+		self.medaldict = {
+			'uniqvis': {'name': 'Explorer', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'False', 'sub': 'False'},
+			'seer': {'name': 'Seer', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'hack': {'name': 'Hacker', 'apable' = False, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'depl': {'name': 'Builder', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'link': {'name': 'Connector', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'field': {'name': 'Mind Controller', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'rech': {'name': 'Recharger', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'capt': {'name': 'Liberator', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'uniqcapt': {'name': 'Pioneer', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'destr': {'name': 'Purifier', 'apable' = True, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
+			'guard': {'name': 'Guardian', 'apable' = False, 'walk': {'bronze': , 'silver': , 'gold': , 'platinum': , 'onyx': }, 'over': 'False', 'sub': 'False'},
 		}
