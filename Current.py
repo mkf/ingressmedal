@@ -265,6 +265,23 @@ class Current:
 		for yetanothercolorpossibility in colorpossibilities:
 			diffcountofmedalsmulti[yetanothercolorpossibility] = realcountofmedalsmulti[yetanothercolorpossibility] - countofmedalsmulti[yetanothercolorpossibility]
 			diffcountofmedalsonce[yetanothercolorpossibility] = realcountofmedalsonce[yetanothercolorpossibility] - countofmedalsonce[yetanothercolorpossibility]
-
-		if lvlbyap > 8:
-			pass
+		lvlbymed = 8
+		for lvlmedtry in range(9,17):
+			medlvltrytab = []
+			for possicolor in colorpossibilities:
+				try:
+					if int(self.lvldict[lvlmedtry][possicolor]) > 0:
+						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor]))
+				except ValueError:
+					pass
+			probamedlvltrytabtry = 1
+			for medlvltrytabtry in medlvltrytab:
+				for keymedlvltrytabtry in medlvltrytabtry.keys():
+					if medlvltrytabtry[keymedlvltrytabtry] > realcountofmedalsmulti[keymedlvltrytabtry]:
+						probamedlvltrytabtry = 0
+			if probamedlvltrytabtry == 1:
+				lvlbymed = lvlmedtry
+		for tryreallvl in range(1,17):
+			if ((lvlbyap >= tryreallvl) and (lvlbymed >= tryreallvl)):
+				reallvl = tryreallvl
+		#jeszcze kalkulować lvl dla każdego koloru funkcyjnego levelowo
