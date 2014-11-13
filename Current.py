@@ -343,8 +343,18 @@ class Current:
 		#	for lewel in lvlbycol.keys():
 		#		if lvlbycol[lewel] < 16:
 		#			for colorofcon in self.lvldict[lvlbycol[lewel]][lewel]
+		weneed = {}
+		for ckolor in lvlbycol.keys():
+			if not (lvlbycol[ckolor] == 16):
+				try:
+					weneed[ckolor] = int(self.lvldict[lvlbycol[ckolor]][ckolor])
+				except:
+					weneed[ckolor] = False
+			else:
+				weneed[ckolor] = False
+		winid = {}
 
-		#for
-
+		for ckolor in weneed.keys():
+			pass
 
 		from tabulate import tabulate
