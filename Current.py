@@ -133,9 +133,11 @@ class Current:
 		current = self.current
 		curapcountable = {'seer': int((int(current['seer']) * 1000)),
 						  'depllater': int((int((current['depl']) - int(current['capt'])) * 65)),
-						  'link': int((int(current['link']) * 313)), 'field': int((int(current['field']) * 1250)),
+						  'link': int((int(current['link']) * 313)),
+						  'field': int((int(current['field']) * 1250)),
 						  'rechmin': int(((int(current['rech']) / 1000) * 10)),
-						  'captres': int((int(current['capt']) * 625)), 'destr': int((int(current['destr']) * 75)),
+						  'captres': int((int(current['capt']) * 625)),
+						  'destr': int((int(current['destr']) * 75)),
 						  'destrlink': int((int(current['destrlink']) * 187)),
 						  'destrfield': int((int(current['destrfield']) * 750))}
 		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
@@ -172,26 +174,27 @@ class Current:
 		print tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
 	def percentofdest(self):
-		import tabulate
-
 		def minapfromact(name, value, apable):
-			if apable == True:
+			if apable:
 				if name == 'seer':
-					pass
+					return (value*1000)
 				elif name == 'depl':
-					pass
+					return (value*65)
 				elif name == 'link':
-					pass
+					return (value*313)
 				elif name == 'field':
-					pass
+					return (value*1563)
 				elif name == 'rech':
-					pass
+					return ((value/1000)*10)
 				elif name == 'capt':
-					pass
+					return (value*625)
 				elif name == 'uniqcapt':
-					pass
+					return (value*625)
 				elif name == 'destr':
-					pass
+					return (value*75)
+				else:
+					return False
+					raise ValueError
 			else:
 				return False
 
@@ -229,19 +232,25 @@ class Current:
 			'destr': {'name': 'Purifier', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
 			'guard': {'name': 'Guardian', 'apable' = False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
 		}
-
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for lvltry in range(1,17):
 			if ap >= self.lvldict[lvltry]['ap']:
 				lvlbyap = lvltry
 		curmedals = {}
+		curmedalsbycol = {}
 		for medaltry in self.medaldict.keys():
 			curmedals[medaltry] = 'nothing'
 			for colortry in self.medaldict[medaltry]['walk'].keys():
 				if current[medaltry] >= self.medaldict[medaltry]['walk'][colortry]:
 					if self.medaldict[medaltry]['walk'][curmedals[medaltry]] < self.medaldict[medaltry]['walk'][colortry]:
 						curmedals[medaltry] = colortry
+		for trycolor in colorpossibilities:
+			curmedalsbycol[trycolor] = []
+			for trymedal in curmedals.keys():
+				for trykolor in colorpossibilities:
+					if int(colorpossibilities.index(trykolor)) >= int(colorpossibilities.index(trycolor)):
+						curmedalsbycol[trycolor].append(trymedal)
 		countofmedalsonce = {}
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for colorpossibility in colorpossibilities:
 			countofmedalsonce[colorpossibility] = 0
 		for countmedaltry in curmedals.keys():
@@ -257,7 +266,7 @@ class Current:
 		for colorpossibilityonceagain in colorpossibilities:
 			countofmedalsmulti[colorpossibilityonceagain] = 0
 			realcountofmedalsmulti[colorpossibilityonceagain] = 0
-			for positionofcolor in range((colorpossibilities.index(colorpossibilityonceagain)+1),5):
+			for positionofcolor in range(0,(colorpossibilities.index(colorpossibilityonceagain)+1)):
 				countofmedalsmulti[colorpossibilityonceagain] += countofmedalsonce[colorpossibilities[positionofcolor]]
 				realcountofmedalsmulti[colorpossibilityonceagain] += realcountofmedalsonce[colorpossibilities[positionofcolor]]
 		diffcountofmedalsonce = {}
@@ -274,6 +283,7 @@ class Current:
 						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor]))
 				except ValueError:
 					pass
+			self.lvldict[lvlmedtry]['reqmed'] = tuple(medlvltrytab)
 			probamedlvltrytabtry = 1
 			for medlvltrytabtry in medlvltrytab:
 				for keymedlvltrytabtry in medlvltrytabtry.keys():
@@ -286,11 +296,55 @@ class Current:
 				reallvl = tryreallvl
 		lvlbycol = {}
 		for znowucolorpossible in colorpossibilities:
+			lvlbycol[znowucolorpossible] = 8
 			for trycollvl in range(9,17):
 				if znowucolorpossible == 'brown':
-					lvlbycol[znowucolorpossible] = 8
+					lvlbycol[znowucolorpossible] = 16
 					break
-				elif int(self.lvldict[trycollvl][znowucolorpossible]) >= realcountofmedalsmulti[znowucolorpossible]:
+				elif znowucolorpossible not in self.lvldict[trycollvl]:
+					if lvlbycol[znowucolorpossible] == trycollvl - 1
+						lvlbycol[znowucolorpossible] = trycollvl
+
+					#znowuwywu = False
+					#zunwowuwuy = colorpossibilities.index(znowucolorpossible)
+					#zenwowuwu = zunwowuwuy
+					#while ((znowuwywu == False) and (zenwowuwu <= 4)):
+					#	if colorpossibilities[zenwowuwu] in self.lvldict[trycollvl]:
+					#		uzynwowu = colorpossibilities[zenwowuwu]
+					#		if
+					#			znowuwywu = True
+					#	zenwowuwu += 1
+
+				elif int(self.lvldict[trycollvl][znowucolorpossible]) <= realcountofmedalsmulti[znowucolorpossible]:
 					lvlbycol[znowucolorpossible] = trycollvl
-				else:
-					lvlbycol[znowucolorpossible] = 8
+				#else:
+				#	lvlbycol[znowucolorpossible] = 8
+		tabelka = []
+		aspirujacy = {}
+		for kolor in colorpossibilities:
+			aspirujacy[kolor] = []
+			if kolor == 'bronze':
+				if len(curmedalsbycol['nothing']) > 0:
+					for wklej in curmedalsbycol[kolor]:
+						aspirujacy[kolor].append(wklej)
+			else:
+				if len(curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor)-1]]) > 0:
+					for wklej in curmedalsbycol[kolor]:
+						aspirujacy[kolor].append(wklej)
+		aspirmulti = {}
+		for kolorek in colorpossibilities:
+			subkolorex = []
+			for subkolorextry in range(0,colorpossibilities.index(kolorek)):
+				subkolorex.append(subkolorextry)
+			for subkolorek in subkolorex:
+				aspirmulti[kolorek].extend(aspirujacy[subkolorek])
+
+		#for ckolor in colorpossibilities:
+		#	for lewel in lvlbycol.keys():
+		#		if lvlbycol[lewel] < 16:
+		#			for colorofcon in self.lvldict[lvlbycol[lewel]][lewel]
+
+		#for
+
+
+		from tabulate import tabulate
