@@ -487,9 +487,10 @@ class Current:
 				}
 				from tabulate import tabulate
 
-				for espir in aspirmulti[bleh]:
+				for espirlist in [espiro for espiro in aspirmulti[bleh]]:
+					espir = espiro[0]
 					tabelka['t'].append([
-						str(self.medaldict[espir]['name']),
+   						str(self.medaldict[espir]['name']),
 						current[espir],
 						self.medaldict[espir]['walk'][str(bleh)] - current[espir],
 						self.medaldict[espir]['walk'][bleh],
@@ -501,7 +502,7 @@ class Current:
 					if self.medaldict[espir]['over'] and self.overs:
 						tenover = self.medaldict[espir]['over']
 						tabelka['t'].append([
-							'> ' + str(self.medaldict[tenover]['name']),
+							str('> ' + str(self.medaldict[tenover]['name'])),
 							current[tenover],
 							self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]] - current[tenover],
 							self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]],
@@ -511,19 +512,13 @@ class Current:
 							self.medaldict[tenover]['sdesc']
 						])
 						tabelka['t'].append([
-							"> `--> " + curmedals[tenover] + " -> " + colorpossibilities[
-								colorpossibilities.index(curmedals[tenover]) + 1],
+							"> `--> " + curmedals[tenover] + " -> " + colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1],
 							0,
 							0,
 							0,
-							float(self.medaldict[espir]['walk'][bleh] - current[espir]) / float(
-								self.medaldict[tenover]['walk'][
-									colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]]),
-							float(self.medaldict[espir]['walk'][bleh] - current[espir]) / float(
-								self.medaldict[tenover]['walk'][
-									colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]]),
-							minapfromact(tenover, self.medaldict[espir]['walk'][bleh] - current[espir],
-										 self.medaldict[tenover]['apable']),
+							float(self.medaldict[espir]['walk'][bleh] - current[espir]) / float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]]),
+							float(self.medaldict[espir]['walk'][bleh] - current[espir]) / float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]]),
+							minapfromact(tenover, self.medaldict[espir]['walk'][bleh] - current[espir],self.medaldict[tenover]['apable']),
 							"  --- By The Way"
 						])
 						if self.medaldict[tenover]['over']:
