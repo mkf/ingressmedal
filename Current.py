@@ -427,8 +427,8 @@ class Current:
 						current[espir],
 						self.medaldict[espir]['walk'][str(bleh)]-current[espir],
 						self.medaldict[espir]['walk'][bleh],
-						"{:.5%}".format(float(current[espir])/float(self.medaldict[espir]['walk'][bleh])),
-						"{:.5%}".format(float(current[espir]-self.medaldict[espir]['walk'][colorpossibilities[colorpossibilities.index(bleh)-1]])/float(self.medaldict[espir]['walk'][bleh]-self.medaldict[espir]['walk'][colorpossibilities[colorpossibilities.index(bleh)-1]])),
+						float(current[espir])/float(self.medaldict[espir]['walk'][bleh]),
+						float(current[espir]-self.medaldict[espir]['walk'][colorpossibilities[colorpossibilities.index(bleh)-1]])/float(self.medaldict[espir]['walk'][bleh]-self.medaldict[espir]['walk'][colorpossibilities[colorpossibilities.index(bleh)-1]]),
 						minapfromact(espir,self.medaldict[espir]['walk'][bleh]-current[espir],self.medaldict[espir]['apable']),
 						self.medaldict[espir]['sdesc']
 					])
@@ -439,44 +439,45 @@ class Current:
 							current[tenover],
 							self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]-current[tenover],
 							self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]],
-							"{:.5%}".format(float(current[tenover])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
-							"{:.5%}".format(float(current[tenover]-self.medaldict[tenover]['walk'][curmedals[tenover]])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]-self.medaldict[tenover]['walk'][curmedals[tenover]])),
+							float(current[tenover])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]),
+							float(current[tenover]-self.medaldict[tenover]['walk'][curmedals[tenover]])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]-self.medaldict[tenover]['walk'][curmedals[tenover]]),
 							minapfromact(tenover,current[tenover],self.medaldict[tenover]['apable']),
 							self.medaldict[tenover]['sdesc']
 						])
 						tabelka['t'].append([
-							"> `--> ",
-							curmedals[tenover]+"->",
-							colorpossibilities[colorpossibilities.index(curmedals[tenover])+1],
-							"+{:.5%}".format(float(self.medaldict[espir]['walk'][bleh]-current[espir])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
-							"+{:.5%}".format(float(self.medaldict[espir]['walk'][bleh]-current[espir])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
-							,
+							"> `--> "+curmedals[tenover]+" -> "+colorpossibilities[colorpossibilities.index(curmedals[tenover])+1],
+							0,
+							0,
+							0,
+							float(self.medaldict[espir]['walk'][bleh]-current[espir])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]),
+							float(self.medaldict[espir]['walk'][bleh]-current[espir])/float(self.medaldict[tenover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]),
 							minapfromact(tenover,self.medaldict[espir]['walk'][bleh]-current[espir],self.medaldict[tenover]['apable']),
 							"  --- By The Way"
 						])
-					if self.medaldict[tenover]['over']:
-						tonover = self.medaldict[tenover]['over']
-						tabelka['t'].append([
-							'>> '+str(self.medaldict[tonover]['name']),
-							current[tonover],
-							self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-current[tonover],
-							self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]],
-							"{:.5%}".format(float(current[tonover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]])),
-							"{:.5%}".format(float(current[tonover]-self.medaldict[tonover]['walk'][curmedals[tonover]])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-self.medaldict[tonover]['walk'][curmedals[tonover]])),
-							minapfromact(tonover,current[tonover],self.medaldict[tonover]['apable']),
-							self.medaldict[tonover]['sdesc']
-						])
-						tabelka['t'].append([
-							">> `--> ",
-							curmedals[tonover]+" to",
-							colorpossibilities[colorpossibilities.index(curmedals[tonover])+1],
-							"+{:.5%}".format(float(self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]])),
-							"+{:.5%}".format(float(self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]])),
-							minapfromact(tenover,self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover],self.medaldict[tonover]['apable']),
-							,
-							"--- By The Way"
-						])
-				print tabulate(tabelka['t'],headers=tabelka['h'])
+						if self.medaldict[tenover]['over']:
+							tonover = self.medaldict[tenover]['over']
+							tabelka['t'].append([
+								'>> '+str(self.medaldict[tonover]['name']),
+								current[tonover],
+								self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-current[tonover],
+								self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]],
+								float(current[tonover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]),
+								float(current[tonover]-self.medaldict[tonover]['walk'][curmedals[tonover]])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-self.medaldict[tonover]['walk'][curmedals[tonover]]),
+								minapfromact(tonover,current[tonover],self.medaldict[tonover]['apable']),
+								self.medaldict[tonover]['sdesc']
+							])
+							tabelka['t'].append([
+								">> `--> "+curmedals[tonover]+" -> "+colorpossibilities[colorpossibilities.index(curmedals[tonover])+1],
+								0,
+								0,
+								0,
+								float(self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]),
+								float(self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover])/float(self.medaldict[tonover]['walk'][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]),
+								minapfromact(tenover,self.medaldict[tenover]['walk'][curmedals[tenover]]-current[tenover],self.medaldict[tonover]['apable']),
+								"--- By The Way"
+							])
+						tabelka['t'].append([" ",0,0,0," "," ",0," "])
+				print tabulate(tabelka['t'],headers=tabelka['h'], floatfmt=".5f")
 			else:
 				#print "You have %1d %s badges, you needed %1d for %2d %s lvl, and apparently you don't need'em anymore." % (realcountofmedalsmulti[bleh],bleh,self.lvldict[lvlbycol[bleh]][bleh],lvlbycol[bleh],bleh)
 				pass
