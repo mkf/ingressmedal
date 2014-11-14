@@ -58,6 +58,6 @@ if parmetry['overs'] == 'None' or parmetry['overs'] is None:
 	overs = False
 else:
 	overs = parmetry['overs']
-curinst = Current('ArchieT', interactively, parmetry, argumentydodane,overs)
+curinst = Current('ArchieT', interactively, parmetry, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()

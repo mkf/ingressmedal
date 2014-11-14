@@ -43,7 +43,7 @@ class Interactive:
 		currentdict = {}
 		for kluczyk in questionSdict.keys():
 			isint = False
-			while isint == False:
+			while not isint:
 				try:
 					currentdict[kluczyk] = int(raw_input(questionSdict[kluczyk]))
 					isint = True
@@ -52,7 +52,7 @@ class Interactive:
 					isint = False
 		for kluczyk in questionUSdict.keys():
 			isintorn = False
-			while isintorn == False:
+			while not isintorn:
 				phototry = raw_input(questionUSdict[kluczyk])
 				try:
 					currentdict[kluczyk] = int(phototry)
@@ -85,19 +85,19 @@ class Interactive:
 			print " "
 			print "Exiting."
 			return "Crash"
-		elif jestwS == True:
+		elif jestwS:
 			isint = False
-			while isint == False:
+			while not isint:
 				try:
 					zmienna = int(raw_input(self.currentquestionSdict[dawajkeya]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
 					isint = False
-		elif jestwUS == True:
+		elif jestwUS:
 			kluczyk = dawajkeya
 			isintorn = False
-			while isintorn == False:
+			while not isintorn:
 				phototry = raw_input(self.currentquestionUSdict[kluczyk])
 				try:
 					zmienna = int(phototry)
