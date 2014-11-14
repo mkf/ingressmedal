@@ -45,15 +45,19 @@ for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 		type=BigNumberORn,
 		help=(interaktywnosciowo.GivMeCurQUSdict()[keyowko]))
 	argumentydodane.append(keyowo)
-argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively")
+argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)")
+argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
 parmetry = vars(argh.parse_args())
 
-if parmetry['interactively'] == 'None':
-	interactively = True
-elif parmetry['interactively'] is None:
+if parmetry['interactively'] == 'None' or parmetry['interactively'] is None:
 	interactively = True
 else:
 	interactively = parmetry['interactively']
-curinst = Current('ArchieT', interactively, parmetry, argumentydodane)
+
+if parmetry['overs'] == 'None' or parmetry['overs'] is None:
+	overs = False
+else:
+	overs = parmetry['overs']
+curinst = Current('ArchieT', interactively, parmetry, argumentydodane,overs)
 curinst.percentofap()
 curinst.percentofdest()

@@ -3,8 +3,10 @@
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactiveliness, currorg, argdod):
+	def __init__(self, codename, interactiveliness, currorg, argdod, overs):
 		from interactive import Interactive
+
+		self.overs = overs
 
 		self.current = {}
 		self.current.update(currorg)
@@ -373,13 +375,26 @@ class Current:
 					for wklej in curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor)-1]]:
 						aspirujacy[kolor].append(wklej)
 		aspirmulti = {}
-		for kolorek in colorpossibilities:
-			aspirmulti[kolorek] = []
-			subkolorex = []
-			for subkolorextry in range(0,colorpossibilities.index(kolorek)):
-				subkolorex.append(colorpossibilities[subkolorextry])
-			for subkolorek in subkolorex:
-				aspirmulti[kolorek].extend(aspirujacy[subkolorek])
+		#for kolorek in colorpossibilities:
+		#	aspirmulti[kolorek] = []
+		#	subkolorex = []
+		#	for subkolorextry in range(0,colorpossibilities.index(kolorek)):
+		#		subkolorex.append(colorpossibilities[subkolorextry])
+		#	for subkolorek in subkolorex:
+		#		aspirmulti[kolorek].extend(aspirujacy[subkolorek])
+		ckolorpo = list(colorpossibilities)
+		possible = True
+		while possible:
+			try:
+				cekol = ckolorpo.popleft()
+				aspirmulti[cekol] = []
+				aspirmulti[cekol].append(aspirujacy[cekol])
+				for i in ckolorpo:
+					aspirmulti[cekol].append(aspirujacy[i])
+				possible = True
+			except:
+				possible = False
+
 
 		#for ckolor in colorpossibilities:
 		#	for lewel in lvlbycol.keys():
@@ -413,7 +428,7 @@ class Current:
 			if not lvlbycol[bleh] == 16 and (bleh in winid) and (bleh in self.lvldict[lvlbycol[bleh] + 1]) and (
 				self.lvldict[lvlbycol[bleh] + 1][bleh] > realcountofmedalsmulti[bleh]):
 				print "Next level for the %s colour is %2d" % (bleh,(lvlbycol[bleh]+1))
-				print "You need %1d badges (%1d left), you already have %1d" % (self.lvldict[lvlbycol[bleh]+1][bleh],winid[bleh][1], realcountofmedalsmulti[bleh])
+				print "You need %1d badges (%1d left), you already have %1d" % (self.lvldict[lvlbycol[bleh]+1][bleh],self.lvldict[lvlbycol[bleh]+1][bleh]-realcountofmedalsmulti[bleh], realcountofmedalsmulti[bleh])
 
 				print "Those are the badges which are awaiting promotion:"
 				tabelka={
@@ -432,7 +447,7 @@ class Current:
 						minapfromact(espir,self.medaldict[espir]['walk'][bleh]-current[espir],self.medaldict[espir]['apable']),
 						self.medaldict[espir]['sdesc']
 					])
-					if self.medaldict[espir]['over']:
+					if self.medaldict[espir]['over'] and self.overs:
 						tenover = self.medaldict[espir]['over']
 						tabelka['t'].append([
 							'> '+str(self.medaldict[tenover]['name']),
