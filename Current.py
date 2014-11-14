@@ -268,10 +268,10 @@ class Current:
 		realcountofmedalsonce = {}
 		realcountofmedalsmulti = {}
 		for anothercolorpossibility in colorpossibilities:
-			if not (current[anothercolorpossibility] == 'n'):
-				realcountofmedalsonce[anothercolorpossibility] = current[anothercolorpossibility]
-			else:
+			if current[anothercolorpossibility] == 'n':
 				realcountofmedalsonce[anothercolorpossibility] = countofmedalsonce[anothercolorpossibility]
+			elif type(int(current[anothercolorpossibility])) == int:
+				realcountofmedalsonce[anothercolorpossibility] = current[anothercolorpossibility]
 		for colorpossibilityonceagain in colorpossibilities:
 			countofmedalsmulti[colorpossibilityonceagain] = 0
 			realcountofmedalsmulti[colorpossibilityonceagain] = 0
@@ -335,6 +335,8 @@ class Current:
 				if lvlbycol[tryreqmed] < trycollvl:
 					if reqmed[tryreqmed] <= realcountofmedalsmulti[tryreqmed]:
 						lvlbycol[tryreqmed] = trycollvl
+						print "Poniewaz %d <= %d" % (reqmed[tryreqmed],realcountofmedalsmulti[tryreqmed])
+						print "Przyszlo %2d do %s" % (trycollvl,tryreqmed)
 		lvlbymed = min(lvlbycol.values())
 
 
@@ -459,3 +461,4 @@ class Current:
 					print tabulate(tabelka['t'],headers=tabelka['h'])
 				else:
 					print "You have %1d %s badges, you needed %1d for %2d %s lvl, and apparently you don't need'em anymore." % (realcountofmedalsmulti[bleh],bleh,winid[bleh][1],lvlbycol[bleh],bleh)
+				print tabulate-1
