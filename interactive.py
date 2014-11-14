@@ -23,11 +23,11 @@ class Interactive:
 		self.currentquestionUSdict = {
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 			'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
-			'bronze': "Current count of bronze medals, you may write 'n' if you don't want to write the count: ",
-			'silver': "Current count of silver medals, you may write 'n' if you don't need them anymore at your level: ",
-			'gold': "Current amount of gold medals, you may write 'n' if you don't need them anymore at your level: ",
-			'platinum': "Current amount of platinum medals, you may write 'n' if you don't need them anymore at your level: ",
-			'onyx': "Current amount of onyx (black) medals, you may write 'n' if you have the maximum level already: ",
+			'bronze': "Current count of bronze medals (count only the badges' icons of exactly that color), you may write 'n' if you don't want to write the count: ",
+			'silver': "Current count of silver medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'gold': "Current amount of gold medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'platinum': "Current amount of platinum medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'onyx': "Current amount of onyx (black) medals (count only the badges' icons of exactly that color), you may write 'n' if you have the maximum level already: ",
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
