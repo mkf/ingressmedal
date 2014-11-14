@@ -56,3 +56,4 @@ else:
 	interactively = parmetry['interactively']
 curinst = Current('ArchieT', interactively, parmetry, argumentydodane)
 curinst.percentofap()
+curinst.percentofdest()

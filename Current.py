@@ -220,17 +220,17 @@ class Current:
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2, 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
 		}
 		self.medaldict = {
-			'uniqvis': {'name': 'Explorer', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'hack', 'sub': False},
-			'seer': {'name': 'Seer', 'apable' = True, 'walk': {'bronze': 10, 'silver': 20, 'gold': 200, 'platinum': 500, 'onyx': 5000}, 'over': False, 'sub': False},
-			'hack': {'name': 'Hacker', 'apable' = False, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'uniqvis'},
-			'depl': {'name': 'Builder', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'capt'},
-			'link': {'name': 'Connector', 'apable' = True, 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False, 'sub': 'field'},
-			'field': {'name': 'Mind Controller', 'apable' = True, 'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000}, 'over': 'link', 'sub': False},
-			'rech': {'name': 'Recharger', 'apable' = True, 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000}, 'over': False, 'sub': False},
-			'capt': {'name': 'Liberator', 'apable' = True, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000}, 'over': 'depl', 'sub': 'uniqcapt'},
-			'uniqcapt': {'name': 'Pioneer', 'apable' = True, 'walk': {'bronze': 20, 'silver': 200, 'gold': 1000, 'platinum': 5000, 'onyx': 20000}, 'over': 'capt', 'sub': False},
-			'destr': {'name': 'Purifier', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
-			'guard': {'name': 'Guardian', 'apable' = False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
+			'uniqvis': {'name': 'Explorer', 'sdesc': 'Uniq visited', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'hack', 'sub': False},
+			'seer': {'name': 'Seer', 'sdesc': 'Portals discovered', 'apable' = True, 'walk': {'bronze': 10, 'silver': 20, 'gold': 200, 'platinum': 500, 'onyx': 5000}, 'over': False, 'sub': False},
+			'hack': {'name': 'Hacker', 'sdesc': 'Hacks', 'apable' = False, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'uniqvis'},
+			'depl': {'name': 'Builder', 'sdesc': 'Resonators deployed', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'capt'},
+			'link': {'name': 'Connector', 'scesc': 'Links created', 'apable' = True, 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False, 'sub': 'field'},
+			'field': {'name': 'Mind Controller', 'scesc': 'CFields created', 'apable' = True, 'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000}, 'over': 'link', 'sub': False},
+			'rech': {'name': 'Recharger', 'sdesc': 'XM Recharged', 'apable' = True, 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000}, 'over': False, 'sub': False},
+			'capt': {'name': 'Liberator', 'sdesc': 'Portals captured', 'apable' = True, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000}, 'over': 'depl', 'sub': 'uniqcapt'},
+			'uniqcapt': {'name': 'Pioneer', 'sdesc': 'Uniq captured', 'apable' = True, 'walk': {'bronze': 20, 'silver': 200, 'gold': 1000, 'platinum': 5000, 'onyx': 20000}, 'over': 'capt', 'sub': False},
+			'destr': {'name': 'Purifier', 'sdesc': 'Resonators destroyed', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
+			'guard': {'name': 'Guardian', 'sdesc': 'Max time portal held', 'apable' = False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
 		}
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for lvltry in range(1,17):
@@ -319,7 +319,6 @@ class Current:
 					lvlbycol[znowucolorpossible] = trycollvl
 				#else:
 				#	lvlbycol[znowucolorpossible] = 8
-		tabelka = []
 		aspirujacy = {}
 		for kolor in colorpossibilities:
 			aspirujacy[kolor] = []
@@ -355,6 +354,79 @@ class Current:
 		winid = {}
 
 		for ckolor in weneed.keys():
-			pass
+			if type(weneed[ckolor]) == int:
+				winid[ckolor] = (lvlbycol[ckolor],weneed[ckolor])
 
-		from tabulate import tabulate
+		print "Codename: %s      Level: %2d " % (self.codename,reallvl)
+		print "AP: %d    lvl_by_AP: %2d " % (ap,lvlbyap)
+		print "lvl_by_medals: %2d " % lvlbymed
+		for blah in ('silver', 'gold', 'platinum', 'onyx'):
+			if not lvlbycol(blah) == 8:
+				print "Level for medals' colour %s: %2d" % (blah,lvlbycol(blah))
+
+		tabela = []
+
+		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
+			if not lvlbycol(bleh) == 16:
+				print "Next level for the %s colour is %2d" % (bleh,(lvlbycol(bleh)+1))
+				print "You need %1d badges, you already have %1d" % (winid[bleh], realcountofmedalsmulti[bleh])
+				print "Those are the badges which are awaiting promotion:"
+				tabelka={
+					'h': ["Name", "Current state", "Left", "Next lvl", "% Completed Total", "% Completed Lvl", "Min AP to complete", "Description"],
+					't': []
+				}
+				from tabulate import tabulate
+				for espir in aspirmulti[bleh]:
+					tabelka['t'].append([
+						self.medaldict[espir]['name'],
+						current[espir],
+						self.medaldict[espir][bleh]-current[espir],
+						self.medaldict[espir][bleh],
+						"{:.5%}".format(float(current[espir])/float(self.medaldict[espir][bleh])),
+						"{:.5%}".format(float(current[espir]-self.medaldict[espir][colorpossibilities[colorpossibilities.index(bleh)-1]])/float(self.medaldict[espir][bleh]-self.medaldict[espir][colorpossibilities[colorpossibilities.index(bleh)-1]])),
+						minapfromact(espir,self.medaldict[espir][bleh]-current[espir],self.medaldict[espir]['apable']),
+						self.medaldict[espir]['sdesc']
+					])
+					if self.medaldict[espir]['over']:
+						tenover = self.medaldict[espir]['over']
+						tabelka['t'].append([
+							' '+str(self.medaldict[tenover]['name']),
+							current[tenover],
+							self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]-current[tenover],
+							self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]],
+							"{:.5%}".format(float(current[tenover])/float(self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
+							"{:.5%}".format(float(current[tenover]-self.medaldict[tenover][curmedals[tenover]])/float(self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]]-self.medaldict[tenover][curmedals[tenover]])),
+							minapfromact(tenover,current[tenover],self.medaldict[tenover]['apable']),
+							self.medaldict[tenover]['sdesc']
+						])
+						tabelka['t'].append([
+							">`--> ",
+							curmedals[tenover]+"|to",
+							curmedals[colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]],
+							"+{:.5%}".format(float(self.medaldict[espir][bleh]-current[espir])/float(self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
+							"+{:.5%}".format(float(self.medaldict[espir][bleh]-current[espir])/float(self.medaldict[tenover][colorpossibilities[colorpossibilities.index(curmedals[tenover])+1]])),
+							minapfromact(tenover,self.medaldict[espir][bleh]-current[espir],self.medaldict[tenover]['apable']),
+							"  --- By The Way"
+						])
+					if self.medaldict[tenover]['over']:
+						tonover = self.medaldict[tenover]['over']
+						tabelka['t'].append([
+							'  '+str(self.medaldict[tonover]['name']),
+							current[tonover],
+							self.medaldict[tonover][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-current[tonover],
+							self.medaldict[tonover][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]],
+							"{:.5%}".format(float(current[tonover])/float(self.medaldict[tonover][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]])),
+							"{:.5%}".format(float(current[tonover]-self.medaldict[tonover][curmedals[tonover]])/float(self.medaldict[tonover][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]-self.medaldict[tonover][curmedals[tonover]])),
+							minapfromact(tonover,current[tonover],self.medaldict[tonover]['apable']),
+							self.medaldict[tonover]['sdesc']
+						])
+						tabelka['t'].append([
+							(">>`--> "),
+							(curmedals[tonover]+" to"),
+							(curmedals[colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]),
+							("+{:.5%}".format(float(self.medaldict[tenover][curmedals[tenover]]-current[tenover])/float(self.medaldict[tonover][colorpossibilities[colorpossibilities.index(curmedals[tonover])+1]]))),
+							("+{:.5%}".format(float(self.medaldict[tenover][curmedals[tenover]]-current[tenover])/float())),
+							(minapfromact(tenover,self.medaldict[tenover][curmedals[tenover]]-current[tenover],self.medaldict[tonover]['apable'])),
+							("  --- By The Way")
+						])
+					tabulate(tabelka['t'],headers=tabelka['h'])
