@@ -220,19 +220,20 @@ class Current:
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2, 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
 		}
 		self.medaldict = {
-			'uniqvis': {'name': 'Explorer', 'sdesc': 'Uniq visited', 'apable' = False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'hack', 'sub': False},
-			'seer': {'name': 'Seer', 'sdesc': 'Portals discovered', 'apable' = True, 'walk': {'bronze': 10, 'silver': 20, 'gold': 200, 'platinum': 500, 'onyx': 5000}, 'over': False, 'sub': False},
-			'hack': {'name': 'Hacker', 'sdesc': 'Hacks', 'apable' = False, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'uniqvis'},
-			'depl': {'name': 'Builder', 'sdesc': 'Resonators deployed', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'capt'},
-			'link': {'name': 'Connector', 'scesc': 'Links created', 'apable' = True, 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False, 'sub': 'field'},
-			'field': {'name': 'Mind Controller', 'scesc': 'CFields created', 'apable' = True, 'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000}, 'over': 'link', 'sub': False},
-			'rech': {'name': 'Recharger', 'sdesc': 'XM Recharged', 'apable' = True, 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000}, 'over': False, 'sub': False},
-			'capt': {'name': 'Liberator', 'sdesc': 'Portals captured', 'apable' = True, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000}, 'over': 'depl', 'sub': 'uniqcapt'},
-			'uniqcapt': {'name': 'Pioneer', 'sdesc': 'Uniq captured', 'apable' = True, 'walk': {'bronze': 20, 'silver': 200, 'gold': 1000, 'platinum': 5000, 'onyx': 20000}, 'over': 'capt', 'sub': False},
-			'destr': {'name': 'Purifier', 'sdesc': 'Resonators destroyed', 'apable' = True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
-			'guard': {'name': 'Guardian', 'sdesc': 'Max time portal held', 'apable' = False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
+			'uniqvis': {'name': 'Explorer', 'sdesc': 'Uniq visited', 'apable': False, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000}, 'over': 'hack', 'sub': False},
+			'seer': {'name': 'Seer', 'sdesc': 'Portals discovered', 'apable': True, 'walk': {'bronze': 10, 'silver': 20, 'gold': 200, 'platinum': 500, 'onyx': 5000}, 'over': False, 'sub': False},
+			'hack': {'name': 'Hacker', 'sdesc': 'Hacks', 'apable': False, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'uniqvis'},
+			'depl': {'name': 'Builder', 'sdesc': 'Resonators deployed', 'apable': True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000}, 'over': False, 'sub': 'capt'},
+			'link': {'name': 'Connector', 'scesc': 'Links created', 'apable': True, 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False, 'sub': 'field'},
+			'field': {'name': 'Mind Controller', 'scesc': 'CFields created', 'apable': True, 'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000}, 'over': 'link', 'sub': False},
+			'rech': {'name': 'Recharger', 'sdesc': 'XM Recharged', 'apable': True, 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000}, 'over': False, 'sub': False},
+			'capt': {'name': 'Liberator', 'sdesc': 'Portals captured', 'apable': True, 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000}, 'over': 'depl', 'sub': 'uniqcapt'},
+			'uniqcapt': {'name': 'Pioneer', 'sdesc': 'Uniq captured', 'apable': True, 'walk': {'bronze': 20, 'silver': 200, 'gold': 1000, 'platinum': 5000, 'onyx': 20000}, 'over': 'capt', 'sub': False},
+			'destr': {'name': 'Purifier', 'sdesc': 'Resonators destroyed', 'apable': True, 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 300000}, 'over': False, 'sub': False},
+			'guard': {'name': 'Guardian', 'sdesc': 'Max time portal held', 'apable': False, 'walk': {'bronze': 3, 'silver': 10, 'gold': 20, 'platinum': 90, 'onyx': 150}, 'over': False, 'sub': False},
 		}
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for lvltry in range(1,17):
 			if ap >= self.lvldict[lvltry]['ap']:
 				lvlbyap = lvltry
@@ -242,19 +243,27 @@ class Current:
 			curmedals[medaltry] = 'nothing'
 			for colortry in self.medaldict[medaltry]['walk'].keys():
 				if current[medaltry] >= self.medaldict[medaltry]['walk'][colortry]:
-					if self.medaldict[medaltry]['walk'][curmedals[medaltry]] < self.medaldict[medaltry]['walk'][colortry]:
+					if curmedals[medaltry] == 'nothing':
 						curmedals[medaltry] = colortry
+					elif self.medaldict[medaltry]['walk'][curmedals[medaltry]] < self.medaldict[medaltry]['walk'][colortry]:
+						curmedals[medaltry] = colortry
+		curmedalsbycol['nothing'] = []
 		for trycolor in colorpossibilities:
 			curmedalsbycol[trycolor] = []
-			for trymedal in curmedals.keys():
-				for trykolor in colorpossibilities:
-					if int(colorpossibilities.index(trykolor)) >= int(colorpossibilities.index(trycolor)):
-						curmedalsbycol[trycolor].append(trymedal)
+		for trymedal in curmedals.keys():
+			curmedalsbycol[curmedals[trymedal]].append(trymedal)
+
+
+				#for trykolor in colorpossibilities:
+					#if int(colorpossibilities.index(trykolor)) >= int(colorpossibilities.index(trycolor)):
+				#	if
+				#		curmedalsbycol[trycolor].append(trymedal)
 		countofmedalsonce = {}
 		for colorpossibility in colorpossibilities:
 			countofmedalsonce[colorpossibility] = 0
-		for countmedaltry in curmedals.keys():
-			countofmedalsonce[countmedaltry] += 1
+		for countmedaltry in curmedalsbycol.keys():
+			for obiekt in curmedalsbycol[countmedaltry]:
+				countofmedalsonce[countmedaltry] += 1
 		countofmedalsmulti = {}
 		realcountofmedalsonce = {}
 		realcountofmedalsmulti = {}
@@ -280,8 +289,8 @@ class Current:
 			for possicolor in colorpossibilities:
 				try:
 					if int(self.lvldict[lvlmedtry][possicolor]) > 0:
-						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor]))
-				except ValueError:
+						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor])})
+				except KeyError:
 					pass
 			self.lvldict[lvlmedtry]['reqmed'] = tuple(medlvltrytab)
 			probamedlvltrytabtry = 1
@@ -302,7 +311,7 @@ class Current:
 					lvlbycol[znowucolorpossible] = 16
 					break
 				elif znowucolorpossible not in self.lvldict[trycollvl]:
-					if lvlbycol[znowucolorpossible] == trycollvl - 1
+					if lvlbycol[znowucolorpossible] == (trycollvl - 1):
 						lvlbycol[znowucolorpossible] = trycollvl
 
 					#znowuwywu = False
@@ -328,13 +337,14 @@ class Current:
 						aspirujacy[kolor].append(wklej)
 			else:
 				if len(curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor)-1]]) > 0:
-					for wklej in curmedalsbycol[kolor]:
+					for wklej in curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor)-1]]:
 						aspirujacy[kolor].append(wklej)
 		aspirmulti = {}
 		for kolorek in colorpossibilities:
+			aspirmulti[kolorek] = []
 			subkolorex = []
 			for subkolorextry in range(0,colorpossibilities.index(kolorek)):
-				subkolorex.append(subkolorextry)
+				subkolorex.append(colorpossibilities[subkolorextry])
 			for subkolorek in subkolorex:
 				aspirmulti[kolorek].extend(aspirujacy[subkolorek])
 
@@ -361,14 +371,14 @@ class Current:
 		print "AP: %d    lvl_by_AP: %2d " % (ap,lvlbyap)
 		print "lvl_by_medals: %2d " % lvlbymed
 		for blah in ('silver', 'gold', 'platinum', 'onyx'):
-			if not lvlbycol(blah) == 8:
-				print "Level for medals' colour %s: %2d" % (blah,lvlbycol(blah))
+			if not lvlbycol[blah] == 8:
+				print "Level for medals' colour %s: %2d" % (blah,lvlbycol[blah])
 
 		tabela = []
 
 		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
-			if not lvlbycol(bleh) == 16:
-				print "Next level for the %s colour is %2d" % (bleh,(lvlbycol(bleh)+1))
+			if not lvlbycol[bleh] == 16:
+				print "Next level for the %s colour is %2d" % (bleh,(lvlbycol[bleh]+1))
 				print "You need %1d badges, you already have %1d" % (winid[bleh], realcountofmedalsmulti[bleh])
 				print "Those are the badges which are awaiting promotion:"
 				tabelka={
@@ -429,4 +439,4 @@ class Current:
 							(minapfromact(tenover,self.medaldict[tenover][curmedals[tenover]]-current[tenover],self.medaldict[tonover]['apable'])),
 							("  --- By The Way")
 						])
-					tabulate(tabelka['t'],headers=tabelka['h'])
+					print tabulate(tabelka['t'],headers=tabelka['h'])
