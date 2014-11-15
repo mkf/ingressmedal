@@ -430,21 +430,25 @@ class Current:
 			if kolor == 'onyx':
 				pass
 			else:
-				colowr = colorpossibilities[colorpossibilitiesnothing.index(kolor)]
+				ckolorkis = {1: 'bronze', 2: 'silver', 3: 'gold', 4: 'platinum', 5: 'onyx'}
+				ackolorkis = {'nothing': 0, 'bronze': 1, 'silver': 2, 'gold': 3, 'platinum': 4, 'onyx': 5}
+				#colowr = colorpossibilities[colorpossibilitiesnothing.index(kolor)]
+				colowr = str(ckolorkis[int(ackolorkis[str(kolor)])+1])
 				aspirujacy[colowr] = []
 				if len(curmedalsbycol[colowr]) > 0:
 					for wklej in curmedalsbycol[kolor]:
+						aspirujacy[colowr].append(wklej)
 						newcolowr = colowr
 						newkolor = kolor
 						print "current[wklej]: %s" % current[wklej]
 						print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
 						print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
-						if (
-							(int(self.medaldict[wklej]['walk'][newkolor])) < (int(current[wklej])) < (int(self.medaldict[wklej]['walk'][newcolowr]))
-						):
-							aspirujacy[colowr].append(wklej)
-						elif ((int(self.medaldict[wklej]['walk'][newcolowr])) == (int(current[wklej]))):
-							aspirujacy[colowr].append(wklej)
+						#if (
+						#	(int(self.medaldict[wklej]['walk'][newkolor])) < (int(current[wklej])) < (int(self.medaldict[wklej]['walk'][newcolowr]))
+						#):
+						#	aspirujacy[colowr].append(wklej)
+						#elif ((int(self.medaldict[wklej]['walk'][newcolowr])) == (int(current[wklej]))):
+						#	aspirujacy[colowr].append(wklej)
 						#while True:
 						#	if (
 						#		(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
@@ -509,7 +513,6 @@ class Current:
 						#			aspirujacy[testu].append(wklej)
 						#			print "QQQQQQQQQQQQ %s : %s %s a testu to %s" % (wklej,newkolor,newcolowr,testu)
 						#		break
-
 		return aspirujacy
 
 	@staticmethod
