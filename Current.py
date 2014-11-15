@@ -453,6 +453,25 @@ class Current:
 						aspirujacy[newcolowr].append(wklej)
 		return aspirujacy
 
+	def findaspirmulti(self,aspirujacy):
+		aspirmulti = {'bronze': [], 'silver': [], 'gold': [], 'platinum': [], 'onyx': []}
+		aspirmulti['bronze'].append(aspirujacy['bronze'])
+		aspirmulti['bronze'].append(aspirujacy['silver'])
+		aspirmulti['bronze'].append(aspirujacy['gold'])
+		aspirmulti['bronze'].append(aspirujacy['platinum'])
+		aspirmulti['bronze'].append(aspirujacy['onyx'])
+		aspirmulti['silver'].append(aspirujacy['silver'])
+		aspirmulti['silver'].append(aspirujacy['gold'])
+		aspirmulti['silver'].append(aspirujacy['platinum'])
+		aspirmulti['silver'].append(aspirujacy['onyx'])
+		aspirmulti['gold'].append(aspirujacy['gold'])
+		aspirmulti['gold'].append(aspirujacy['platinum'])
+		aspirmulti['gold'].append(aspirujacy['onyx'])
+		aspirmulti['platinum'].append(aspirujacy['platinum'])
+		aspirmulti['platinum'].append(aspirujacy['onyx'])
+		aspirmulti['onyx'].append(aspirujacy['onyx'])
+		return aspirmulti
+
 	def percentofdest(self):
 
 		current = self.current
@@ -473,49 +492,10 @@ class Current:
 		reallvl = self.calcreallvl(lvlbyap,lvlbymedfir)
 		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
 		lvlbymed = min(lvlbycol.values())
-
 		aspirujacy = self.findaspirujacy(curmedalsbycol,current)
+		aspirmulti = self.findaspirmulti(aspirujacy)
 
-		aspirmulti = {'bronze': [], 'silver': [], 'gold': [], 'platinum': [], 'onyx': []}
-		#for kolorek in colorpossibilities:
-		#	aspirmulti[kolorek] = []
-		#	subkolorex = []
-		#	for subkolorextry in range(0,colorpossibilities.index(kolorek)):
-		#		subkolorex.append(colorpossibilities[subkolorextry])
-		#	for subkolorek in subkolorex:
-		#		aspirmulti[kolorek].extend(aspirujacy[subkolorek])
-		#ckolorpo = list(colorpossibilities)
-		#possible = True
-		#while possible:
-		#	try:
-		#		cekol = ckolorpo.popleft()
-		#		aspirmulti[cekol] = []
-		#		aspirmulti[cekol].append(aspirujacy[cekol])
-		#		for i in ckolorpo:
-		#			aspirmulti[cekol].append(aspirujacy[i])
-		#		possible = True
-		#	except:
-		#		possible = False
-		aspirmulti['bronze'].append(aspirujacy['bronze'])
-		aspirmulti['bronze'].append(aspirujacy['silver'])
-		aspirmulti['bronze'].append(aspirujacy['gold'])
-		aspirmulti['bronze'].append(aspirujacy['platinum'])
-		aspirmulti['bronze'].append(aspirujacy['onyx'])
-		aspirmulti['silver'].append(aspirujacy['silver'])
-		aspirmulti['silver'].append(aspirujacy['gold'])
-		aspirmulti['silver'].append(aspirujacy['platinum'])
-		aspirmulti['silver'].append(aspirujacy['onyx'])
-		aspirmulti['gold'].append(aspirujacy['gold'])
-		aspirmulti['gold'].append(aspirujacy['platinum'])
-		aspirmulti['gold'].append(aspirujacy['onyx'])
-		aspirmulti['platinum'].append(aspirujacy['platinum'])
-		aspirmulti['platinum'].append(aspirujacy['onyx'])
-		aspirmulti['onyx'].append(aspirujacy['onyx'])
 
-		#for ckolor in colorpossibilities:
-		#	for lewel in lvlbycol.keys():
-		#		if lvlbycol[lewel] < 16:
-		#			for colorofcon in self.lvldict[lvlbycol[lewel]][lewel]
 		weneed = {}
 		for ckolor in lvlbycol.keys():
 			if not (lvlbycol[ckolor] == 16):
