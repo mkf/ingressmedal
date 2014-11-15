@@ -268,13 +268,13 @@ class Current:
 			return 0
 
 
-	def whatisyourlvlbyap(self, ap):  # |
+	def calclvlbyap(self, ap):  # |
 		for lvltry in range(1, 17):  # |
 			if ap >= self.lvldict[lvltry]['ap']:  # |
 				lvlbyap = lvltry  # |
 		return lvlbyap  # |
 
-	def whatareyourcurrentmedals(self, current):
+	def findcurrentmedals(self, current):
 		curmedals = {}
 		for medaltry in self.medaldict.keys():
 			curmedals[medaltry] = 'nothing'
@@ -290,10 +290,10 @@ class Current:
 		return curmedals
 
 
-	def whatareyourcurrentmedalsbycolor(self, what, cur):
+	def findcurrentmedalsbycolor(self, what, cur):
 		curmedalsbycol = {}
 		if what == 'current':
-			curmedals = self.whatareyourcurrentmedals(cur)
+			curmedals = self.findcurrentmedals(cur)
 		elif what == 'curmedals':
 			curmedals = cur
 		else:
@@ -307,11 +307,11 @@ class Current:
 		return curmedalsbycol
 
 
-	def whatisyourcountofmedalsonce(self, what, cur):
+	def calccountofmedalsonce(self, what, cur):
 		if what == 'current':
-			curmedalsbycol = self.whatareyourcurrentmedalsbycolor(what, cur)
+			curmedalsbycol = self.findcurrentmedalsbycolor(what, cur)
 		elif what == 'curmedals':
-			curmedalsbycol = self.whatareyourcurrentmedalsbycolor(what, cur)
+			curmedalsbycol = self.findcurrentmedalsbycolor(what, cur)
 		elif what == 'curmedalsbycol':
 			curmedalsbycol = cur
 		else:
@@ -326,13 +326,13 @@ class Current:
 		return countofmedalsonce
 
 
-	def whatisyourrealcountofmedalsonce(self, current, what='current', cur={}):
+	def calcrealcountofmedalsonce(self, current, what='current', cur={}):
 		if what == 'current':
-			countofmedalsonce = self.whatisyourcountofmedalsonce(what, current)
+			countofmedalsonce = self.calccountofmedalsonce(what, current)
 		elif what == 'curmedals':
-			countofmedalsonce = self.whatisyourcountofmedalsonce(what, cur)
+			countofmedalsonce = self.calccountofmedalsonce(what, cur)
 		elif what == 'curmedalsbycol':
-			countofmedalsonce = self.whatisyourcountofmedalsonce(what, cur)
+			countofmedalsonce = self.calccountofmedalsonce(what, cur)
 		elif what == 'countofmedalsonce':
 			countofmedalsonce = cur
 		else:
@@ -388,48 +388,13 @@ class Current:
 				lvlbymedfir = lvlmedtry
 		return lvlbymedfir
 
+	def calcreallvl(self,bap,bmed):
+		for t in range(1,17):
+			if (bap>=t) and (bmed>=t):
+				real = t
+		return real
 
-	def percentofdest(self):
-
-		current = self.current
-		things = self.coUNTINGcurapcountable
-		ap = current['ap']
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
-		lvlbyap = self.whatisyourlvlbyap(ap)
-		curmedals = self.whatareyourcurrentmedals(current)
-		curmedalsbycol = self.whatareyourcurrentmedalsbycolor('curmedals', curmedals)
-		countofmedalsonce = self.whatisyourcountofmedalsonce('curmedalsbycol', curmedalsbycol)
-		realcountofmedalsonce = self.whatisyourrealcountofmedalsonce(current, what='countofmedalsonce',
-																	 cur=countofmedalsonce)
-		countofmedalsmulti = self.calcsomecountofmedalsmulti(countofmedalsonce)
-		realcountofmedalsmulti = self.calcsomecountofmedalsmulti(realcountofmedalsonce)
-		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce,countofmedalsonce)
-		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti,countofmedalsmulti)
-		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
-		for tryreallvl in range(1, 17):
-			if (lvlbyap >= tryreallvl) and (lvlbymedfir >= tryreallvl):
-				reallvl = tryreallvl
-		lvlbycolfir = {}
-		for znowucolorpossible in colorpossibilities:
-			lvlbycolfir[znowucolorpossible] = 8
-			for trycollvl in range(9, 17):
-				if znowucolorpossible == 'brown':
-					lvlbycolfir[znowucolorpossible] = trycollvl
-					break
-				elif znowucolorpossible not in self.lvldict[trycollvl]:
-					if lvlbycolfir[znowucolorpossible] == (trycollvl - 1):
-						lvlbycolfir[znowucolorpossible] = trycollvl
-
-					#znowuwywu = False
-					#zunwowuwuy = colorpossibilities.index(znowucolorpossible)
-					#zenwowuwu = zunwowuwuy
-					#while ((znowuwywu == False) and (zenwowuwu <= 4)):
-					#	if colorpossibilities[zenwowuwu] in self.lvldict[trycollvl]:
-					#		uzynwowu = colorpossibilities[zenwowuwu]
-					#		if
-					#			znowuwywu = True
-					#	zenwowuwu += 1
+	def calclvlbycol(self,realcountofmedalsmulti):
 		lvlbycol = {}
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
 			lvlbycol[trykiolor] = 8
@@ -439,27 +404,14 @@ class Current:
 				if lvlbycol[tryreqmed] < trycollvl:
 					if reqmed[tryreqmed] <= realcountofmedalsmulti[tryreqmed]:
 						lvlbycol[tryreqmed] = trycollvl
-						print "Poniewaz %d <= %d" % (reqmed[tryreqmed], realcountofmedalsmulti[tryreqmed])
-						print "Przyszlo %2d do %s" % (trycollvl, tryreqmed)
-		lvlbymed = min(lvlbycol.values())
+						#print "Poniewaz %d <= %d" % (reqmed[tryreqmed], realcountofmedalsmulti[tryreqmed]) #debug
+						#print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
+		return lvlbycol
 
-
-		#elif int(self.lvldict[trycollvl][znowucolorpossible]) <= realcountofmedalsmulti[znowucolorpossible]:
-		#	lvlbycol[znowucolorpossible] = trycollvl
-		#	print "Poszlo %2d do %s" % (trycollvl,znowucolorpossible)
-		#else:
-		#	lvlbycol[znowucolorpossible] = 8
+	def findaspirujacy(self,curmedalsbycol,current):
 		aspirujacy = {}
-		#for kolor in colorpossibilities:
-		#	aspirujacy[kolor] = []
-		#	if kolor == 'bronze':
-		#		if len(curmedalsbycol['nothing']) > 0:
-		#			for wklej in curmedalsbycol[kolor]:
-		#				aspirujacy[kolor].append(wklej)
-		#	else:
-		#		if len(curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor) - 1]]) > 0:
-		#			for wklej in curmedalsbycol[colorpossibilities[colorpossibilities.index(kolor) - 1]]:
-		#				aspirujacy[kolor].append(wklej)
+		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 
 		for kolor in colorpossibilitiesnothing:
 			if kolor == 'onyx':
@@ -499,6 +451,30 @@ class Current:
 							else:
 								print "Co jest?"
 						aspirujacy[newcolowr].append(wklej)
+		return aspirujacy
+
+	def percentofdest(self):
+
+		current = self.current
+		things = self.coUNTINGcurapcountable
+		ap = current['ap']
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
+		lvlbyap = self.calclvlbyap(ap)
+		curmedals = self.findcurrentmedals(current)
+		curmedalsbycol = self.findcurrentmedalsbycolor('curmedals', curmedals)
+		countofmedalsonce = self.calccountofmedalsonce('curmedalsbycol', curmedalsbycol)
+		realcountofmedalsonce = self.calcrealcountofmedalsonce(current, what='countofmedalsonce', cur=countofmedalsonce)
+		countofmedalsmulti = self.calcsomecountofmedalsmulti(countofmedalsonce)
+		realcountofmedalsmulti = self.calcsomecountofmedalsmulti(realcountofmedalsonce)
+		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce,countofmedalsonce)
+		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti,countofmedalsmulti)
+		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
+		reallvl = self.calcreallvl(lvlbyap,lvlbymedfir)
+		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
+		lvlbymed = min(lvlbycol.values())
+
+		aspirujacy = self.findaspirujacy(curmedalsbycol,current)
 
 		aspirmulti = {'bronze': [], 'silver': [], 'gold': [], 'platinum': [], 'onyx': []}
 		#for kolorek in colorpossibilities:
