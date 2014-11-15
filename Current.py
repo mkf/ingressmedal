@@ -560,6 +560,10 @@ class Current:
 		print " "
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
+		if lvlbyap < 16:
+			abs = float(float(ap)/float(self.lvldict[lvlbyap+1]['ap']))
+			rel = float(float(ap-self.lvldict[lvlbyap]['ap'])/float(self.lvldict[lvlbyap+1]['ap']-self.lvldict[lvlbyap]['ap']))
+			print "Absolute AP % of the next ({:2}) lvl_by_AP: {:.5%}   Relative AP % of the next ({:2}) lvl_by_AP: {:.5%}".format(lvlbyap+1,abs,lvlbyap+1,rel)
 		print "lvl_by_medals: %2d " % lvlbymed
 
 	def stdoutb(self,lvlbycol):
@@ -755,7 +759,7 @@ class Current:
 		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
 		reallvl = self.calcreallvl(lvlbyap, lvlbymedfir)
 		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
-		lvlbymed = min(lvlbycol.values())
+		lvlbymed = min([lvlbycol[i] for i in ('silver', 'gold', 'platinum', 'onyx')])
 		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
 		aspirmulti = self.findaspirmulti(aspirujacy)
 		weneedleft = self.calcweneedleft(lvlbycol)
