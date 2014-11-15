@@ -66,6 +66,13 @@ class Current:
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2,
 				 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
 		}
+		self.highestplaceofnoappearance = {
+			'bronze': 8,
+			'silver': 8,
+			'gold': 8,
+			'platinum': 12,
+			'onyx': 15
+		}
 		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
 									   'depllater': "Sure points from deployment of resonators except the capturing one and from upgrading resonators",
 									   'link': "Links created", 'field': "Control Fields created",
@@ -405,7 +412,7 @@ class Current:
 	def calclvlbycol(self, realcountofmedalsmulti):
 		lvlbycol = {}
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
-			lvlbycol[trykiolor] = 8
+			lvlbycol[trykiolor] = self.highestplaceofnoappearance[trykiolor]
 		for trycollvl in range(9, 17):
 			reqmed = self.lvldict[trycollvl]['reqmed']
 			for tryreqmed in reqmed.keys():
