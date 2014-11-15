@@ -495,7 +495,7 @@ class Current:
 									else:
 										print "Co jest?"
 							else:
-								if not newcolowr == 'platinum':
+								if not (str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1]) == 'onyx'):
 									aspirujacy[str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1])].append(wklej)
 								print "QQQQQQQQQQQQ %s : %s %s" % (wklej,newkolor,newcolowr)
 								break
