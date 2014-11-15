@@ -238,6 +238,7 @@ class Current:
 	def percentofdest(self):
 		def minapfromact(name, value, apable):
 			if apable:
+				# noinspection PyUnreachableCode
 				if name == 'seer':
 					return value * 1000
 				elif name == 'depl':
