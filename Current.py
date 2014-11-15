@@ -440,9 +440,9 @@ class Current:
 						aspirujacy[colowr].append(wklej)
 						newcolowr = colowr
 						newkolor = kolor
-						print "current[wklej]: %s" % current[wklej]
-						print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
-						print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
+						#print "current[wklej]: %s" % current[wklej]
+						#print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
+						#print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
 						#if (
 						#	(int(self.medaldict[wklej]['walk'][newkolor])) < (int(current[wklej])) < (int(self.medaldict[wklej]['walk'][newcolowr]))
 						#):
