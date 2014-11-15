@@ -18,13 +18,15 @@ class Current:
 					 'walk': {'bronze': 2000, 'silver': 10000, 'gold': 30000, 'platinum': 100000, 'onyx': 200000},
 					 'over': False, 'sub': 'capt'},
 			'link': {'name': 'Connector', 'sdesc': 'Links created', 'apable': True,
-					 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000}, 'over': False,
+					 'walk': {'bronze': 50, 'silver': 1000, 'gold': 5000, 'platinum': 25000, 'onyx': 100000},
+					 'over': False,
 					 'sub': 'field'},
 			'field': {'name': 'Mind Controller', 'sdesc': 'CFields created', 'apable': True,
 					  'walk': {'bronze': 100, 'silver': 500, 'gold': 2000, 'platinum': 10000, 'onyx': 40000},
 					  'over': 'link', 'sub': False},
 			'rech': {'name': 'Recharger', 'sdesc': 'XM Recharged', 'apable': True,
-					 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000, 'onyx': 25000000},
+					 'walk': {'bronze': 100000, 'silver': 1000000, 'gold': 3000000, 'platinum': 10000000,
+							  'onyx': 25000000},
 					 'over': False, 'sub': False},
 			'capt': {'name': 'Liberator', 'sdesc': 'Portals captured', 'apable': True,
 					 'walk': {'bronze': 100, 'silver': 1000, 'gold': 5000, 'platinum': 15000, 'onyx': 40000},
@@ -236,7 +238,8 @@ class Current:
 		print tabulate(tabelka, headers=["Description", "AP", "Percent of total AP"])
 
 
-	def minapfromact(self, name, value, apable):
+	@staticmethod
+	def minapfromact(name, value, apable):
 		# value is count of activities to calculate AP
 		# name is the identifier of an activity
 		# apable is a boolean information whether the activity brings you AP
@@ -321,12 +324,12 @@ class Current:
 		for colorpossibility in colorpossibilities:
 			countofmedalsonce[colorpossibility] = 0
 		for countmedaltry in curmedalsbycol.keys():
-			for obiekt in curmedalsbycol[countmedaltry]:
+			for _ in curmedalsbycol[countmedaltry]:
 				countofmedalsonce[countmedaltry] += 1
 		return countofmedalsonce
 
 
-	def calcrealcountofmedalsonce(self, current, what='current', cur={}):
+	def calcrealcountofmedalsonce(self, current, what='current', cur=None):
 		if what == 'current':
 			countofmedalsonce = self.calccountofmedalsonce(what, current)
 		elif what == 'curmedals':
@@ -347,7 +350,8 @@ class Current:
 		return realcountofmedalsonce
 
 
-	def calcsomecountofmedalsmulti(self,once):
+	@staticmethod
+	def calcsomecountofmedalsmulti(once):
 		multi = {
 			'bronze': once['bronze'] + once['silver'] + once['gold'] + once['platinum'] + once['onyx'],
 			'silver': once['silver'] + once['gold'] + once['platinum'] + once['onyx'],
@@ -357,14 +361,15 @@ class Current:
 		}
 		return multi
 
-	def diffrealvscalculatedmedals(self,real,calc):
+	@staticmethod
+	def diffrealvscalculatedmedals(real, calc):
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		diff = {}
 		for color in colorpossibilities:
-			diff[color] = real[color]-calc[color]
+			diff[color] = real[color] - calc[color]
 		return diff
 
-	def generatethereqmedintoselflvldictbtwlvlbymedfir(self,realcountofmedalsmulti):
+	def generatethereqmedintoselflvldictbtwlvlbymedfir(self, realcountofmedalsmulti):
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		lvlbymedfir = 8
 		for lvlmedtry in range(9, 17):
@@ -375,7 +380,7 @@ class Current:
 						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor])})
 				except KeyError:
 					pass
-			#self.lvldict[lvlmedtry]['reqmed'] = tuple(medlvltrytab)
+			# self.lvldict[lvlmedtry]['reqmed'] = tuple(medlvltrytab)
 			self.lvldict[lvlmedtry]['reqmed'] = {}
 			for a in medlvltrytab:
 				self.lvldict[lvlmedtry]['reqmed'].update(a)
@@ -388,13 +393,14 @@ class Current:
 				lvlbymedfir = lvlmedtry
 		return lvlbymedfir
 
-	def calcreallvl(self,bap,bmed):
-		for t in range(1,17):
-			if (bap>=t) and (bmed>=t):
+	@staticmethod
+	def calcreallvl(bap, bmed):
+		for t in range(1, 17):
+			if (bap >= t) and (bmed >= t):
 				real = t
 		return real
 
-	def calclvlbycol(self,realcountofmedalsmulti):
+	def calclvlbycol(self, realcountofmedalsmulti):
 		lvlbycol = {}
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
 			lvlbycol[trykiolor] = 8
@@ -404,11 +410,11 @@ class Current:
 				if lvlbycol[tryreqmed] < trycollvl:
 					if reqmed[tryreqmed] <= realcountofmedalsmulti[tryreqmed]:
 						lvlbycol[tryreqmed] = trycollvl
-						#print "Poniewaz %d <= %d" % (reqmed[tryreqmed], realcountofmedalsmulti[tryreqmed]) #debug
-						#print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
+					# print "Poniewaz %d <= %d" % (reqmed[tryreqmed], realcountofmedalsmulti[tryreqmed]) #debug
+					# print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
 		return lvlbycol
 
-	def findaspirujacy(self,curmedalsbycol,current):
+	def findaspirujacy(self, curmedalsbycol, current):
 		aspirujacy = {}
 		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
@@ -431,29 +437,30 @@ class Current:
 												(current[wklej] - self.medaldict[wklej]['walk'][newkolor] < 0) or
 											(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or
 										(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or
-							(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+									(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
 						):
 							if (
 											(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0) or
 											(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or
-								(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
+										(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
 							):
 								newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
 								newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-								print "a1 %s %s" % (newkolor, newcolowr)  #debug
+								print "a1 %s %s" % (newkolor, newcolowr)  # debug
 							elif (
 								(current[wklej] - self.medaldict[wklej]['walk'][newkolor] < 0) or
 								(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
 							):
 								newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
 								newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-								print "a2 %s %s" % (newkolor, newcolowr)  #debug
+								print "a2 %s %s" % (newkolor, newcolowr)  # debug
 							else:
 								print "Co jest?"
 						aspirujacy[newcolowr].append(wklej)
 		return aspirujacy
 
-	def findaspirmulti(self,aspirujacy):
+	@staticmethod
+	def findaspirmulti(aspirujacy):
 		aspirmulti = {'bronze': [], 'silver': [], 'gold': [], 'platinum': [], 'onyx': []}
 		aspirmulti['bronze'].append(aspirujacy['bronze'])
 		aspirmulti['bronze'].append(aspirujacy['silver'])
@@ -486,15 +493,14 @@ class Current:
 		realcountofmedalsonce = self.calcrealcountofmedalsonce(current, what='countofmedalsonce', cur=countofmedalsonce)
 		countofmedalsmulti = self.calcsomecountofmedalsmulti(countofmedalsonce)
 		realcountofmedalsmulti = self.calcsomecountofmedalsmulti(realcountofmedalsonce)
-		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce,countofmedalsonce)
-		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti,countofmedalsmulti)
+		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce, countofmedalsonce)
+		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti, countofmedalsmulti)
 		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
-		reallvl = self.calcreallvl(lvlbyap,lvlbymedfir)
+		reallvl = self.calcreallvl(lvlbyap, lvlbymedfir)
 		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
 		lvlbymed = min(lvlbycol.values())
-		aspirujacy = self.findaspirujacy(curmedalsbycol,current)
+		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
 		aspirmulti = self.findaspirmulti(aspirujacy)
-
 
 		weneed = {}
 		for ckolor in lvlbycol.keys():
@@ -517,8 +523,6 @@ class Current:
 		for blah in ('silver', 'gold', 'platinum', 'onyx'):
 			if not lvlbycol[blah] == 8:
 				print "Level for medals' colour %s: %2d" % (blah, lvlbycol[blah])
-
-		tabela = []
 
 		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
 			if (
@@ -666,12 +670,12 @@ class Current:
 							tabelka['t'].append([" ", 0, 0, 0, " ", " ", 0, " "])
 				print tabulate(tabelka['t'], headers=tabelka['h'], floatfmt=".5f")
 			else:
-				#doprintatupel = tuple([
-				#	realcountofmedalsmulti[bleh],
-				#	bleh,
-				#	self.lvldict[lvlbycol[bleh]][bleh],
-				#	lvlbycol[bleh],
-				#	bleh
-				#])
-				#print "You have %1d %s badges, you needed %1d for %2d %s lvl, and apparently you don't need'em anymore." % doprintatupel
+				# doprintatupel = tuple([
+				# realcountofmedalsmulti[bleh],
+				# bleh,
+				# self.lvldict[lvlbycol[bleh]][bleh],
+				# lvlbycol[bleh],
+				# bleh
+				# ])
+				# print "You have %1d %s badges, you needed %1d for %2d %s lvl, and apparently you don't need'em anymore." % doprintatupel
 				pass
