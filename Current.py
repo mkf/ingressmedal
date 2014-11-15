@@ -595,8 +595,8 @@ class Current:
 
 				print "Those are the badges which are awaiting promotion to %s:" % bleh
 				tabelka = {
-					'h': ["Name", "Current", "Left", "Desired lvl", "% Completed Total", "% Completed Lvl",
-						  "Min AP to complete", "Description"],
+					'h': ["Name", "Current", "Left", "Desired lvl", "% Compl. Total", "% Compl. Lvl",
+						  "Min AP to compl.", "Description"],
 					't': []
 				}
 				from tabulate import tabulate
