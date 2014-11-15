@@ -557,6 +557,7 @@ class Current:
 		return winidleft
 
 	def stdouta(self,reallvl,ap,lvlbyap,lvlbymed):
+		print " "
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
 		print "lvl_by_medals: %2d " % lvlbymed
