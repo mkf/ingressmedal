@@ -502,40 +502,18 @@ class Current:
 				winidleft[ckolor] = (lvlbycol[ckolor], weneedleft[ckolor])
 		return winidleft
 
-	def percentofdest(self):
-
-		current = self.current
-		things = self.coUNTINGcurapcountable
-		ap = current['ap']
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
-		lvlbyap = self.calclvlbyap(ap)
-		curmedals = self.findcurrentmedals(current)
-		curmedalsbycol = self.findcurrentmedalsbycolor('curmedals', curmedals)
-		countofmedalsonce = self.calccountofmedalsonce('curmedalsbycol', curmedalsbycol)
-		realcountofmedalsonce = self.calcrealcountofmedalsonce(current, what='countofmedalsonce', cur=countofmedalsonce)
-		countofmedalsmulti = self.calcsomecountofmedalsmulti(countofmedalsonce)
-		realcountofmedalsmulti = self.calcsomecountofmedalsmulti(realcountofmedalsonce)
-		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce, countofmedalsonce)
-		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti, countofmedalsmulti)
-		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
-		reallvl = self.calcreallvl(lvlbyap, lvlbymedfir)
-		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
-		lvlbymed = min(lvlbycol.values())
-		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
-		aspirmulti = self.findaspirmulti(aspirujacy)
-		weneedleft = self.calcweneedleft(lvlbycol)
-		winidleft = self.clarifytowinidleft(weneedleft,lvlbycol)
-
-
-
+	def stdouta(self,reallvl,ap,lvlbyap,lvlbymed):
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
 		print "lvl_by_medals: %2d " % lvlbymed
+
+	def stdoutb(self,lvlbycol):
 		for blah in ('silver', 'gold', 'platinum', 'onyx'):
 			if not lvlbycol[blah] == 8:
 				print "Level for medals' colour %s: %2d" % (blah, lvlbycol[blah])
 
+	def stdoutc(self,lvlbycol,winidleft,realcountofmedalsmulti,aspirmulti,current,curmedals,):
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
 			if (
 								(not lvlbycol[bleh] == 16) and \
@@ -683,11 +661,39 @@ class Current:
 				print tabulate(tabelka['t'], headers=tabelka['h'], floatfmt=".5f")
 			else:
 				# doprintatupel = tuple([
-				# realcountofmedalsmulti[bleh],
-				# bleh,
-				# self.lvldict[lvlbycol[bleh]][bleh],
-				# lvlbycol[bleh],
-				# bleh
+				# 	realcountofmedalsmulti[bleh],
+				# 	bleh,
+				# 	self.lvldict[lvlbycol[bleh]][bleh],
+				# 	lvlbycol[bleh],
+				# 	bleh
 				# ])
 				# print "You have %1d %s badges, you needed %1d for %2d %s lvl, and apparently you don't need'em anymore." % doprintatupel
 				pass
+
+	def percentofdest(self):
+
+		current = self.current
+		things = self.coUNTINGcurapcountable
+		ap = current['ap']
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
+		lvlbyap = self.calclvlbyap(ap)
+		curmedals = self.findcurrentmedals(current)
+		curmedalsbycol = self.findcurrentmedalsbycolor('curmedals', curmedals)
+		countofmedalsonce = self.calccountofmedalsonce('curmedalsbycol', curmedalsbycol)
+		realcountofmedalsonce = self.calcrealcountofmedalsonce(current, what='countofmedalsonce', cur=countofmedalsonce)
+		countofmedalsmulti = self.calcsomecountofmedalsmulti(countofmedalsonce)
+		realcountofmedalsmulti = self.calcsomecountofmedalsmulti(realcountofmedalsonce)
+		diffcountofmedalsonce = self.diffrealvscalculatedmedals(realcountofmedalsonce, countofmedalsonce)
+		diffcountofmedalsmulti = self.diffrealvscalculatedmedals(realcountofmedalsmulti, countofmedalsmulti)
+		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
+		reallvl = self.calcreallvl(lvlbyap, lvlbymedfir)
+		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
+		lvlbymed = min(lvlbycol.values())
+		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
+		aspirmulti = self.findaspirmulti(aspirujacy)
+		weneedleft = self.calcweneedleft(lvlbycol)
+		winidleft = self.clarifytowinidleft(weneedleft,lvlbycol)
+		self.stdouta(reallvl,ap,lvlbyap,lvlbymed)
+		self.stdoutb(lvlbycol)
+		self.stdoutc(lvlbycol,winidleft,realcountofmedalsmulti,aspirmulti,current,curmedals)
