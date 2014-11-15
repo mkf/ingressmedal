@@ -4,6 +4,7 @@ class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
 	def __init__(self, codename, interactiveliness, currorg, argdod, overs):
+		#------------------------constant definitions----------------
 		self.medaldict = {
 			'uniqvis': {'name': 'Explorer', 'sdesc': 'Uniq visited', 'apable': False,
 						'walk': {'bronze': 100, 'silver': 1000, 'gold': 2000, 'platinum': 10000, 'onyx': 30000},
@@ -73,6 +74,7 @@ class Current:
 									   'destr': "Destroyed resonators", 'destrlink': "Enemy links destroyed",
 									   'destrfield': "Enemy Control Fields destroyed",
 									   'photo': "Photos added to portals", 'edit': "Edits done to portals' data"}
+		#---------------end of constant definitions-----------------
 		from interactive import Interactive
 
 		self.overs = overs
@@ -479,6 +481,27 @@ class Current:
 		aspirmulti['onyx'].append(aspirujacy['onyx'])
 		return aspirmulti
 
+
+	def calcweneedleft(self,lvlbycol):
+		weneedleft = {}
+		for ckolor in lvlbycol.keys():
+			if not (lvlbycol[ckolor] == 16):
+				try:
+					weneedleft[ckolor] = int(self.lvldict[lvlbycol[ckolor]][ckolor])
+				except:
+					weneedleft[ckolor] = False
+			else:
+				weneedleft[ckolor] = False
+		return weneedleft
+
+	def clarifytowinidleft(selfself,weneedleft,lvlbycol):
+		winidleft = {}
+
+		for ckolor in weneedleft.keys():
+			if type(weneedleft[ckolor]) == int:
+				winidleft[ckolor] = (lvlbycol[ckolor], weneedleft[ckolor])
+		return winidleft
+
 	def percentofdest(self):
 
 		current = self.current
@@ -501,21 +524,10 @@ class Current:
 		lvlbymed = min(lvlbycol.values())
 		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
 		aspirmulti = self.findaspirmulti(aspirujacy)
+		weneedleft = self.calcweneedleft(lvlbycol)
+		winidleft = self.clarifytowinidleft(weneedleft,lvlbycol)
 
-		weneed = {}
-		for ckolor in lvlbycol.keys():
-			if not (lvlbycol[ckolor] == 16):
-				try:
-					weneed[ckolor] = int(self.lvldict[lvlbycol[ckolor]][ckolor])
-				except:
-					weneed[ckolor] = False
-			else:
-				weneed[ckolor] = False
-		winid = {}
 
-		for ckolor in weneed.keys():
-			if type(weneed[ckolor]) == int:
-				winid[ckolor] = (lvlbycol[ckolor], weneed[ckolor])
 
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
@@ -527,7 +539,7 @@ class Current:
 		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
 			if (
 								(not lvlbycol[bleh] == 16) and \
-									(bleh in winid) and \
+									(bleh in winidleft) and \
 								(bleh in self.lvldict[lvlbycol[bleh] + 1]) and \
 							(self.lvldict[lvlbycol[bleh] + 1][bleh] > realcountofmedalsmulti[bleh])
 			):
