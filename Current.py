@@ -66,8 +66,15 @@ class Current:
 			16: {'ap': 40000000, 'platinum': 4, 'onyx': 2,
 				 'bene': {'itemy': False, 'xm': 14400, 'rd': 4000, 'gamebegun': False}},
 		}
+		self.highestplaceofnoappearance = {
+			'bronze': 8,
+			'silver': 8,
+			'gold': 8,
+			'platinum': 12,
+			'onyx': 15
+		}
 		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
-									   'depllater': "Sure points from deployment of resonators except the capturing one and from upgrading resonators",
+									   'depllater': "Sure points from upgrading and deployment of resonators except the capturing res",
 									   'link': "Links created", 'field': "Control Fields created",
 									   'rechmin': "Minimum AP gained on recharging",
 									   'captres': "Capturing portals + first resonator",
@@ -189,14 +196,14 @@ class Current:
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatek(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or isinstance(int(ciag),int):
 			return True
 		else:
 			return False
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatekLUBn(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n'):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n') or isinstance(int(ciag),int):
 			return True
 		else:
 			return False
@@ -405,7 +412,7 @@ class Current:
 	def calclvlbycol(self, realcountofmedalsmulti):
 		lvlbycol = {}
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
-			lvlbycol[trykiolor] = 8
+			lvlbycol[trykiolor] = self.highestplaceofnoappearance[trykiolor]
 		for trycollvl in range(9, 17):
 			reqmed = self.lvldict[trycollvl]['reqmed']
 			for tryreqmed in reqmed.keys():
@@ -560,6 +567,10 @@ class Current:
 		print " "
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
+		if lvlbyap < 16:
+			abs = float(float(ap)/float(self.lvldict[lvlbyap+1]['ap']))
+			rel = float(float(ap-self.lvldict[lvlbyap]['ap'])/float(self.lvldict[lvlbyap+1]['ap']-self.lvldict[lvlbyap]['ap']))
+			print "Absolute AP % of the next ({:2}) lvl_by_AP: {:.5%}   Relative AP % of the next ({:2}) lvl_by_AP: {:.5%}".format(lvlbyap+1,abs,lvlbyap+1,rel)
 		print "lvl_by_medals: %2d " % lvlbymed
 
 	def stdoutb(self,lvlbycol):
@@ -584,8 +595,8 @@ class Current:
 
 				print "Those are the badges which are awaiting promotion to %s:" % bleh
 				tabelka = {
-					'h': ["Name", "Current", "Left", "Desired lvl", "% Completed Total", "% Completed Lvl",
-						  "Min AP to complete", "Description"],
+					'h': ["Name", "Current", "Left", "Desired lvl", "% Compl. Total", "% Compl. Lvl",
+						  "Min AP to compl.", "Description"],
 					't': []
 				}
 				from tabulate import tabulate
@@ -755,7 +766,7 @@ class Current:
 		lvlbymedfir = self.generatethereqmedintoselflvldictbtwlvlbymedfir(realcountofmedalsmulti)
 		reallvl = self.calcreallvl(lvlbyap, lvlbymedfir)
 		lvlbycol = self.calclvlbycol(realcountofmedalsmulti)
-		lvlbymed = min(lvlbycol.values())
+		lvlbymed = min([lvlbycol[i] for i in ('silver', 'gold', 'platinum', 'onyx')])
 		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
 		aspirmulti = self.findaspirmulti(aspirujacy)
 		weneedleft = self.calcweneedleft(lvlbycol)
