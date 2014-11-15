@@ -418,6 +418,7 @@ class Current:
 
 	def findaspirujacy(self, curmedalsbycol, current):
 		aspirujacy = {}
+		testulist = []
 		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 
@@ -438,67 +439,76 @@ class Current:
 						print "current[wklej]: %s" % current[wklej]
 						print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
 						print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
-						while True:
-							if (
-								(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-									(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-										(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-											(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-												(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-								):
-								while (
-									(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-										(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-											(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-												(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-													(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-								):
-									if (
-									(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
-										(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-											(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
-									):
-										newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-										newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-										print "a1 %s %s" % (newkolor, newcolowr)  # debug
-									elif (
-									(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
-										(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-									):
-										newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-										newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-										print "a2 %s %s" % (newkolor, newcolowr)  # debug
-									else:
-										print "Co jest?"
-								if (
-									(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-										(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-											(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-												(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-													(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-								):
-									if (
-									(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
-										(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-											(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
-									):
-										newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-										newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-										print "a1 %s %s" % (newkolor, newcolowr)  # debug
-									elif (
-									(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
-										(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-									):
-										newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-										newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-										print "a2 %s %s" % (newkolor, newcolowr)  # debug
-									else:
-										print "Co jest?"
-							else:
-								if not (str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1]) == 'onyx'):
-									aspirujacy[str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1])].append(wklej)
-								print "QQQQQQQQQQQQ %s : %s %s" % (wklej,newkolor,newcolowr)
-								break
+						if (
+							(int(self.medaldict[wklej]['walk'][newkolor])) < (int(current[wklej])) < (int(self.medaldict[wklej]['walk'][newcolowr]))
+						):
+							aspirujacy[colowr].append(wklej)
+						elif ((int(self.medaldict[wklej]['walk'][newcolowr])) == (int(current[wklej]))):
+							aspirujacy[colowr].append(wklej)
+						#while True:
+						#	if (
+						#		(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
+						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
+						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
+						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
+						#						(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+						#		):
+						#		while (
+						#			(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
+						#				(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
+						#					(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
+						#						(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
+						#							(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+						#		):
+						#			if (
+						#			(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
+						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
+						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
+						#			):
+						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
+						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
+						#				print "a1 %s %s" % (newkolor, newcolowr)  # debug
+						#			elif (
+						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
+						#				(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+						#			):
+						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
+						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
+						#				print "a2 %s %s" % (newkolor, newcolowr)  # debug
+						#			else:
+						#				print "Co jest?"
+						#		if (
+						#			(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
+						#				(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
+						#					(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
+						#						(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
+						#							(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+						#		):
+						#			if (
+						#			(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
+						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
+						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
+						#			):
+						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
+						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
+						#				print "a1 %s %s" % (newkolor, newcolowr)  # debug
+						#			elif (
+						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
+						#				(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
+						#			):
+						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
+						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
+						#				print "a2 %s %s" % (newkolor, newcolowr)  # debug
+						#			else:
+						#				print "Co jest?"
+						#	else:
+						#		testu = str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1])
+						#		testulist.append(testu)
+						#		if not (testu == 'onyx'):
+						#		#if True:
+						#			aspirujacy[testu].append(wklej)
+						#			print "QQQQQQQQQQQQ %s : %s %s a testu to %s" % (wklej,newkolor,newcolowr,testu)
+						#		break
 
 		return aspirujacy
 
