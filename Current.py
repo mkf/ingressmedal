@@ -420,12 +420,19 @@ class Current:
 						print "current[wklej]: %s" % current[wklej]
 						print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
 						print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
-						while ((self.medaldict[wklej]['walk'][newcolowr]-current[wklej]<0) or (current[wklej]-self.medaldict[wklej]['walk'][newkolor]<0) or (current[wklej]==self.medaldict[wklej]['walk'][newcolowr]) or (current[wklej]>self.medaldict[wklej]['walk'][newcolowr]) or (current[wklej]<self.medaldict[wklej]['walk'][newkolor])):
-							if ((self.medaldict[wklej]['walk'][newcolowr]-current[wklej]<0) or (current[wklej]==self.medaldict[wklej]['walk'][newcolowr]) or (current[wklej]>self.medaldict[wklej]['walk'][newcolowr])):
+						while ((self.medaldict[wklej]['walk'][newcolowr]-current[wklej]<0) or
+								   (current[wklej]-self.medaldict[wklej]['walk'][newkolor]<0) or
+								   (current[wklej]==self.medaldict[wklej]['walk'][newcolowr]) or
+								   (current[wklej]>self.medaldict[wklej]['walk'][newcolowr]) or
+								   (current[wklej]<self.medaldict[wklej]['walk'][newkolor])):
+							if ((self.medaldict[wklej]['walk'][newcolowr]-current[wklej]<0) or
+									(current[wklej]==self.medaldict[wklej]['walk'][newcolowr]) or
+									(current[wklej]>self.medaldict[wklej]['walk'][newcolowr])):
 								newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
 								newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
 								print "a1 %s %s" % (newkolor,newcolowr)  #debug
-							elif ((current[wklej]-self.medaldict[wklej]['walk'][newkolor]<0) or (current[wklej]<self.medaldict[wklej]['walk'][newkolor])):
+							elif ((current[wklej]-self.medaldict[wklej]['walk'][newkolor]<0) or
+									  (current[wklej]<self.medaldict[wklej]['walk'][newkolor])):
 								newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
 								newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
 								print "a2 %s %s" % (newkolor,newcolowr)  #debug
