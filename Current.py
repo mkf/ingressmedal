@@ -74,7 +74,7 @@ class Current:
 			'onyx': 15
 		}
 		self.namesforcurapcountable = {'seer': "Portals discovered (submitted)",
-									   'depllater': "Sure points from deployment of resonators except the capturing one and from upgrading resonators",
+									   'depllater': "Sure points from upgrading and deployment of resonators except the capturing res",
 									   'link': "Links created", 'field': "Control Fields created",
 									   'rechmin': "Minimum AP gained on recharging",
 									   'captres': "Capturing portals + first resonator",
@@ -196,14 +196,14 @@ class Current:
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatek(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or isinstance(int(ciag),int):
 			return True
 		else:
 			return False
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatekLUBn(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n'):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n') or isinstance(int(ciag),int):
 			return True
 		else:
 			return False
