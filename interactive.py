@@ -23,6 +23,12 @@ class Interactive:
 		self.currentquestionUSdict = {
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
 			'edit': "Current count of edits approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
+			'bronze': "Current count of bronze medals (count only the badges' icons of exactly that color), you may write 'n' if you don't want to write the count: ",
+			'silver': "Current count of silver medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'gold': "Current amount of gold medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'platinum': "Current amount of platinum medals (count only the badges' icons of exactly that color), you may write 'n' if you don't need them anymore at your level: ",
+			'onyx': "Current amount of onyx (black) medals (count only the badges' icons of exactly that color), you may write 'n' if you have the maximum level already: ",
+			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
 	def GivMeCurQSdict(self):
@@ -37,7 +43,7 @@ class Interactive:
 		currentdict = {}
 		for kluczyk in questionSdict.keys():
 			isint = False
-			while isint == False:
+			while not isint:
 				try:
 					currentdict[kluczyk] = int(raw_input(questionSdict[kluczyk]))
 					isint = True
@@ -46,7 +52,7 @@ class Interactive:
 					isint = False
 		for kluczyk in questionUSdict.keys():
 			isintorn = False
-			while isintorn == False:
+			while not isintorn:
 				phototry = raw_input(questionUSdict[kluczyk])
 				try:
 					currentdict[kluczyk] = int(phototry)
@@ -55,7 +61,7 @@ class Interactive:
 					print "Value is not int"
 					if phototry == "n":
 						currentdict[kluczyk] = 'n'
-						print "So you don't know, huh?"
+						print "You've entered the 'n' letter."
 						isintorn = True
 					else:
 						print "It is neither a number nor 'n', you seriously don't know how to answer such a simple question??"
@@ -79,19 +85,19 @@ class Interactive:
 			print " "
 			print "Exiting."
 			return "Crash"
-		elif jestwS == True:
+		elif jestwS:
 			isint = False
-			while isint == False:
+			while not isint:
 				try:
 					zmienna = int(raw_input(self.currentquestionSdict[dawajkeya]))
 					isint = True
 				except ValueError:
 					print "Value is not int"
 					isint = False
-		elif jestwUS == True:
+		elif jestwUS:
 			kluczyk = dawajkeya
 			isintorn = False
-			while isintorn == False:
+			while not isintorn:
 				phototry = raw_input(self.currentquestionUSdict[kluczyk])
 				try:
 					zmienna = int(phototry)
