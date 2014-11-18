@@ -57,8 +57,8 @@ class xmling:
 		mhiste = SubElement(modifhist,'mhiste')
 		mhiste.set('versionmodified',str(self.currentversion))
 		mhiste.set('timemodified',str(time.time()))
-		emptylist = []
-		dictback = {'base': base,'modifhist':modifhist,'data': data,'agents': emptylist}
+		emptydict = {}
+		dictback = {'base': base,'modifhist':modifhist,'data': data,'agents': emptydict}
 		return dictback
 
 
