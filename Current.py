@@ -774,3 +774,10 @@ class Current:
 		self.stdouta(reallvl,ap,lvlbyap,lvlbymed)
 		self.stdoutb(lvlbycol)
 		self.stdoutc(lvlbycol,winidleft,realcountofmedalsmulti,aspirmulti,current,curmedals)
+
+	#def appendtocsv(self,filename):
+	#	pass
+
+	def writetoxml(self,filename,existence,giving,give=None):
+		from xmling import xmling
+		pass
