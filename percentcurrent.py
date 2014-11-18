@@ -25,6 +25,12 @@ def BigNumberORn(ciag):
 		except:
 			raise argparse.ArgumentTypeError('It is not "n" nor a number. Although it had to.')
 
+def between(ciag):
+	if 20000000000000 < int(ciag) < 22000000000000:
+		return int(ciag)
+	else:
+		raise argparse.ArgumentTypeError('It is a wrong date')
+
 
 argh = argparse.ArgumentParser()
 from interactive import Interactive
@@ -47,6 +53,10 @@ for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 	argumentydodane.append(keyowo)
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)")
 argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
+argh.add_argument('-b','--writetodb',action='store_true',help="Append an entry to the database")
+argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",default='defdb.xml')
+argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
+argh.add_argument('-d','--datetime',type=between,help="Date of stats formatted YYYYMMDDHHMMSS")
 parmetry = vars(argh.parse_args())
 
 if parmetry['interactively'] == 'None' or parmetry['interactively'] is None:
@@ -61,3 +71,17 @@ else:
 curinst = Current('ArchieT', interactively, parmetry, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()
+if parmetry['writetodb']:
+	if parmetry['dbtype'] == 'xml':
+		if parmetry['datetime']:
+			strd = str(parmetry['datetime'])
+			dy = strd[0]+strd[1]+strd[2]+strd[3]
+			dm = strd[4]+strd[5]
+			dd = strd[6]+strd[7]
+			dh = strd[8]+strd[9]
+			di = strd[10]+strd[11]
+			ds = strd[12]+strd[13]
+			import calendar
+			tup = (int(dy),int(dm),int(dd),int(dh),int(di),int(ds))
+			timed = calendar.timegm(tup)
+			curinst.savetoxml(parmetry['dbfilepath'],timed)
