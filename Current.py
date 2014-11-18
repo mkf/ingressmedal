@@ -780,4 +780,7 @@ class Current:
 
 	def writetoxml(self,filename,existence,giving,give=None):
 		from xmling import xmling
-		pass
+		if not existence:
+			pass
+		elif existence:
+			pass

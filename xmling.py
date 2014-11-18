@@ -22,17 +22,22 @@ class xmling:
 					versionmsame = True
 				else:
 					versionmsame = False
-		return {'base': node,'versioncsame': versioncsame,'versionc': versionc,'versionmsame':versionmsame,'versionm':versionm}
+		modifhist = node.find('./modifhist')
+		return {'base': node,'modifhist':modifhist,'versioncsame': versioncsame,'versionc': versionc,'versionmsame':versionmsame,'versionm':versionm}
 
 	def creating(self):
 		import time
-		from xml.etree.ElementTree import Element
+		from xml.etree.ElementTree import Element,SubElement
 		base = Element('base')
 		base.set('versioncreated',str(self.currentversion))
 		base.set('versionmodified',str(self.currentversion))
 		base.set('timecreated',str(time.time()))
 		base.set('timemodified',str(time.time()))
-		return {'base': base}
+		modifhist = SubElement(base,'modifhist')
+		mhiste = SubElement(modifhist,'mhiste')
+		mhiste.set('versionmodified',str(self.currentversion))
+		mhiste.set('timemodified',str(time.time()))
+		return {'base': base,'modifhist':modifhist}
 
 	def createdata(self,base):
 		import time
@@ -40,8 +45,12 @@ class xmling:
 		data = SubElement(base,'data')
 		base.set('versionmodified',str(self.currentversion))
 		base.set('timemodified',str(time.time()))
+		modifhist = base.find('./modifhist')
+		mhiste = SubElement(modifhist,'mhiste')
+		mhiste.set('versionmodified',str(self.currentversion))
+		mhiste.set('timemodified',str(time.time()))
 		emptylist = []
-		dictback = {'base': base,'data': data,'agents': emptylist}
+		dictback = {'base': base,'modifhist':modifhist,'data': data,'agents': emptylist}
 		return dictback
 
 	@staticmethod
@@ -51,7 +60,8 @@ class xmling:
 		for agento in data.findall('./agent'):
 			codename = agento.attrib.get('codename')
 			agents[codename] = agento
-		return {'base': base,'data':data,'agents':agents}
+		modifhist = base.find('./modifhist')
+		return {'base': base,'modifhist':modifhist,'data':data,'agents':agents}
 
 	def createagent(self,udictofpow,codename):
 		import time
@@ -63,10 +73,14 @@ class xmling:
 			dictofpower['agents'][codename] = agent
 			dictofpower['base'].set('versionmodified',str(self.currentversion))
 			dictofpower['base'].set('timemodified',str(time.time()))
+			mhiste = SubElement(dictofpower['modifhist'],'mhiste')
+			mhiste.set('versionmodified',str(self.currentversion))
+			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
 	def renameagent(self,udictofpow,before,after):
 		import time
+		from xml.etree.ElementTree import SubElement
 		dictofpower = udictofpow
 		if after not in dictofpower['agents']:
 			dictofpower['agents'][before].set('codename',after)
@@ -74,6 +88,9 @@ class xmling:
 			dictofpower['agents'].delete(before)
 			dictofpower['base'].set('versionmodified',str(self.currentversion))
 			dictofpower['base'].set('timemodified',str(time.time()))
+			mhiste = SubElement(dictofpower['modifhist'],'mhiste')
+			mhiste.set('versionmodified',str(self.currentversion))
+			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
 
@@ -88,21 +105,25 @@ class xmling:
 		e.set('time',str(timed))
 		for s in dadict.keys():
 			e.set(str(s),str(dadict[s]))
-		base.set('versioncreated',str(self.currentversion))
 		base.set('versionmodified',str(self.currentversion))
-		base.set('timecreated',str(time.time()))
 		base.set('timemodified',str(time.time()))
+		modifhist = dictofpower['modifhist']
+		mhiste = SubElement(modifhist,'mhiste')
+		mhiste.set('versionmodified',str(self.currentversion))
+		mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
 	def deleteentry(self,udictofpower,codename):
 		pass
 
+	def importfile(self,filename,udictofpower):
+		pass
 
 	@staticmethod
-	def saving(what,filename,really=True):
+	def saving(base,filename,really=True):
 		from xml.etree import ElementTree as ET
 		from xml.dom import minidom
-		rough_string = ET.tostring(what,'utf-8')
+		rough_string = ET.tostring(base,'utf-8')
 		reparsed = minidom.parseString(rough_string)
 		juz = reparsed.toprettyxml(indent="  ")
 		if really:
