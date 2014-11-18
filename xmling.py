@@ -106,8 +106,11 @@ class xmling:
 	def appendentry(self,udictofpower,timed,dadict,codename):
 		import time
 		from xml.etree.ElementTree import SubElement
-		dictofpower = udictofpower
-		base = dictofpower['base']
+		ydictofpower = udictofpower
+		base = ydictofpower['base']
+		if codename not in ydictofpower['agents']:
+			odictofpower = self.createagent(ydictofpower,codename)
+			dictofpower = odictofpower
 		agent = dictofpower['agents'][codename]
 		e = SubElement(agent,'entry')
 		e.set('time',str(timed))
@@ -154,7 +157,12 @@ class xmling:
 			pbd = x.opening(filepath)
 			pd = x.opendata(pbd['base'])
 			pdic = x.appendentry(pd,timed,dadict,codename)
+			x.saving(pdic['base'],filepath)
 		elif os.path.isfile(filepath):
 			raise IOError
 		else:
-			pass
+			x = xmling()
+			pbd = x.creating()
+			pd = x.createdata(pbd['base'])
+			pdic = x.appendentry(pd,timed,dadict,codename)
+			x.saving(pdic['base'],filepath)
