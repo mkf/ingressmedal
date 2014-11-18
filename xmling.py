@@ -105,8 +105,10 @@ class xmling:
 		entryout = {}
 		from clarifydata import clarifydata
 		for entry in dictofpower['agents'][codename].findall('./entry'):
+			entryh = {}
 			for par in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
-				entryout[par] = entry.attrib.get(par)
+				entryh[par] = entry.attrib.get(par)
+			entryout[entryh['timed']] = entryh
 		return entryout
 
 
