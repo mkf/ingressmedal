@@ -101,6 +101,14 @@ class xmling:
 			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
+	def readingentries(self,dictofpower,codename):
+		entryout = {}
+		from clarifydata import clarifydata
+		for entry in dictofpower['agents'][codename].findall('./entry'):
+			for par in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
+				entryout[par] = entry.attrib.get(par)
+		return entryout
+
 
 
 	def appendentry(self,udictofpower,timed,dadict,codename):
