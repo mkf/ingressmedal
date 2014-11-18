@@ -3,6 +3,7 @@ class xmling:
 	def __init__(self):
 		self.versionhistory = ('0','1.0.1.0')
 		self.currentversion = '1.0.1.0'
+		self.progname = "ingressmedal by ArchieT"
 
 	def opening(self,filename):
 		from xml.etree import ElementTree as ET
@@ -15,13 +16,19 @@ class xmling:
 				if versionc == self.currentversion:
 					versioncsame = True
 				else:
+					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versioncsame = False
 			elif name == 'versionmodified':
 				versionm = value
 				if versionm == self.currentversion:
 					versionmsame = True
 				else:
+					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versionmsame = False
+			elif name == 'progname':
+				if not name == self.progname:
+					print "Not our file"
+					quit()
 		modifhist = node.find('./modifhist')
 		return {'base': node,'modifhist':modifhist,'versioncsame': versioncsame,'versionc': versionc,'versionmsame':versionmsame,'versionm':versionm}
 
@@ -33,6 +40,7 @@ class xmling:
 		base.set('versionmodified',str(self.currentversion))
 		base.set('timecreated',str(time.time()))
 		base.set('timemodified',str(time.time()))
+		base.set('progname',self.progname)
 		modifhist = SubElement(base,'modifhist')
 		mhiste = SubElement(modifhist,'mhiste')
 		mhiste.set('versionmodified',str(self.currentversion))
@@ -53,8 +61,8 @@ class xmling:
 		dictback = {'base': base,'modifhist':modifhist,'data': data,'agents': emptylist}
 		return dictback
 
-	@staticmethod
-	def opendata(base):
+
+	def opendata(self,base):
 		data = base.find('./data')
 		agents = []
 		for agento in data.findall('./agent'):
@@ -119,8 +127,7 @@ class xmling:
 	def importfile(self,filename,udictofpower):
 		pass
 
-	@staticmethod
-	def saving(base,filename,really=True):
+	def saving(self,base,filename,really=True):
 		from xml.etree import ElementTree as ET
 		from xml.dom import minidom
 		rough_string = ET.tostring(base,'utf-8')
@@ -133,3 +140,21 @@ class xmling:
 			print "We're saving to %s now" % filename
 			print ":::::"
 			print juz
+
+	@staticmethod
+	def justappendentrytoxml(filepath,giving,timed,codename,give):
+		import os
+		dadict = {}
+		from clarifydata import clarifydata
+		for i in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
+			dadict[i] = give[i]
+
+		if os.path.isfile(filepath) and os.access(filepath,os.W_OK):
+			x = xmling()
+			pbd = x.opening(filepath)
+			pd = x.opendata(pbd['base'])
+			pdic = x.appendentry(pd,timed,dadict,codename)
+		elif os.path.isfile(filepath):
+			raise IOError
+		else:
+			pass
