@@ -708,6 +708,6 @@ class Current:
 	#def appendtocsv(self,filename):
 	#	pass
 
-	def savetoxml(self,filename,timed,):
+	def savetoxml(self,filename,timed):
 		from xmling import xmling
-		xmling.justappendentrytoxml(filename,"self.current",timed,codename,give=self.current)
+		xmling.justappendentrytoxml(filename,"self.current",timed,self.codename,give=self.current)
