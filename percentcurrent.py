@@ -25,6 +25,12 @@ def BigNumberORn(ciag):
 		except:
 			raise argparse.ArgumentTypeError('It is not "n" nor a number. Although it had to.')
 
+def between(ciag):
+	if 20000000000000 < int(ciag) < 22000000000000:
+		return int(ciag)
+	else:
+		raise argparse.ArgumentTypeError('It is a wrong date')
+
 
 argh = argparse.ArgumentParser()
 from interactive import Interactive
@@ -48,9 +54,9 @@ for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)")
 argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
 argh.add_argument('-b','--writetodb',action='store_true',help="Append an entry to the database")
-argh.add_argument('-f','--dbfilepath',type=argparse.FileType,help="Specify dabatase file",default='defdb.xml')
+argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",default='defdb.xml')
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
-argh.add_argument('-d','--datetime',type=int,help="Date of stats formatted YYYYMMDDHHMMSS",choices=xrange(20000000000000,22000000000000))
+argh.add_argument('-d','--datetime',type=between,help="Date of stats formatted YYYYMMDDHHMMSS")
 parmetry = vars(argh.parse_args())
 
 if parmetry['interactively'] == 'None' or parmetry['interactively'] is None:
