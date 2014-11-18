@@ -47,7 +47,7 @@ for keyowko in interaktywnosciowo.GivMeCurQUSdict().keys():
 	argumentydodane.append(keyowo)
 argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)")
 argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
-argh.add_argument('-b','--writetodb',action=store_true,help="Append an entry to the database")
+argh.add_argument('-b','--writetodb',action='store_true',help="Append an entry to the database")
 argh.add_argument('-f','--dbfilepath',type=argparse.FileType,help="Specify dabatase file",default='defdb.xml')
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
 argh.add_argument('-d','--datetime',type=int,help="Date of stats formatted YYYYMMDDHHMMSS",choices=xrange(20000000000000,22000000000000))
