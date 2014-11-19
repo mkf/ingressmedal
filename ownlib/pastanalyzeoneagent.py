@@ -59,8 +59,6 @@ class pastanalyzeoneagent:
 
 	def medalclimbing(self):
 		pastia = self.pastia
-		from ownlib.gameinfo import gameinfo
-		g = gameinfo()
 		from ownlib.clarifydata import clarifydata
 		c = clarifydata()
 		givba = {}
@@ -75,3 +73,13 @@ class pastanalyzeoneagent:
 					except:
 						pass
 		return givba
+
+	def propmedalclimbing(self,wha,color):
+		from ownlib.gameinfo import gameinfo
+		g = gameinfo()
+		new = {}
+		for par in wha.keys():
+			new[par] = [wha[par][0],[]]
+			for i in wha[par][1]:
+				new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
+		return new
