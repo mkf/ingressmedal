@@ -107,8 +107,7 @@ for i in head:
 	ind = head.index(i)
 	vert.append([i])
 	for a in tabel:
-		for b in a:
-			vert[ind].append(b)
+		vert[ind].append(a[ind])
 
 from tabulate import tabulate
 aut = tabulate(vert,floatfmt=".4f")
