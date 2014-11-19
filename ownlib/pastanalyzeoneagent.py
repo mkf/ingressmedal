@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class pastanalyzeoneagent:
-	def __init__(self,filepath,codename,overs=False):
+	def __init__(self,codename,filepath='defdb.xml',overs=False):
 		from ownlib.gameinfo import gameinfo
 		gameinf = gameinfo()
 		self.medaldict = gameinf.medaldict
