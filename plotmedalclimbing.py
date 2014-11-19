@@ -33,4 +33,3 @@ from ownlib.gameinfo import gameinfo
 ginf = gameinfo()
 clrs = clar.colorsqua
 dor = pa.medalclimbing()
-print dor

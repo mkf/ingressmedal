@@ -70,8 +70,8 @@ class pastanalyzeoneagent:
 			for s in pastia[e].keys():
 				if s in c.thesavelistgrouped['medalthings']:
 					try:
-						givba[s][1].append(int(parempastia[e][s]))
-						givba[s][0].append(int(e))
+						givba[s][1].append(int(pastia[e][s]))
+						givba[s][0].append(int(pastia[e]['timed']))
 					except:
 						pass
 		return givba
