@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
+from ownlib import gameinfo, xmling
+
 
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
 	def __init__(self, codename, interactiveliness, currorg, argdod, overs):
 		#------------------------constant definitions----------------
-		from gameinfo import gameinfo
 		gameinf = gameinfo()
 		self.medaldict = gameinf.medaldict
 		self.lvldict = gameinf.lvldict
 		self.highestplaceofnoappearance = gameinf.highestplaceofnoappearance
 		self.namesforcurapcountable = gameinf.namesforcurapcountable
 		#---------------end of constant definitions-----------------
-		from interactive import Interactive
+		from ownlib.interactive import Interactive
 
 		self.overs = overs
 
@@ -709,5 +710,4 @@ class Current:
 	#	pass
 
 	def savetoxml(self,filename,timed):
-		from xmling import xmling
 		xmling.justappendentrytoxml(filename,"self.current",timed,self.codename,give=self.current)

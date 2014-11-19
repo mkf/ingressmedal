@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 class pastanalyze:
 	def __init__(self,overs=False):
-		from xmling import xmling
-		from gameinfo import gameinfo
+		from ownlib.gameinfo import gameinfo
 		gameinf = gameinfo()
 		self.medaldict = gameinf.medaldict
 		self.lvldict = gameinf.lvldict

@@ -1,7 +1,8 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 import argparse
-from Current import Current
+
+from ownlib import Current
 
 
 def TrueOrFalse(ciag):
@@ -33,7 +34,7 @@ def between(ciag):
 
 
 argh = argparse.ArgumentParser()
-from interactive import Interactive
+from ownlib.interactive import Interactive
 
 interaktywnosciowo = Interactive()
 argumentydodane = []

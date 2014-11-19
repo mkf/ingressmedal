@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+from ownlib import gameinfo
+
 
 class Interactive:
 	"""This is a class of interactively entering your data"""
 
 	def __init__(self):
-		from gameinfo import gameinfo
 		gamei = gameinfo()
 		self.currentquestionSdict = gamei.currentquestionSdict
 		self.currentquestionUSdict = gamei.currentquestionUSdict

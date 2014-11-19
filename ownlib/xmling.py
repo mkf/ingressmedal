@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from ownlib import clarifydata
+
+
 class xmling:
 	def __init__(self):
 		self.versionhistory = ('0','1.0.1.0','1.1')
@@ -103,7 +106,6 @@ class xmling:
 
 	def readingentries(self,dictofpower,codename):
 		entryout = {}
-		from clarifydata import clarifydata
 		for entry in dictofpower['agents'][codename].findall('./entry'):
 			entryh = {}
 			for par in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
@@ -158,7 +160,7 @@ class xmling:
 	def justappendentrytoxml(filepath,giving,timed,codename,give):
 		import os
 		dadict = {}
-		from clarifydata import clarifydata
+		from ownlib.clarifydata import clarifydata
 		for i in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
 			dadict[i] = give[i]
 
