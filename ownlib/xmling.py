@@ -148,8 +148,9 @@ class xmling:
 		from xml.etree import ElementTree as ET
 		from xml.dom import minidom
 		rough_string = ET.tostring(base,'utf-8')
-		reparsed = minidom.parseString(rough_string)
-		juz = reparsed.toprettyxml(indent="  ")
+		#reparsed = minidom.parseString(rough_string)
+		#juz = reparsed.toprettyxml(indent="  ")
+		juz = rough_string
 		if really:
 			with open(filename,'w') as f:
 				f.write(juz)
