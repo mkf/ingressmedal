@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class pastanalyze:
+class pastanalyzeoneagent:
 	def __init__(self,overs=False):
 		from ownlib.gameinfo import gameinfo
 		gameinf = gameinfo()
