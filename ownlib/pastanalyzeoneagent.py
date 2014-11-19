@@ -57,3 +57,15 @@ class pastanalyzeoneagent:
 			new[i] = float(float(dgb[i]) / float(tajmbetw))
 		return new
 
+	def medalclimbing(self):
+		pastia = self.pastia
+		from ownlib.gameinfo import gameinfo
+		g = gameinfo()
+		from ownlib.clarifydata import clarifydata
+		c = clarifydata()
+		givba = {}
+		for parem in c.thesavelistgrouped['medalthings']:
+			givba[parem] = [[],[]]
+		for e in pastia.keys():
+			for s in e.keys():
+				pass
