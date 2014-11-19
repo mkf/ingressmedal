@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ownlib import clarifydata
+from ownlib.clarifydata import clarifydata
 
 
 class xmling:
@@ -107,10 +107,12 @@ class xmling:
 
 	def readingentries(self,dictofpower,codename):
 		entryout = {}
+		clar = clarifydata()
 		for entry in dictofpower['agents'][codename].findall('./entry'):
 			entryh = {}
-			for par in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
+			for par in clar.AskForTheListOfDataToBeSavedFromCurrent:
 				entryh[par] = entry.attrib.get(par)
+			entryh['timed'] = entry.attrib.get('time')
 			entryout[entryh['timed']] = entryh
 		return entryout
 

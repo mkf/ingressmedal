@@ -56,7 +56,7 @@ class Current:
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or not (type(int(bzdurkaldkfh)) == int):
-						print type(bzdurkaldkfh)
+						#print type(bzdurkaldkfh)
 						kluczykoal.append(str(kluczykoa))
 					# print "jestnolnem" #debug
 				except:
