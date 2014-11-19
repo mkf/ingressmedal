@@ -60,6 +60,10 @@ argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default=
 argh.add_argument('-d','--datetime',type=between,help="Date of stats formatted YYYYMMDDHHMMSS")
 parmetry = vars(argh.parse_args())
 
+if parmetry['writetodb'] and not parmetry['datetime']:
+	print "Argument '-d YYMMDDHHMMSS' required it you want to write to db. See --help for more information"
+	quit()
+
 if parmetry['interactively'] == 'None' or parmetry['interactively'] is None:
 	interactively = True
 else:
