@@ -105,7 +105,7 @@ for entry in entries.keys():
 vert = []
 for i in head:
 	ind = head.index(i)
-	vert[ind] = [i]
+	vert.append([i])
 	for a in tabel:
 		for b in a:
 			vert[ind].append(b)
