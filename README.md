@@ -9,6 +9,8 @@ Usage
 ***The code is now functional, but the whole project is still at a very early stage of development***
 
 It can print you the amount of AP you gained from different actions and their percentage of total AP.
+It can save your entry to XML.
+It can read your data from XML and tell you your average number of [attribute] per week between entries.
 
 Currently you have to enter the numbers manually. I'm going to implement OCR in the future.
 
