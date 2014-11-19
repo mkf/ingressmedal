@@ -43,7 +43,7 @@ class clarifydata:
 				'destr',
 				'guard',
 				'guardnow',
-			)
+			),
 			'notmedalbutap': ('destrlink','destrfield','photo','edit')
 		}
 

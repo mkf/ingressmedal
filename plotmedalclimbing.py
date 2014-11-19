@@ -20,6 +20,8 @@ argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default=
 argh.add_argument('-n','--codename',type=str,help="Enter codename (soon you will be able to use it multiple times",required=True)
 parmetry = vars(argh.parse_args())
 
+codename = parmetry['codename']
+
 if parmetry['dbfilepath']:
 	pa = pastanalyzeoneagent(codename,filepath=str(parmetry['dbfilepath']))
 else:
