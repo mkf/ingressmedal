@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from ownlib import clarifydata
+
+
 class xmling:
 	def __init__(self):
 		self.versionhistory = ('0','1.0.1.0','1.1')
@@ -9,7 +12,8 @@ class xmling:
 		from xml.etree import ElementTree as ET
 		with open(filename,'r') as f:
 			tree = ET.parse(f)
-		node = tree.find('./base')
+		#node = tree.find('./base')
+		node = tree.getroot()
 		for name, value in node.attrib.items():
 			if name == 'versioncreated':
 				versionc = value
@@ -26,7 +30,7 @@ class xmling:
 					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versionmsame = False
 			elif name == 'progname':
-				if not name == self.progname:
+				if value != self.progname:
 					print "Not our file"
 					quit()
 		modifhist = node.find('./modifhist')
@@ -64,7 +68,7 @@ class xmling:
 
 	def opendata(self,base):
 		data = base.find('./data')
-		agents = []
+		agents = {}
 		for agento in data.findall('./agent'):
 			codename = agento.attrib.get('codename')
 			agents[codename] = agento
@@ -101,6 +105,15 @@ class xmling:
 			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
+	def readingentries(self,dictofpower,codename):
+		entryout = {}
+		for entry in dictofpower['agents'][codename].findall('./entry'):
+			entryh = {}
+			for par in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
+				entryh[par] = entry.attrib.get(par)
+			entryout[entryh['timed']] = entryh
+		return entryout
+
 
 
 	def appendentry(self,udictofpower,timed,dadict,codename):
@@ -111,6 +124,7 @@ class xmling:
 		if codename not in ydictofpower['agents']:
 			odictofpower = self.createagent(ydictofpower,codename)
 			dictofpower = odictofpower
+		else: dictofpower = ydictofpower
 		agent = dictofpower['agents'][codename]
 		e = SubElement(agent,'entry')
 		e.set('time',str(timed))
@@ -148,7 +162,7 @@ class xmling:
 	def justappendentrytoxml(filepath,giving,timed,codename,give):
 		import os
 		dadict = {}
-		from clarifydata import clarifydata
+		from ownlib.clarifydata import clarifydata
 		for i in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
 			dadict[i] = give[i]
 
