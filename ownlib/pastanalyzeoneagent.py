@@ -21,16 +21,16 @@ class pastanalyzeoneagent:
 		tajmy = sorted(pastia.keys())
 		self.tajmy = tajmy
 		self.pastia = pastia
-	def gainpertime(self,param):
+	def gainbetweenentries(self,param):
 		pastia = self.pastia
 		tajmy = self.tajmy
 		dictgainpertime = {}
 		for i  in tajmy:
 			if tajmy.index(i) == 0:
-				pass
+				first = i
 			else:
 				try:
-					dictgainpertime[i][param] = int(pastia[i][param]) - int(pastia[tajmy[tajmy.index(i)-1]][param])
+					dictgainpertime[i] = int(pastia[i][param]) - int(pastia[tajmy[tajmy.index(i)-1]][param])
 				except ValueError:
 					if pastia[i][param] == 'n':
 						pass
@@ -40,8 +40,20 @@ class pastanalyzeoneagent:
 								pass
 							else:
 								try:
-									dictgainpertime[i][param] = int(pastia[i][param]) - int(pastia[tajmy[o]][param])
+									dictgainpertime[i] = int(pastia[i][param]) - int(pastia[tajmy[o]][param])
 									break
 								except ValueError:
 									pass
-		return dictgainpertime
+		return {'d': dictgainpertime, 'f': first}
+
+	def gainpertime(self,dgb,first):
+		new = {}
+		for i in sorted(dgb.keys()):
+			if min(sorted(dgb.keys())) == i:
+				tajmbetw = int(i) - int(first)
+			else:
+				tajmbetw = int(i) - int(last)
+			last = i
+			new[i] = float(float(dgb[i]) / float(tajmbetw))
+		return new
+
