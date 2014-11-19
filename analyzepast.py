@@ -103,7 +103,7 @@ for entry in entries.keys():
 	tabel.append(subt)
 
 from tabulate import tabulate
-aut = tabulate(tabel,headers=head,floatfmt={":.4f"})
+aut = tabulate(tabel,headers=head,floatfmt=":.4f")
 print " "
 print " "
 print aut
