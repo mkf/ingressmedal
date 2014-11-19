@@ -12,7 +12,8 @@ class xmling:
 		from xml.etree import ElementTree as ET
 		with open(filename,'r') as f:
 			tree = ET.parse(f)
-		node = tree.find('./base')
+		#node = tree.find('./base')
+		node = tree.getroot()
 		for name, value in node.attrib.items():
 			if name == 'versioncreated':
 				versionc = value
@@ -29,7 +30,7 @@ class xmling:
 					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versionmsame = False
 			elif name == 'progname':
-				if not name == self.progname:
+				if value != self.progname:
 					print "Not our file"
 					quit()
 		modifhist = node.find('./modifhist')
@@ -67,7 +68,7 @@ class xmling:
 
 	def opendata(self,base):
 		data = base.find('./data')
-		agents = []
+		agents = {}
 		for agento in data.findall('./agent'):
 			codename = agento.attrib.get('codename')
 			agents[codename] = agento
@@ -123,6 +124,7 @@ class xmling:
 		if codename not in ydictofpower['agents']:
 			odictofpower = self.createagent(ydictofpower,codename)
 			dictofpower = odictofpower
+		else: dictofpower = ydictofpower
 		agent = dictofpower['agents'][codename]
 		e = SubElement(agent,'entry')
 		e.set('time',str(timed))

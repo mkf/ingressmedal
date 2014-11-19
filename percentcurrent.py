@@ -74,7 +74,7 @@ curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
 	if parmetry['dbtype'] == 'xml':
-		if parmetry['datetime']:
+		if int(parmetry['datetime']) > 20000000000000:
 			strd = str(parmetry['datetime'])
 			dy = strd[0]+strd[1]+strd[2]+strd[3]
 			dm = strd[4]+strd[5]
@@ -86,3 +86,6 @@ if parmetry['writetodb']:
 			tup = (int(dy),int(dm),int(dd),int(dh),int(di),int(ds))
 			timed = calendar.timegm(tup)
 			curinst.savetoxml(parmetry['dbfilepath'],timed)
+			print " "
+			print " "
+			print "Entry saved to %s" % parmetry['dbfilepath']
