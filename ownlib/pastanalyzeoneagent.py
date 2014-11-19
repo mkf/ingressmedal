@@ -17,7 +17,31 @@ class pastanalyzeoneagent:
 		for keyik in pastija.keys():
 			pastia[int(keyik)] = pastija[keyik]
 		from clarifydata import clarifydata
-		clar = clarifydata().AskForTheListOfDataToBeSavedFromCurrent
+		self.clar = clarifydata().AskForTheListOfDataToBeSavedFromCurrent
 		tajmy = sorted(pastia.keys())
-
-	#def
+		self.tajmy = tajmy
+		self.pastia = pastia
+	def gainpertime(self,param):
+		pastia = self.pastia
+		tajmy = self.tajmy
+		dictgainpertime = {}
+		for i  in tajmy:
+			if tajmy.index(i) == 0:
+				pass
+			else:
+				try:
+					dictgainpertime[i][param] = int(pastia[i][param]) - int(pastia[tajmy[tajmy.index(i)-1]][param])
+				except ValueError:
+					if pastia[i][param] == 'n':
+						pass
+					elif pastia[tajmy[tajmy.index(i)-1]][param] == 'n':
+						for o in xrange((tajmy.index(i)-1),-1,-1):
+							if pastia[tajmy[o]] == 'n':
+								pass
+							else:
+								try:
+									dictgainpertime[i][param] = int(pastia[i][param]) - int(pastia[tajmy[o]][param])
+									break
+								except ValueError:
+									pass
+		return dictgainpertime
