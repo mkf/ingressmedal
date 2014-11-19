@@ -15,13 +15,14 @@ def between(ciag):
 	else:
 		raise argparse.ArgumentTypeError('It is a wrong date')
 argh = argparse.ArgumentParser()
-argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)")
-argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
+argh.add_argument('-i', '--interactively', type=TrueOrFalse, help="Interactively (True/False)",choices=(True,False))
+argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)",choices=(True,False))
 argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",default='defdb.xml')
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
 argh.add_argument('-s','--startdatetime',type=between,help="Start date of data to analyze formatted YYYYMMDDHHMMSS",default=20000000000000)
 argh.add_argument('-e','--enddatetime',type=between,help="End date of data to analyze formatted YYYYMMDDHHMMSS",default=20000000000000)
 argh.add_argument('-n','--codename',type=str,help="Enter codename (soon you will be able to use ut multiple times",required=True)
+argh.add_argument('-v','--vertically',type=TrueOrFalse,help="Show the table vertically True(default)/False",choices=(True,False),default=True)
 #TODO: multiple codenames — multiple Agents to be analyzed
 parmetry = vars(argh.parse_args())
 if parmetry['dbtype'] == 'xml':
@@ -101,9 +102,19 @@ for entry in entries.keys():
 	for par in head:
 		subt.append(float(float(entries[entry][par])*float(60*60*24*7)))
 	tabel.append(subt)
+if not parmetry['vertically']:
+	from tabulate import tabulate
+	aut = tabulate(tabel,headers=head,floatfmt=".4f")
+elif parmetry['vertically']:
+	vert = []
+	for i in head:
+		ind = head.index(i)
+		vert.append([i])
+		for a in tabel:
+			vert[ind].append(a[ind])
 
-from tabulate import tabulate
-aut = tabulate(tabel,headers=head,floatfmt=".4f")
+	from tabulate import tabulate
+	aut = tabulate(vert,floatfmt=".4f")
 print " "
 print " "
 print aut
