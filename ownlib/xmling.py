@@ -20,14 +20,20 @@ class xmling:
 				if versionc == self.currentversion:
 					versioncsame = True
 				else:
-					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
+					try:
+						self.versionhistory.index(versionc)
+					except:
+						print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versioncsame = False
 			elif name == 'versionmodified':
 				versionm = value
 				if versionm == self.currentversion:
 					versionmsame = True
 				else:
-					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
+					try:
+						self.versionhistory.index(versionm)
+					except:
+						print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versionmsame = False
 			elif name == 'progname':
 				if value != self.progname:
