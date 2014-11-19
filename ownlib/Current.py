@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from ownlib import gameinfo, xmling
+from ownlib.gameinfo import gameinfo
+from ownlib.xmling import xmling
 
 
 class Current:

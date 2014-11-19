@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 
-from ownlib import Current
+from ownlib.Current import Current
 
 
 def TrueOrFalse(ciag):

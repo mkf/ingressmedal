@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ownlib import gameinfo
+from ownlib.gameinfo import gameinfo
 
 
 class Interactive:
