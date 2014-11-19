@@ -66,6 +66,12 @@ class pastanalyzeoneagent:
 		givba = {}
 		for parem in c.thesavelistgrouped['medalthings']:
 			givba[parem] = [[],[]]
-		for e in pastia.keys():
-			for s in e.keys():
-				pass
+		for e in sorted(pastia.keys()):
+			for s in pastia[e].keys():
+				if s in c.thesavelistgrouped['medalthings']:
+					try:
+						givba[s][1].append(int(parempastia[e][s]))
+						givba[s][0].append(int(e))
+					except:
+						pass
+		return givba

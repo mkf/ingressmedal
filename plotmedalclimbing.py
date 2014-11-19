@@ -1,6 +1,7 @@
 #!/usr/bin/python2.7
 #  -*- coding: utf-8 -*-
 import argparse
+from ownlib.pastanalyzeoneagent import pastanalyzeoneagent
 
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
@@ -29,3 +30,5 @@ clar = clarifydata()
 from ownlib.gameinfo import gameinfo
 ginf = gameinfo()
 clrs = clar.colorsqua
+dor = pa.medalclimbing()
+print dor
