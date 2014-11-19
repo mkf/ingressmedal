@@ -99,11 +99,11 @@ tabel = []
 for entry in entries.keys():
 	subt = []
 	for par in head:
-		subt.append(float(float(entries[entry][par])/float(60*60*24*7)))
+		subt.append(float(float(entries[entry][par])*float(60*60*24*7)))
 	tabel.append(subt)
 
 from tabulate import tabulate
-aut = tabulate(tabel,headers=head,floatfmt=":.4f")
+aut = tabulate(tabel,headers=head,floatfmt=".4f")
 print " "
 print " "
 print aut
