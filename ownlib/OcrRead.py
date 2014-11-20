@@ -11,8 +11,13 @@ class OcrRead:
 		from PIL import Image
 		im = Image.open(thefile)
 		im.save(cache)
-		from os import system
-		ocradin = system('ocrad -i %s' % cache)
+		from os import popen
+		#ocradin = system('ocrad -i %s' % cache)
+		ocradin = popen('ocrad -i %s' % cache).read()
+		#import subprocess
+		#proc = subprocess.Popen(["ocrad -i",cache],stdout=subprocess.PIPE,shell=True)
+		#(out,err)=proc.communicate()
+		#return out
 		return ocradin
 
 	@staticmethod
@@ -21,7 +26,8 @@ class OcrRead:
 		step = 'start'
 		elements = []
 		import re
-		for line in ocradin.read():
+		lines = ocradin.split('\n')
+		for line in lines:
 			if step == 'start':
 				oj = re.search(r'^\s*([\d\s\|.egiloqt,]+)\s*AP\s*$/sxmi',line)
 				if oj is not None:
