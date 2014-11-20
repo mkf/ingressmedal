@@ -76,7 +76,19 @@ class pastanalyzeoneagent:
 		return givba
 
 	@staticmethod
-	def propmedalclimbing(wha,color):
+	def propmedalclimbingrelative(wha,color):
+		from ownlib.gameinfo import gameinfo
+		g = gameinfo()
+		new = {}
+		for par in wha.keys():
+			new[par] = [wha[par][0],[]]
+			for i in wha[par][1]:
+				if not((float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color]))) > 1):
+					new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
+		return new
+
+	@staticmethod
+	def propmedalclimbingabsolute(wha,color):
 		from ownlib.gameinfo import gameinfo
 		g = gameinfo()
 		new = {}
@@ -85,3 +97,12 @@ class pastanalyzeoneagent:
 			for i in wha[par][1]:
 				new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
 		return new
+
+	def givemenewestcurrent(self):
+		return self.givemespeccurrent(max(self.givemetimes()))
+
+	def givemetimes(self):
+		return self.pastia.keys()
+
+	def givemespeccurrent(self,timed):
+		return self.pastia[timed]

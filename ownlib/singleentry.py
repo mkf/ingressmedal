@@ -100,6 +100,11 @@ class singleentry:
 	def calcrealcountofmedalsonce(self, current, what='current', cur=None):
 		if what == 'current':
 			countofmedalsonce = self.calccountofmedalsonce(what, current)
+		elif what == 'currentbutstr':
+			curi = {}
+			for i in current.keys():
+				curi[i] = int(current[i])
+			countofmedalsonce = self.calccountofmedalsonce('current', curi)
 		elif what == 'curmedals':
 			countofmedalsonce = self.calccountofmedalsonce(what, cur)
 		elif what == 'curmedalsbycol':
