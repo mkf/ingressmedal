@@ -13,9 +13,9 @@ def TrueOrFalse(ciag):
 
 argh = argparse.ArgumentParser()
 argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",default='defdb.xml')
-argh.add_argument('-w','--writeimg',action='store_true',help="Write chart to image file specified in '-i'")
-argh.add_argument('-i','--imgfile',type=str,help="Specify png file to save the chart to",default='chart.png')
-argh.add_argument('-j','--nogui',action='store_true',help='Run without pyplot GUI')
+#argh.add_argument('-w','--writeimg',action='store_true',help="Write chart to image file specified in '-i'")
+#argh.add_argument('-i','--imgfile',type=argparse.FileType(mode='w'),help="Specify png file to save the chart to")
+#argh.add_argument('-j','--nogui',action='store_true',help='Run without pyplot GUI')
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
 argh.add_argument('-n','--codename',type=str,help="Enter codename (soon you will be able to use it multiple times",required=True)
 arug = argh.add_mutually_exclusive_group()
@@ -95,4 +95,7 @@ def dtformater(x,pos): from datetime import datetime; return datetime.utcfromtim
 def percformater(x,pos): return '%2.f%%' % (x*100)
 ax.yaxis.set_major_formatter(FuncFormatter(percformater))
 ax.xaxis.set_major_formatter(FuncFormatter(dtformater))
+#if not parmetry['nogui']:
 plt.show()
+#if parmetry['writeimg']:
+#	plt.savefig(parmetry['imgfile'])
