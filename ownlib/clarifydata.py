@@ -28,7 +28,7 @@ class clarifydata:
 		)
 
 		self.thesavelistgrouped = {
-			'ap': ('ap'),
+			'ap': tuple(['ap']),
 			'medalcolors': ('bronze','silver','gold','platinum','onyx'),
 			'medalthings': (
 				'uniqvis',

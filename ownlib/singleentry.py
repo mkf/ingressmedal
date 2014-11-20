@@ -71,7 +71,7 @@ class singleentry:
 		# name is the identifier of an activity
 		# apable is a boolean information whether the activity brings you AP
 		if apable:
-			# noinspection PyUnreachableCode
+			# noinspection PyUnreachableCode,PyUnreachableCode
 			if name == 'seer':
 				return value * 1000
 			elif name == 'depl':
@@ -219,7 +219,8 @@ class singleentry:
 		aspirmulti['onyx'].append(aspirujacy['onyx'])
 		return aspirmulti
 
-	def calcweneedleft(self, lvlbycol):
+	@staticmethod
+	def calcweneedleft(lvlbycol):
 		from gameinfo import gameinfo
 		weneedleft = {}
 		for ckolor in lvlbycol.keys():
