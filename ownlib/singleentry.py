@@ -3,14 +3,16 @@
 class singleentry:
 	def __init__(self):
 		pass
-	def calclvlbyap(self,ap):
+	@staticmethod
+	def calclvlbyap(ap):
 		from ownlib.gameinfo import gameinfo
 		for lvltry in range(1, 17):
 			if ap >= gameinfo().lvldict[lvltry]['ap']:
 				lvlbyap = lvltry
 		return lvlbyap
 
-	def findcurrentmedals(self,current):
+	@staticmethod
+	def findcurrentmedals(current):
 		curmedals = {}
 		from ownlib.gameinfo import gameinfo
 		for medaltry in gameinfo().medaldict.keys():
@@ -130,7 +132,8 @@ class singleentry:
 				real = t
 		return real
 
-	def calclvlbycol(self, realcountofmedalsmulti):
+	@staticmethod
+	def calclvlbycol(realcountofmedalsmulti):
 		lvlbycol = {}
 		from gameinfo import gameinfo
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
@@ -145,7 +148,8 @@ class singleentry:
 					# print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
 		return lvlbycol
 
-	def calclvlbycol(self, realcountofmedalsmulti):
+	@staticmethod
+	def calclvlbycol(realcountofmedalsmulti):
 		lvlbycol = {}
 		from gameinfo import gameinfo
 		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
@@ -160,7 +164,8 @@ class singleentry:
 					# print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
 		return lvlbycol
 
-	def findaspirujacy(self, curmedalsbycol, current):
+	@staticmethod
+	def findaspirujacy(curmedalsbycol, current):
 		aspirujacy = {}
 		testulist = []
 		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
@@ -207,18 +212,20 @@ class singleentry:
 		return aspirmulti
 
 	def calcweneedleft(self, lvlbycol):
+		from gameinfo import gameinfo
 		weneedleft = {}
 		for ckolor in lvlbycol.keys():
 			if not (lvlbycol[ckolor] == 16):
 				try:
-					weneedleft[ckolor] = int(self.lvldict[lvlbycol[ckolor]][ckolor])
+					weneedleft[ckolor] = int(gameinfo().lvldict[lvlbycol[ckolor]][ckolor])
 				except:
 					weneedleft[ckolor] = False
 			else:
 				weneedleft[ckolor] = False
 		return weneedleft
 
-	def clarifytowinidleft(selfself, weneedleft, lvlbycol):
+	@staticmethod
+	def clarifytowinidleft(weneedleft, lvlbycol):
 		winidleft = {}
 
 		for ckolor in weneedleft.keys():

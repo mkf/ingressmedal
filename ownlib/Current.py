@@ -23,6 +23,7 @@ class Current:
 
 		interaktywnosc = Interactive()
 		self.interaktywnosc = interaktywnosc
+		# noinspection PySimplifyBooleanCheck
 		if interactiveliness == False:
 			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
@@ -193,22 +194,26 @@ class Current:
 
 		return singleentry().calclvlbyap(ap)
 
-	def findcurrentmedals(self, current):
+	@staticmethod
+	def findcurrentmedals(current):
 		from ownlib.singleentry import singleentry
 		return singleentry().findcurrentmedals(current)
 
 
-	def findcurrentmedalsbycolor(self, what, cur):
+	@staticmethod
+	def findcurrentmedalsbycolor(what, cur):
 		from ownlib.singleentry import singleentry
 		return singleentry().findcurrentmedalsbycolor(what,cur)
 
 
-	def calccountofmedalsonce(self, what, cur):
+	@staticmethod
+	def calccountofmedalsonce(what, cur):
 		from ownlib.singleentry import singleentry
 		return singleentry().findcurrentmedalsbycolor(what,cur)
 
 
-	def calcrealcountofmedalsonce(self, current, what='current', cur=None):
+	@staticmethod
+	def calcrealcountofmedalsonce(current, what='current', cur=None):
 		from ownlib.singleentry import singleentry
 		return singleentry().calcrealcountofmedalsonce(current,what=what,cur=cur)
 
@@ -257,11 +262,13 @@ class Current:
 				real = t
 		return real
 
-	def calclvlbycol(self, realcountofmedalsmulti):
+	@staticmethod
+	def calclvlbycol(realcountofmedalsmulti):
 		from singleentry import singleentry
 		return singleentry().calclvlbycol(realcountofmedalsmulti)
 
-	def findaspirujacy(self, curmedalsbycol, current):
+	@staticmethod
+	def findaspirujacy(curmedalsbycol, current):
 		from singleentry import singleentry
 		return singleentry().findaspirujacy(curmedalsbycol,current)
 
@@ -298,7 +305,8 @@ class Current:
 				weneedleft[ckolor] = False
 		return weneedleft
 
-	def clarifytowinidleft(selfself, weneedleft, lvlbycol):
+	@staticmethod
+	def clarifytowinidleft(weneedleft, lvlbycol):
 		winidleft = {}
 
 		for ckolor in weneedleft.keys():
@@ -318,7 +326,8 @@ class Current:
 				lvlbyap + 1, abs, lvlbyap + 1, rel)
 		print "lvl_by_medals: %2d " % lvlbymed
 
-	def stdoutb(self, lvlbycol):
+	@staticmethod
+	def stdoutb(lvlbycol):
 		for blah in ('silver', 'gold', 'platinum', 'onyx'):
 			if not lvlbycol[blah] == 8:
 				print "Level for medals' colour %s: %2d" % (blah, lvlbycol[blah])

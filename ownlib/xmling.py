@@ -72,7 +72,8 @@ class xmling:
 		return dictback
 
 
-	def opendata(self,base):
+	@staticmethod
+	def opendata(base):
 		data = base.find('./data')
 		agents = {}
 		for agento in data.findall('./agent'):
@@ -111,7 +112,8 @@ class xmling:
 			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
-	def readingentries(self,dictofpower,codename):
+	@staticmethod
+	def readingentries(dictofpower,codename):
 		entryout = {}
 		clar = clarifydata()
 		for entry in dictofpower['agents'][codename].findall('./entry'):
@@ -152,9 +154,10 @@ class xmling:
 	def importfile(self,filename,udictofpower):
 		pass
 
-	def saving(self,base,filename,really=True):
+	@staticmethod
+	def saving(base,filename,really=True):
 		from xml.etree import ElementTree as ET
-		from xml.dom import minidom
+		#from xml.dom import minidom
 		rough_string = ET.tostring(base,'utf-8')
 		#reparsed = minidom.parseString(rough_string)
 		#juz = reparsed.toprettyxml(indent="  ")

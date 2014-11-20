@@ -109,9 +109,9 @@ class gameinfo:
 		if True:
 			medlvltrytab = []
 			for possicolor in colorpossibilities:
-				if possicolor in self.lvldict[lvlmedtry]:
-					if int(self.lvldict[lvlmedtry][possicolor]) > 0:
-						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor])})
+				if possicolor in self.lvldict[lvl]:
+					if int(self.lvldict[lvl][possicolor]) > 0:
+						medlvltrytab.append({possicolor: int(self.lvldict[lvl][possicolor])})
 			give = {}
 			for a in medlvltrytab:
 				give.update(a)

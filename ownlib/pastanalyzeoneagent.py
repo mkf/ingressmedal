@@ -46,7 +46,8 @@ class pastanalyzeoneagent:
 									pass
 		return {'d': dictgainpertime, 'f': first}
 
-	def gainpertime(self,dgb,first):
+	@staticmethod
+	def gainpertime(dgb,first):
 		new = {}
 		for i in sorted(dgb.keys()):
 			if min(sorted(dgb.keys())) == i:
@@ -74,7 +75,8 @@ class pastanalyzeoneagent:
 						pass
 		return givba
 
-	def propmedalclimbing(self,wha,color):
+	@staticmethod
+	def propmedalclimbing(wha,color):
 		from ownlib.gameinfo import gameinfo
 		g = gameinfo()
 		new = {}
