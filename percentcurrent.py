@@ -58,6 +58,7 @@ argh.add_argument('-w','--writetodb',action='store_true',help="Append an entry t
 argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",default='defdb.xml')
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
 argh.add_argument('-d','--datetime',type=between,help="Date of stats formatted YYYYMMDDHHMMSS")
+argh.add_argument('-n','--codename',type=str,help="Agent's codename",required=True)
 parmetry = vars(argh.parse_args())
 
 if parmetry['writetodb'] and not parmetry['datetime']:
