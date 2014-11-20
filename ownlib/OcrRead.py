@@ -12,6 +12,7 @@ class OcrRead:
 		im.save(cache)
 		from os import system
 		ocradin = system('ocrad -i %s' % cache)
+		return ocradin
 
 	def prococrad(self,ocradin):
 		# stolen from https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php - Thanks!
