@@ -82,7 +82,7 @@ from matplotlib.ticker import FuncFormatter
 plotting = {}
 fig, ax = plt.subplots()
 for i in back.keys():
-	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
+	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
 #TODO: fix 'x and y must have the same dimension' error
 from matplotlib.font_manager import FontProperties
 fontP = FontProperties()
