@@ -75,11 +75,24 @@ for i in range(0,len(back.keys())):
 	dictclrs[sorted(back.keys())[i]] = clrs[i]
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 #for i in back.keys():
 #	for o in range(0,len(pa.givemetimes())):
 #		plt.plot(back[i][0][o],back[i][1][o],color=dictclrs[i])
+plotting = {}
+fig, ax = plt.subplots()
 for i in back.keys():
-	plt.plot(back[i][0],back[i][1],color=dictclrs[i])
+	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
 #TODO: fix 'x and y must have the same dimension' error
+from matplotlib.font_manager import FontProperties
+fontP = FontProperties()
+fontP.set_size('small')
+ax.legend(bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
 plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
+plt.title('Medals aspiring to %s' % coler)
+plt.ylabel('Percent of %s medal' % coler)
+def dtformater(x,pos): from datetime import datetime; return datetime.utcfromtimestamp(int(x)).isoformat(sep='\n')
+def percformater(x,pos): return '%2.f%%' % (x*100)
+ax.yaxis.set_major_formatter(FuncFormatter(percformater))
+ax.xaxis.set_major_formatter(FuncFormatter(dtformater))
 plt.show()
