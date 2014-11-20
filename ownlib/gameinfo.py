@@ -103,3 +103,16 @@ class gameinfo:
 			'onyx': "Current amount of onyx (black) medals (count only the badges' icons of exactly that color), you may write 'n' if you have the maximum level already: ",
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
+
+	def reqmed(self,lvl):
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		if True:
+			medlvltrytab = []
+			for possicolor in colorpossibilities:
+				if possicolor in self.lvldict[lvlmedtry]:
+					if int(self.lvldict[lvlmedtry][possicolor]) > 0:
+						medlvltrytab.append({possicolor: int(self.lvldict[lvlmedtry][possicolor])})
+			give = {}
+			for a in medlvltrytab:
+				give.update(a)
+		return give
