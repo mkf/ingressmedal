@@ -47,7 +47,7 @@ class clarifydata:
 			'notmedalbutap': ('destrlink','destrfield','photo','edit')
 		}
 
-		self.colorsqua = self.colorsonwhite
+
 
 		#colorbrewer2.org, qualitative, 12 data classes
 		self.colorsqualitative = (
@@ -79,6 +79,9 @@ class clarifydata:
 			'#00AA7F',
 			'#00CC00'
 		)
+
+		self.colorsqua = self.colorsonwhite
+
 
 	@property
 	def AskForTheListOfDataToBeSavedFromCurrent(self):
