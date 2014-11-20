@@ -47,8 +47,10 @@ class clarifydata:
 			'notmedalbutap': ('destrlink','destrfield','photo','edit')
 		}
 
+		self.colorsqua = self.colorsonwhite
+
 		#colorbrewer2.org, qualitative, 12 data classes
-		self.colorsqua = (
+		self.colorsqualitative = (
 			'#A6CEE3',
 			'#1F78B4',
 			'#B2DF8A',
@@ -61,6 +63,21 @@ class clarifydata:
 			'#6A3D9A',
 			'#FFFF99',
 			'#B15928'
+		)
+
+		self.colorsonwhite = (
+			'#000000',
+			'#FF0000',
+			'#0000FF',
+			'#FFEE00',
+			'#00CCFF',
+			'#FF00FF',
+			'#9E9E9E',
+			'#FFAA00',
+			'#0489B1',
+			'#AA5500',
+			'#00AA7F',
+			'#00CC00'
 		)
 
 	@property
