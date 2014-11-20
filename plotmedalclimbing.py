@@ -80,5 +80,6 @@ import matplotlib.pyplot as plt
 #		plt.plot(back[i][0][o],back[i][1][o],color=dictclrs[i])
 for i in back.keys():
 	plt.plot(back[i][0],back[i][1],color=dictclrs[i])
+#TODO: fix 'x and y must have the same dimension' error
 plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
 plt.show()
