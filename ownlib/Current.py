@@ -188,8 +188,8 @@ class Current:
 		return singleentry().minapfromact(name,value,apable)
 
 
-	@property
-	def calclvlbyap(self, ap):
+	@staticmethod
+	def calclvlbyap(ap):
 		from ownlib.singleentry import singleentry
 
 		return singleentry().calclvlbyap(ap)
@@ -209,7 +209,7 @@ class Current:
 	@staticmethod
 	def calccountofmedalsonce(what, cur):
 		from ownlib.singleentry import singleentry
-		return singleentry().findcurrentmedalsbycolor(what,cur)
+		return singleentry().calccountofmedalsonce(what,cur)
 
 
 	@staticmethod
@@ -512,7 +512,7 @@ class Current:
 		ap = current['ap']
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
-		lvlbyap = self.calclvlbyap
+		lvlbyap = self.calclvlbyap(ap)
 		curmedals = self.findcurrentmedals(current)
 		curmedalsbycol = self.findcurrentmedalsbycolor('curmedals', curmedals)
 		countofmedalsonce = self.calccountofmedalsonce('curmedalsbycol', curmedalsbycol)

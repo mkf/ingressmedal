@@ -34,6 +34,9 @@ class singleentry:
 			curmedals = self.findcurrentmedals(cur)
 		elif what == 'curmedals':
 			curmedals = cur
+		elif what == 'curmedalsbycol':
+			print "You want what you gave me?"
+			raise ValueError
 		else:
 			raise ValueError
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
