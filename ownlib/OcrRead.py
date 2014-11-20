@@ -4,9 +4,10 @@
 
 class OcrRead:
 	def __init__(self):
+		pass
 
-
-	def ocrad_get(self,thefile,cache):
+	@staticmethod
+	def ocrad_get(thefile,cache):
 		from PIL import Image
 		im = Image.open(thefile)
 		im.save(cache)
@@ -14,7 +15,8 @@ class OcrRead:
 		ocradin = system('ocrad -i %s' % cache)
 		return ocradin
 
-	def prococrad(self,ocradin):
+	@staticmethod
+	def prococrad(ocradin):
 		# stolen from https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php - Thanks!
 		step = 'start'
 		elements = []
@@ -43,13 +45,29 @@ class OcrRead:
 			#	if oj is not None:
 			#		count+=1
 			#		elements.append(oj)
-			elif step == 'discovery' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$/sxmi',line) as oj: bool(oj is not None)): count+=1; elements.append(oj)
-			elif step == 'building' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:MUs|XM|km|kln)?\s*$/sxmi',line) as oj: oj is not None): elements.append(oj)
-			elif step == 'combat' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line) as oj: oj is not None): elements.append(oj)
-			elif step == 'health' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:km|kln)\s*$/sxmi',line) as oj: oj is not None): elements.append(oj)
-			elif step == 'defense' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:(?:(?:km|kln|MU)-)?(?:days|clays|ilays|cl_ys|__ys|d_ys|_ays|\(l_ys))\s*$/sxmi',line) as oj: oj is not None): elements.append(oj)
-			elif step == 'missions' and (with re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line) as oj: oj is not None): elements.append(oj)
-			elif (with re.search(r'^\s*(month|week|now)\s*$/sxmi',line) as oj: oj is not None): print 'maybe because'; print oj
+			elif step == 'discovery':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$/sxmi',line)
+				if oj is not None:
+					count+=1
+					elements.append(oj)
+			elif step == 'building':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:MUs|XM|km|kln)?\s*$/sxmi',line)
+				if oj is not None: elements.append(oj)
+			elif step == 'combat':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line)
+				if oj is not None: elements.append(oj)
+			elif step == 'health':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:km|kln)\s*$/sxmi',line)
+				if oj is not None: elements.append(oj)
+			elif step == 'defense':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:(?:(?:km|kln|MU)-)?(?:days|clays|ilays|cl_ys|__ys|d_ys|_ays|\(l_ys))\s*$/sxmi',line)
+				if oj is not None: elements.append(oj)
+			elif step == 'missions':
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line)
+				if oj is not None: elements.append(oj)
+			else:
+				oj = re.search(r'^\s*(month|week|now)\s*$/sxmi',line)
+				if oj is not None: print 'maybe because'; print oj
 
 		elementojn = []
 		for i in elements:
