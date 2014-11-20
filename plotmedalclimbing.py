@@ -70,3 +70,15 @@ back = {}
 for i in barck.keys():
 	if not(len(barck[i][1]) == 0):
 		back[i] = barck[i]
+dictclrs = {}
+for i in range(0,len(back.keys())):
+	dictclrs[sorted(back.keys())[i]] = clrs[i]
+
+import matplotlib.pyplot as plt
+#for i in back.keys():
+#	for o in range(0,len(pa.givemetimes())):
+#		plt.plot(back[i][0][o],back[i][1][o],color=dictclrs[i])
+for i in back.keys():
+	plt.plot(back[i][0],back[i][1],color=dictclrs[i])
+plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
+plt.show()
