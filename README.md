@@ -15,6 +15,7 @@ Usage
 Currently you have to enter the numbers manually. I'm going to implement OCR in the future.
 
 Program currently works only in text-only mode.
+EDIT: Sometimes pyplot GUI is being opened.
 
 ###Search GMail for mails:
  * **edits**: *"Ingress Portal Data Edit Accepted:"*
