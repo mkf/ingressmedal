@@ -83,8 +83,10 @@ class pastanalyzeoneagent:
 		for par in wha.keys():
 			new[par] = [wha[par][0],[]]
 			for i in wha[par][1]:
-				if not((float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color]))) > 1):
+				if (not((float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color]))) > 1)) and (par in new):
 					new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
+				else:
+					new.pop(par,None)
 		return new
 
 	@staticmethod
