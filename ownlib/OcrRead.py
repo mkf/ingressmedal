@@ -62,9 +62,14 @@ class OcrRead:
 			pf = p7
 			elementojn.append(pf)
 
-		data = []
+		#data = []
 
-		#stats = getstats()
-		i = 0
+		#stats = self.getstats()
+		#i = 0
 
-		#for stat in stats: if ($stat->ocr)
+		#for stat in stats: if stat.ocr: data[stat.stat] = elements[i] ; i+=1
+
+		#return data
+		return elementojn
+
+	#def
