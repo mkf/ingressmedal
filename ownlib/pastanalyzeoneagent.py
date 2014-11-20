@@ -46,7 +46,8 @@ class pastanalyzeoneagent:
 									pass
 		return {'d': dictgainpertime, 'f': first}
 
-	def gainpertime(self,dgb,first):
+	@staticmethod
+	def gainpertime(dgb,first):
 		new = {}
 		for i in sorted(dgb.keys()):
 			if min(sorted(dgb.keys())) == i:
@@ -57,3 +58,53 @@ class pastanalyzeoneagent:
 			new[i] = float(float(dgb[i]) / float(tajmbetw))
 		return new
 
+	def medalclimbing(self):
+		pastia = self.pastia
+		from ownlib.clarifydata import clarifydata
+		c = clarifydata()
+		givba = {}
+		for parem in c.thesavelistgrouped['medalthings']:
+			givba[parem] = [[],[]]
+		for e in sorted(pastia.keys()):
+			for s in pastia[e].keys():
+				if s in c.thesavelistgrouped['medalthings']:
+					try:
+						givba[s][1].append(int(pastia[e][s]))
+						givba[s][0].append(int(pastia[e]['timed']))
+					except:
+						pass
+		return givba
+
+	@staticmethod
+	def propmedalclimbingrelative(wha,color):
+		from ownlib.gameinfo import gameinfo
+		g = gameinfo()
+		new = {}
+		for par in wha.keys():
+			new[par] = [wha[par][0],[]]
+			for i in wha[par][1]:
+				if (not((float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color]))) > 1)) and (par in new):
+					new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
+				else:
+					new.pop(par,None)
+		return new
+
+	@staticmethod
+	def propmedalclimbingabsolute(wha,color):
+		from ownlib.gameinfo import gameinfo
+		g = gameinfo()
+		new = {}
+		for par in wha.keys():
+			new[par] = [wha[par][0],[]]
+			for i in wha[par][1]:
+				new[par][1].append(float(float(wha[par][1][wha[par][1].index(i)])/float(g.medaldict[par if par != 'guardnow' else 'guard']['walk'][color])))
+		return new
+
+	def givemenewestcurrent(self):
+		return self.givemespeccurrent(max(self.givemetimes()))
+
+	def givemetimes(self):
+		return self.pastia.keys()
+
+	def givemespeccurrent(self,timed):
+		return self.pastia[timed]

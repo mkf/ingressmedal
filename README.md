@@ -11,10 +11,12 @@ Usage
  * It can print you the amount of AP you gained from different actions and their percentage of total AP.
  * It can save your entry to XML.
  * It can read your data from XML and tell you your average number of [attribute] per week between entries.
+ * It can plot you a chart containing climbing to medals based on the XML database file, at the moment you can only view it from pyplot GUI, change the view (crop,resize), and save it from pyplot GUI.
 
 Currently you have to enter the numbers manually. I'm going to implement OCR in the future.
 
 Program currently works only in text-only mode.
+EDIT: Sometimes pyplot GUI is being opened.
 
 ###Search GMail for mails:
  * **edits**: *"Ingress Portal Data Edit Accepted:"*
