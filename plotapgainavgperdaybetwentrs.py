@@ -33,7 +33,7 @@ from ownlib.gameinfo import gameinfo
 ginf = gameinfo()
 clrs = clar.colorsqua
 
-barck = pa.apgainavgperday()
+barck = pa.apgainavgperdaybetwentrs()
 back = {}
 for i in barck.keys():
 	if not(len(barck[i][1]) == 0):
