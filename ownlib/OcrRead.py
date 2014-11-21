@@ -19,7 +19,8 @@ class OcrRead:
 		return ocradin
 
 
-	def ocradalterproc(self,ocradin):
+	@staticmethod
+	def ocradalterproc(ocradin):
 		elements={}
 		import re
 		lines = ocradin.split('\n')

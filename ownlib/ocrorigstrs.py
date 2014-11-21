@@ -4,7 +4,7 @@ class ocrorigstrs:
 		self.sortedbyposition = (
 			'ap',
 			'uniqvis',
-			'seer',  #TODO: if it will find just the 'xm' instead of 'seer' here, should go to next one
+			'seer',
 			'xm',
 			'hack',
 			'depl',

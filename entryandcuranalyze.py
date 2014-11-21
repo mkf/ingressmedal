@@ -94,3 +94,9 @@ if parmetry['writetodb']:
 			print " "
 			print " "
 			print "Entry saved to %s" % parmetry['dbfilepath']
+else:
+	print " "
+	print " "
+	print "WARNING: Data were not saved - use -w parameter"
+	print " "
+	print " "

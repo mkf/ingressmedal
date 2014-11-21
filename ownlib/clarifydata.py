@@ -2,30 +2,36 @@
 
 class clarifydata:
 	def __init__(self):
-		self.listofdatatobesavedfromcurrent = (
-			'ap',
+		self.listofdataunavailablefromocr = (
+			#'ap',
 			'bronze',
 			'silver',
 			'gold',
 			'platinum',
 			'onyx',
-			'uniqvis',
-			'seer',
-			'hack',
-			'depl',
-			'link',
-			'field',
-			'rech',
-			'capt',
-			'uniqcapt',
-			'destr',
-			'guard',
+			#'uniqvis',
+			#'seer',
+			#'hack',
+			#'depl',
+			#'link',
+			#'field',
+			#'rech',
+			#'capt',
+			#'uniqcapt',
+			#'destr',
+			#'guard',
 			'guardnow',
-			'destrlink',
-			'destrfield',
+			#'destrlink',
+			#'destrfield',
 			'photo',
 			'edit',
 		)
+
+		from ocrorigstrs import ocrorigstrs
+		o = ocrorigstrs()
+		self.listofthingsfromocr = o.sortedbyposition
+
+		self.listofdatatobesavedfromcurrent = self.listofthingsfromocr+self.listofdataunavailablefromocr
 
 		self.thesavelistgrouped = {
 			'ap': tuple(['ap']),
@@ -44,7 +50,8 @@ class clarifydata:
 				'guard',
 				'guardnow',
 			),
-			'notmedalbutap': ('destrlink','destrfield','photo','edit')
+			'notmedalbutap': ('destrlink','destrfield','photo','edit'),
+			'therest': ('xm','mu','longestlink','largestfield','neutr','walk','guardlink','guardfield','longxguardlink','longxguardfield')
 		}
 
 
