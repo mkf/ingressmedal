@@ -56,9 +56,9 @@ class ocrorigstrs:
 		self.origstrsdictaft = {
 			'ap':r' A[Pp] .+A[Pp]',
 			'xm': r' XM',
-			'mu': r' MUs',
+			'mu': r'MUs',
 			'longestlink':r'km',
-			'largestfield':r' MUs',
+			'largestfield':r'MUs',
 			'rech':r' XM',
 			'walk':r'km',
 			'guard':r' days',
