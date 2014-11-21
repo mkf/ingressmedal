@@ -56,7 +56,7 @@ class singleentry:
 			curmedalsbycol = cur
 		else:
 			raise ValueError
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		colorpossibilities = ('nothing','bronze', 'silver', 'gold', 'platinum', 'onyx')
 		countofmedalsonce = {}
 		for colorpossibility in colorpossibilities:
 			countofmedalsonce[colorpossibility] = 0
