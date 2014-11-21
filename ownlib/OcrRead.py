@@ -53,9 +53,9 @@ class OcrRead:
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
 			paft = re.sub(o.origstrsdictaft[eje] if eje in o.origstrsdictaft else r'','',pbef)
-			p1 = re.sub('[.]|,|\s/','',paft)
+			p1 = re.sub(r'[.]|,|\s/','',paft)
 			p2 = re.sub('o','0',p1,re.I)
-			p3 = re.sub('\||l|i','1',p2,re.I)
+			p3 = re.sub(r'\||l|i','1',p2,re.I)
 			p4 = re.sub('q','4',p3,re.I)
 			p5 = re.sub('t','7',p4,re.I)
 			p6 = re.sub('a|e','8',p5,re.I)
