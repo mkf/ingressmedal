@@ -149,25 +149,8 @@ class Current:
 
 	@property
 	def coUNTINGcurapcountable(self):
-		current = self.current
-		curapcountable = {'seer': int((int(current['seer']) * 1000)),
-						  'depllater': int((int((current['depl']) - int(current['capt'])) * 65)),
-						  'link': int((int(current['link']) * 313)),
-						  'field': int((int(current['field']) * 1250)),
-						  'rechmin': int(((int(current['rech']) / 1000) * 10)),
-						  'captres': int((int(current['capt']) * 625)),
-						  'destr': int((int(current['destr']) * 75)),
-						  'destrlink': int((int(current['destrlink']) * 187)),
-						  'destrfield': int((int(current['destrfield']) * 750))}
-		if current['photo'] == 'n':
-			print "That's your fault you don't know how much AP you've gained on photos."
-		else:
-			curapcountable['photo'] = (current['photo'] * 500)
-		if current['edit'] == 'n':
-			print "That's your fault you don't know how much AP you've gained on edits."
-		else:
-			curapcountable['edit'] = (current['edit'] * 200)
-		return curapcountable
+		from singleentry import singleentry
+		return singleentry().coUNTINGcurapcountable(self.current)
 
 	def percentofap(self):
 		things = self.coUNTINGcurapcountable
