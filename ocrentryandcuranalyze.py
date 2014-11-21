@@ -91,7 +91,7 @@ if parmetry['overs'] == 'None' or parmetry['overs'] is None:
 else:
 	overs = parmetry['overs']
 zocra=fin
-curinst = Current('ArchieT', interactively, parmetry, zocra, argumentydodane, overs)
+curinst = Current(parmetry['codename'], interactively, parmetry, zocra, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
