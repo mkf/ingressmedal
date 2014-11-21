@@ -46,7 +46,7 @@ class OcrRead:
 				if loopinginging > 100:
 					print "My loopinginging is too high thus exiting.",loopinginging
 					quit()
-				if ejo == 'seer':
+				if ejo == 'seer' and not hey:
 					print "Contribute to Ingress and submit at least one portal, please"
 					break
 		elementojn = {}

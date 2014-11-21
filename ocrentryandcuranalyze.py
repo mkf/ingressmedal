@@ -90,7 +90,8 @@ if parmetry['overs'] == 'None' or parmetry['overs'] is None:
 	overs = False
 else:
 	overs = parmetry['overs']
-curinst = Current('ArchieT', interactively, parmetry, argumentydodane, overs)
+zocra=fin
+curinst = Current('ArchieT', interactively, parmetry, zocra, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
@@ -116,3 +117,5 @@ else:
 	print "WARNING: Data were not saved - use -w parameter"
 	print " "
 	print " "
+from os import remove
+remove(parmetry['cache'])

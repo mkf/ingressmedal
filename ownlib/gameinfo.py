@@ -92,6 +92,16 @@ class gameinfo:
 			'guard': 'Current max time portal held in days: ',
 			'destrlink': 'Current count of enemy links destroyed: ',
 			'destrfield': 'Current count of enemy Control Fields destroyed: ',
+			'xm':'Current count of XM collected: ',
+			'mu':'Current count of Mind Units captured: ',
+			'longestlink':'Currently longst link ever: ',
+			'largestfield':'Currently largest field ever: ',
+			'neutr':'Current count of neutralized portals: ',
+			'walk':'Current distance walked: ',
+			'guardlink':'Current max time link maintained: ',
+			'guardfield':'Current max time field held: ',
+			'longxguardlink':'Current max lenght*time for a link: ',
+			'longxguardfield':'Current max MUs*time for a link: '
 		}
 		self.currentquestionUSdict = {
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
