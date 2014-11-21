@@ -96,7 +96,7 @@ curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
 	if parmetry['dbtype'] == 'xml':
-		if int(parmetry['datetime']) > 20000000000000:
+		if int(parmetry['datetime'] or dtfromfilename) > 20000000000000:
 			strd = str(parmetry['datetime'] or dtfromfilename)
 			dy = strd[0]+strd[1]+strd[2]+strd[3]
 			dm = strd[4]+strd[5]
