@@ -45,6 +45,9 @@ class OcrRead:
 				if loopinginging > 100:
 					print "My loopinginging is too high thus exiting.",loopinginging
 					quit()
+				if ejo == 'seer':
+					print "Contribute to Ingress and submit at least one portal"
+					break
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
