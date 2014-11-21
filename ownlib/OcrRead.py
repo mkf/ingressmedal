@@ -44,7 +44,6 @@ class OcrRead:
 					hey = True
 				if loopinginging > 100:
 					print "My loopinginging is too high thus exiting.",loopinginging
-					print a
 					quit()
 		elementojn = {}
 		for eje in elements.keys():

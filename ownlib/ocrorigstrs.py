@@ -2,8 +2,9 @@
 class ocrorigstrs:
 	def __init__(self):
 		self.sortedbyposition = (
+			'ap',
 			'uniqvis',
-			'seer',  #if it will find just the 'xm' instead of 'seer' here, should go to next one
+			'seer',  #TODO: if it will find just the 'xm' instead of 'seer' here, should go to next one
 			'xm',
 			'hack',
 			'depl',
@@ -27,6 +28,7 @@ class ocrorigstrs:
 			'longxguardfield'
 		)
 		self.origstrsdictbef = {
+			'ap':r'_-_ ',
 			'uniqvis':r'Unique Portals Visited ',
 			'seer':r'Portals Discovered ',
 			'xm':r'XM Collected ',
@@ -52,6 +54,7 @@ class ocrorigstrs:
 			'longxguardfield':r'Largest Field MUs x Days '
 		}
 		self.origstrsdictaft = {
+			'ap':r' AP .+Ap',
 			'xm': r' XM',
 			'mu': r' MUs',
 			'longestlink':r' km',
