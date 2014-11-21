@@ -96,7 +96,17 @@ class OcrRead:
 		#for stat in stats: if stat.ocr: data[stat.stat] = elements[i] ; i+=1
 
 		#return data
-		print a
+		print a   # debug
 		return elementojn
 
-	#def
+	def ocradalterproc(self,ocradin):
+		elements=[]
+		import re
+		lines = ocradin.split('\n')
+		from ocrorigstrs import ocrorigstrs
+		o = ocrorigstrs()
+		so1 = o.sortedbyposition
+		while len(so1)>0:
+			ej = so1.popleft()
+			for line in lines:
+				pass
