@@ -60,7 +60,6 @@ class OcrRead:
 			p5 = re.sub('t','7',p4,re.I)
 			p6 = re.sub('a|e','8',p5,re.I)
 			p7 = re.sub('g','9',p6)
-			p8 = re.sub('O','0',p7)
-			pf = re.sub(r'\D','',p8)
+			pf = re.sub(r'\D','',p7)
 			elementojn[eje] = int(pf)
 		return elementojn
