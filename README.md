@@ -37,4 +37,4 @@ Why
 
  * I'm learning Python
  * I love Ingress
- * I want to give something to the humanity. It may become useful for someone who hadn't found out better tools yet and/or prefers the text-only mode.
+ * I may accidentally create something... useful ;p
