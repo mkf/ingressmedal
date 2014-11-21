@@ -4,7 +4,7 @@ from ownlib.OcrRead import OcrRead
 import argparse
 argh = argparse.ArgumentParser()
 argh.add_argument('-p','--fromimage',type=str,help="Specify image file",required=True)
-argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",required=True)
+argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",default='cache.pbm')
 
 
 
