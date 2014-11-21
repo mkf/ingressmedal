@@ -114,6 +114,31 @@ class gameinfo:
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
+		self.fromconvtoap = (
+			'seer',
+			'depllater',
+			'link',
+			'field',
+			'rechmin',
+			'captres',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
+		self.toconvtoap = (
+			'seer',
+			'depl',
+			'capt',
+			'link',
+			'field',
+			'rech',
+			'capt',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
 	def reqmed(self,lvl):
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		if True:
