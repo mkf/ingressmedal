@@ -27,3 +27,42 @@ if parmetry['dbfilepath']:
 else:
 	pa = pastanalyzeoneagent(codename)
 
+from ownlib.clarifydata import clarifydata
+clar = clarifydata()
+from ownlib.gameinfo import gameinfo
+ginf = gameinfo()
+clrs = clar.colorsqua
+
+barck = pa.apclimbing()
+back = {}
+for i in barck.keys():
+	if not(len(barck[i][1]) == 0):
+		back[i] = barck[i]
+dictclrs = {}
+for i in range(0,len(back.keys())):
+	dictclrs[sorted(back.keys())[i]] = clrs[i]
+
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+#for i in back.keys():
+#	for o in range(0,len(pa.givemetimes())):
+#		plt.plot(back[i][0][o],back[i][1][o],color=dictclrs[i])
+plotting = {}
+fig, ax = plt.subplots()
+for i in back.keys():
+	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
+from matplotlib.font_manager import FontProperties
+fontP = FontProperties()
+fontP.set_size('small')
+ax.legend(bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
+plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
+plt.title('Medals aspiring to %s' % coler)
+plt.ylabel('Percent of %s medal' % coler)
+def dtformater(x,pos): from datetime import datetime; return datetime.utcfromtimestamp(int(x)).isoformat(sep='\n')
+def kiloformater(x,pos): return '%2.fk' % (x/1000)
+ax.yaxis.set_major_formatter(FuncFormatter(kiloformater))
+ax.xaxis.set_major_formatter(FuncFormatter(dtformater))
+#if not parmetry['nogui']:
+plt.show()
+#if parmetry['writeimg']:
+#	plt.savefig(parmetry['imgfile'])
