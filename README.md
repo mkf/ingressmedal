@@ -36,5 +36,5 @@ Why
 ---------
 
  * I'm learning Python
- * I love Ingress
+ * I'm playin' Ingress
  * I may accidentally create something... useful ;p
