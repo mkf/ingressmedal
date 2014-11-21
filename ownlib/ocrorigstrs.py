@@ -47,7 +47,7 @@ class ocrorigstrs:
 			'walk':r'Distance Walked ',
 			'guard':r'Max Time Portal Held ',
 			'guardlink':r'Max Time Link Maintained ',
-			'longxguardlink':r'Max Link Lenght x Days ',
+			'longxguardlink':r'Max Link Length x Days ',
 			'guardfield':r'Max Time Field Held ',
 			'longxguardfield':r'Largest Field MUs x Days '
 		}
@@ -62,7 +62,7 @@ class ocrorigstrs:
 			'guardlink':r' days',
 			'longxguardlink':r' km-days',
 			'guardfield':r' days',
-			'longxguardfield':r' MUs-days'
+			'longxguardfield':r' MU-days'
 		}
 		#self.sortedbypositionwithheaders = (
 		#
