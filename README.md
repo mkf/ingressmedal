@@ -42,4 +42,4 @@ Why
 Credits
 ---------
 
-During the creation of the OCR class, [https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php](https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php) [ BlueHerons/StatTracker master commit [6650d1f)[https://github.com/BlueHerons/StatTracker/commit/6650d1fff374af07d0d9a92beadd627bc428cdeb] ] was very helpful, and some ideas in (ownlib/OcRead](https://github.com/ArchieT/ingressmedal/blob/master/ownlib/OcrRead.py) are copied from it; Thanks!
+During the creation of the OCR class, [https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php](https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php) [ BlueHerons/StatTracker master commit [6650d1f](https://github.com/BlueHerons/StatTracker/commit/6650d1fff374af07d0d9a92beadd627bc428cdeb) ] was very helpful, and some ideas in [ownlib/OcRead](https://github.com/ArchieT/ingressmedal/blob/master/ownlib/OcrRead.py) are copied from it; Thanks!
