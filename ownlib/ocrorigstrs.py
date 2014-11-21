@@ -28,7 +28,7 @@ class ocrorigstrs:
 			'longxguardfield'
 		)
 		self.origstrsdictbef = {
-			'ap':r'_?-_? ',
+			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Unique Portals Visited ',
 			'seer':r'Portals Discovered ',
 			'xm':r'XM Collected ',
