@@ -6,7 +6,7 @@ from ownlib.xmling import xmling
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactiveliness, currorg, argdod, overs):
+	def __init__(self, codename, interactiveliness, currorg,zocra,argdod, overs):
 		# ------------------------constant definitions----------------
 		gameinf = gameinfo()
 		self.medaldict = gameinf.medaldict
@@ -19,7 +19,11 @@ class Current:
 		self.overs = overs
 
 		self.current = {}
-		self.current.update(currorg)
+		self.current.update(zocra)
+		for i in currorg.keys():
+			if currorg[i] is not None:
+				if not currorg[i] == False:
+					self.current.update({i: currorg[i]})
 
 		interaktywnosc = Interactive()
 		self.interaktywnosc = interaktywnosc
@@ -27,7 +31,7 @@ class Current:
 		if interactiveliness == False:
 			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
-					bzdurkaldkfh = str(currorg[kluczykoa])
+					bzdurkaldkfh = str(self.current[kluczykoa])
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -36,7 +40,7 @@ class Current:
 					quit()
 			for kluczykoa in interaktywnosc.GivMeCurQUSdict().keys():
 				try:
-					bzdurkafdhgljsdk = str(currorg[kluczykoa])
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
 					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -52,7 +56,7 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkaldkfh = str(currorg[kluczykoa])
+					bzdurkaldkfh = str(self.current[kluczykoa])
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
@@ -67,7 +71,7 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkafdhgljsdk = str(currorg[kluczykoa])
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
 					# print "jestTrajProba" #debug
 					# print bzdurkafdhgljsdk #debug
 					# print "--------" #debug

@@ -1,6 +1,13 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from ownlib.OcrRead import OcrRead
 import argparse
+argh = argparse.ArgumentParser()
+argh.add_argument('-p','--fromimage',type=str,help="Specify image file",required=True)
+argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",default='cache.pbm')
+
+
+
 
 from ownlib.Current import Current
 
@@ -12,7 +19,6 @@ def TrueOrFalse(ciag):
 		return False
 	else:
 		raise argparse.ArgumentTypeError('It is not True nor False, y nor n, yes nor no. Although it had to.')
-
 
 def BigNumberORn(ciag):
 	if ciag == 'n':
@@ -33,7 +39,6 @@ def between(ciag):
 		raise argparse.ArgumentTypeError('It is a wrong date')
 
 
-argh = argparse.ArgumentParser()
 from ownlib.interactive import Interactive
 
 interaktywnosciowo = Interactive()
@@ -59,10 +64,21 @@ argh.add_argument('-f','--dbfilepath',type=str,help="Specify dabatase file",defa
 argh.add_argument('-y','--dbtype',type=str,help="Specify database type",default='xml',choices=('xml','csv'))
 argh.add_argument('-d','--datetime',type=between,help="Date of stats formatted YYYYMMDDHHMMSS")
 argh.add_argument('-n','--codename',type=str,help="Agent's codename",required=True)
-parmetry = vars(argh.parse_args())
 
-if parmetry['writetodb'] and not parmetry['datetime']:
-	print "Argument '-d YYMMDDHHMMSS' required it you want to write to db. See --help for more information"
+
+parmetry = vars(argh.parse_args())
+o = OcrRead()
+e = o.ocrad_get(parmetry['fromimage'],parmetry['cache'])
+fin = o.ocradalterproc(e)
+
+if not parmetry['datetime']:
+	import re
+	dejta = re.search(r'profile_20\d\d\d\d\d\d_\d\d\d\d\d\d',parmetry['fromimage'])
+	dtfromfilename = re.sub('_','',re.sub('profile_','',dejta.string)) if dejta is not None else False
+
+
+if parmetry['writetodb'] and not parmetry['datetime'] and not dtfromfilename:
+	print "Argument '-d YYMMDDHHMMSS' or date-containing image filename required if you want to write to db. See --help for more information"
 	quit()
 
 if parmetry['interactively'] == 'None' or parmetry['interactively'] is None:
@@ -74,13 +90,14 @@ if parmetry['overs'] == 'None' or parmetry['overs'] is None:
 	overs = False
 else:
 	overs = parmetry['overs']
-curinst = Current('ArchieT', interactively, parmetry, argumentydodane, overs)
+zocra=fin
+curinst = Current('ArchieT', interactively, parmetry, zocra, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
 	if parmetry['dbtype'] == 'xml':
 		if int(parmetry['datetime']) > 20000000000000:
-			strd = str(parmetry['datetime'])
+			strd = str(parmetry['datetime'] or dtfromfilename)
 			dy = strd[0]+strd[1]+strd[2]+strd[3]
 			dm = strd[4]+strd[5]
 			dd = strd[6]+strd[7]
@@ -100,3 +117,5 @@ else:
 	print "WARNING: Data were not saved - use -w parameter"
 	print " "
 	print " "
+from os import remove
+remove(parmetry['cache'])

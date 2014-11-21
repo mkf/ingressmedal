@@ -71,7 +71,7 @@ class singleentry:
 		# name is the identifier of an activity
 		# apable is a boolean information whether the activity brings you AP
 		if apable:
-			# noinspection PyUnreachableCode,PyUnreachableCode
+			# noinspection PyUnreachableCode,PyUnreachableCode,PyUnreachableCode
 			if name == 'seer':
 				return value * 1000
 			elif name == 'depl':
