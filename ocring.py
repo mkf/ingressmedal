@@ -8,4 +8,4 @@ argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",r
 parmetry = vars(argh.parse_args())
 o = OcrRead()
 e = o.ocrad_get(parmetry['fromimage'],parmetry['cache'])
-o.prococrad(e)
+print o.prococrad(e)

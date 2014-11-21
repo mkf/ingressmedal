@@ -29,50 +29,50 @@ class OcrRead:
 		lines = ocradin.split('\n')
 		for line in lines:
 			if step == 'start':
-				oj = re.search(r'^\s*([\d\s\|.egiloqt,]+)\s*AP\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.egiloqt,]+)\s*AP\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None:
 					step = 'ap'
 					elements.append(oj)
-			elif step == 'ap' and (re.search(r'^\s*Discovery\s*$/sxmi',line) is not None):
+			elif step == 'ap' and (re.search(r'^\s*Discovery\s*$',line,re.S|re.I|re.X|re.M) is not None):
 				step = 'discovery'
 				count = 0
-			elif step == 'discovery' and (re.search(r'^\s*Building\s*$/sxmi',line) is not None):
+			elif step == 'discovery' and (re.search(r'^\s*Building\s*$',line,re.S|re.I|re.X|re.M) is not None):
 				# if only 2 stats, then the agent has (seer == 0)    (0 portals discovered)
 				if count == 2:
 					temp = elements.pop()
 					elements.append('0')
 					elements.append(temp)
 				step = 'building'
-			elif step == 'building' and (re.search(r'^\s*Combat\s*$/sxmi',line) is not None): step = 'combat'
-			elif step == 'combat' and (re.search(r'^\s*Health\s*$/sxmi',line) is not None): step = 'health'
-			elif step == 'defense' and (re.search(r'^\s*Missions\s*$/sxmi',line) is not None): step = 'missions'
+			elif step == 'building' and (re.search(r'^\s*Combat\s*$',line,re.S|re.I|re.X|re.M) is not None): step = 'combat'
+			elif step == 'combat' and (re.search(r'^\s*Health\s*$',line,re.S|re.I|re.X|re.M) is not None): step = 'health'
+			elif step == 'defense' and (re.search(r'^\s*Missions\s*$',line,re.S|re.I|re.X|re.M) is not None): step = 'missions'
 			#elif step == 'discovery':
-			#	oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$/sxmi',line)
+			#	oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$/sxmi',line,re.S|re.I|re.X|re.M)
 			#	if oj is not None:
 			#		count+=1
 			#		elements.append(oj)
 			elif step == 'discovery':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:XM)?\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None:
 					count+=1
 					elements.append(oj)
 			elif step == 'building':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:MUs|XM|km|kln)?\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:MUs|XM|km|kln)?\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: elements.append(oj)
 			elif step == 'combat':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: elements.append(oj)
 			elif step == 'health':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:km|kln)\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:km|kln)\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: elements.append(oj)
 			elif step == 'defense':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:(?:(?:km|kln|MU)-)?(?:days|clays|ilays|cl_ys|__ys|d_ys|_ays|\(l_ys))\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*(?:(?:(?:km|kln|MU)-)?(?:days|clays|ilays|cl_ys|__ys|d_ys|_ays|\(l_ys))\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: elements.append(oj)
 			elif step == 'missions':
-				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$/sxmi',line)
+				oj = re.search(r'^\s*([\d\s\|.aegiloqt,]+)\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: elements.append(oj)
 			else:
-				oj = re.search(r'^\s*(month|week|now)\s*$/sxmi',line)
+				oj = re.search(r'^\s*(month|week|now)\s*$',line,re.S|re.I|re.X|re.M)
 				if oj is not None: print 'maybe because'; print oj
 
 		elementojn = []
