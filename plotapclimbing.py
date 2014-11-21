@@ -50,14 +50,14 @@ from matplotlib.ticker import FuncFormatter
 plotting = {}
 fig, ax = plt.subplots()
 for i in back.keys():
-	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
+	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.namesforoutconvtoap[i])
 from matplotlib.font_manager import FontProperties
 fontP = FontProperties()
 fontP.set_size('small')
 ax.legend(bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
 plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,max(back['ap'][1])])
 plt.title('AP')
-plt.ylabel('Percent of %s medal' % coler)
+plt.ylabel('AP')
 def dtformater(x,pos): from datetime import datetime; return datetime.utcfromtimestamp(int(x)).isoformat(sep='\n')
 def kiloformater(x,pos): return '%2.fk' % (x/1000)
 ax.yaxis.set_major_formatter(FuncFormatter(kiloformater))

@@ -244,7 +244,7 @@ class singleentry:
 
 	def coUNTINGcurapcountable(self,current):
 		curapcountable = {'seer': int((int(current['seer']) * 1000)),
-						  'depllater': int((int((current['depl']) - int(current['capt'])) * 65)),
+						  'depllater': int(((int(current['depl']) - int(current['capt'])) * 65)),
 						  'link': int((int(current['link']) * 313)),
 						  'field': int((int(current['field']) * 1250)),
 						  'rechmin': int(((int(current['rech']) / 1000) * 10)),

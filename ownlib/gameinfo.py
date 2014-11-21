@@ -126,6 +126,20 @@ class gameinfo:
 			'destrfield'
 		)
 
+		self.namesforoutconvtoap = {
+			'seer':"Discovered Portals",
+			'depllater':"Resonators depl&upgr except for the capturing one",
+			'link':"Links created",
+			'field':"Fields created",
+			'rechmin':"Recharging: minimum AP gained on",
+			'captres':"Capturing portals + 1st res",
+			'destr':"Destroyed resonators",
+			'destrlink':"Enemy links destroyed",
+			'destrfield':"enemy Control Fields destroyed",
+			'uncomputable':"Uncomputable",
+			'ap':"AP"
+		}
+
 		self.inconvtoap = (
 			'seer',
 			'depl',
