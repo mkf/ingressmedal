@@ -74,7 +74,7 @@ fin = o.ocradalterproc(e)
 if not parmetry['datetime']:
 	import re
 	dejta = re.search(r'profile_20\d\d\d\d\d\d_\d\d\d\d\d\d',parmetry['fromimage'])
-	dtfromfilename = re.sub('_','',re.sub('profile_','',dejta.group[0])) if dejta is not None else False
+	dtfromfilename = re.sub('_','',re.sub('profile_','',dejta.group())) if dejta is not None else False
 
 
 if parmetry['writetodb'] and not parmetry['datetime'] and not dtfromfilename:
