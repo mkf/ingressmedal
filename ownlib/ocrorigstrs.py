@@ -60,7 +60,7 @@ class ocrorigstrs:
 			'longestlink':r'km',
 			'largestfield':r' MUs',
 			'rech':r' XM',
-			'walk':r' km',
+			'walk':r'km',
 			'guard':r' days',
 			'guardlink':r' days',
 			'longxguardlink':r' km-days',
