@@ -4,8 +4,8 @@ from ownlib.clarifydata import clarifydata
 
 class xmling:
 	def __init__(self):
-		self.versionhistory = ('0','1.0.1.0','1.1','1.2','1.2.1','1.3','1.4')
-		self.currentversion = '1.4'
+		self.versionhistory = ('0','1.0.1.0','1.1','1.2','1.2.1','1.3','1.4','1.5')
+		self.currentversion = '1.5'
 		self.progname = "ingressmedal by ArchieT"
 
 	def opening(self,filename):
