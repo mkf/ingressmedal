@@ -116,7 +116,7 @@ class pastanalyzeoneagent:
 		givba = {}
 		for p in g.inconvtoap:
 			givba[p] = [[],[]]
-		for e in sorted(pastia.keys())
+		for e in sorted(pastia.keys()):
 			for i in pastia.keys():
 				if i in g.inconvtoap:
 					try:
