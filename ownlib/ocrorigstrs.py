@@ -54,7 +54,7 @@ class ocrorigstrs:
 			'longxguardfield':r'Largest Field MUs x Days '
 		}
 		self.origstrsdictaft = {
-			'ap':r' AP .+Ap',
+			'ap':r' A[Pp] .+A[Pp]',
 			'xm': r' XM',
 			'mu': r' MUs',
 			'longestlink':r' km',
