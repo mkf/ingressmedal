@@ -57,7 +57,7 @@ class ocrorigstrs:
 			'ap':r' A[Pp] .+A[Pp]',
 			'xm': r' XM',
 			'mu': r' MUs',
-			'longestlink':r' km',
+			'longestlink':r'km',
 			'largestfield':r' MUs',
 			'rech':r' XM',
 			'walk':r' km',
