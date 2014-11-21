@@ -40,7 +40,7 @@ class ocrorigstrs:
 			'longestlink':r'Longest Link Ever Created ',
 			'largestfield':r'Largest Control Field ',
 			'rech':r'XM Recharged ',
-			'capt':r'Portals Captured ',
+			'capt':r'^Portals Captured ',
 			'uniqcapt':r'Unique Portals Captured ',
 			'destr':r'Resonators Destroyed ',
 			'neutr':r'Portals Neutralized ',
