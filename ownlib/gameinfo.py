@@ -114,6 +114,45 @@ class gameinfo:
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
+		self.outconvtoap = (
+			'seer',
+			'depllater',
+			'link',
+			'field',
+			'rechmin',
+			'captres',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
+		self.namesforoutconvtoap = {
+			'seer':"Discovered Portals",
+			'depllater':"Resonators depl&upgr except for the capturing one",
+			'link':"Links created",
+			'field':"Fields created",
+			'rechmin':"Recharging: minimum AP gained on",
+			'captres':"Capturing portals + 1st res",
+			'destr':"Destroyed resonators",
+			'destrlink':"Enemy links destroyed",
+			'destrfield':"enemy Control Fields destroyed",
+			'uncomputable':"Uncomputable",
+			'ap':"AP"
+		}
+
+		self.inconvtoap = (
+			'seer',
+			'depl',
+			'capt',
+			'link',
+			'field',
+			'rech',
+			'capt',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
 	def reqmed(self,lvl):
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		if True:

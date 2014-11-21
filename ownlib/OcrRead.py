@@ -45,21 +45,29 @@ class OcrRead:
 					hey = True
 				if loopinginging > 100:
 					print "My loopinginging is too high thus exiting.",loopinginging
+					#print a   #debug - causes crash and thus I can view the variables in pycharm easily
 					quit()
 				if ejo == 'seer' and not hey:
 					print "Contribute to Ingress and submit at least one portal, please"
 					break
+				if (ejo == 'destr' or ejo == 'destrlink' or ejo == 'destrfield' or ejo=='neutr') and not hey:
+					whatwasdonetothesth = "destroy" if (ejo == 'destr' or ejo=='destrlink' or ejo=='destrfield') else "neutraliz" if ejo=='neutr' else 'something'
+					whatshouldbedestroyed = "resonator" if ejo == 'destr' else "enemy link" if ejo == 'destrlink' else "enemy Control Field" if ejo == 'destrfield' else 'portal' if ejo == 'neutr' else "something that was wrong"
+					if raw_input("Write 'y' if the player seriously haven't %sed any %s yet, otherwise write 'n': " % (whatwasdonetothesth,whatshouldbedestroyed))=='y':
+						print "That's weird, but OK."
+						break
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
 			paft = re.sub(o.origstrsdictaft[eje] if eje in o.origstrsdictaft else r'','',pbef)
-			p1 = re.sub('[.]|,|\s/','',paft)
+			p1 = re.sub(r'[.]|,|\s/','',paft)
 			p2 = re.sub('o','0',p1,re.I)
-			p3 = re.sub('\||l|i','1',p2,re.I)
+			p3 = re.sub(r'\||l|i|I','1',p2,re.I)
 			p4 = re.sub('q','4',p3,re.I)
 			p5 = re.sub('t','7',p4,re.I)
 			p6 = re.sub('a|e','8',p5,re.I)
 			p7 = re.sub('g','9',p6)
-			pf = re.sub(r'\D','',p7)
+			p8 = re.sub('O','0',p7)
+			pf = re.sub(r'\D','',p8)
 			elementojn[eje] = int(pf)
 		return elementojn

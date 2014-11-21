@@ -108,3 +108,26 @@ class pastanalyzeoneagent:
 
 	def givemespeccurrent(self,timed):
 		return self.pastia[timed]
+
+	def apclimbing(self):
+		pastia = self.pastia
+		from gameinfo import gameinfo
+		g = gameinfo()
+		givba = {}
+		givba['ap'] = [[],[]]
+		givba['uncomputable']=[[],[]]
+		for p in g.outconvtoap:
+			givba[p] = [[],[]]
+		from singleentry import singleentry
+		for e in sorted(pastia.keys()):
+			givba['ap'][1].append(int(pastia[e]['ap']))
+			givba['ap'][0].append(int(pastia[e]['timed']))
+			s = singleentry()
+			apcomputable = s.coUNTINGcurapcountable(pastia[e])
+			apuncomputable = int(pastia[e]['ap'])-sum(apcomputable.values())
+			givba['uncomputable'][1].append(apuncomputable)
+			givba['uncomputable'][0].append(int(pastia[e]['timed']))
+			for i in apcomputable.keys():
+				givba[i][1].append(apcomputable[i])
+				givba[i][0].append(int(pastia[e]['timed']))
+		return givba

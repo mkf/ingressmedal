@@ -28,7 +28,7 @@ class ocrorigstrs:
 			'longxguardfield'
 		)
 		self.origstrsdictbef = {
-			'ap':r'_-_ ',
+			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Unique Portals Visited ',
 			'seer':r'Portals Discovered ',
 			'xm':r'XM Collected ',
@@ -54,13 +54,13 @@ class ocrorigstrs:
 			'longxguardfield':r'Largest Field MUs x Days '
 		}
 		self.origstrsdictaft = {
-			'ap':r' AP .+Ap',
+			'ap':r' A[Pp] .+A[Pp]',
 			'xm': r' XM',
-			'mu': r' MUs',
-			'longestlink':r' km',
-			'largestfield':r' MUs',
+			'mu': r'MUs',
+			'longestlink':r'km',
+			'largestfield':r'MUs',
 			'rech':r' XM',
-			'walk':r' km',
+			'walk':r'km',
 			'guard':r' days',
 			'guardlink':r' days',
 			'longxguardlink':r' km-days',

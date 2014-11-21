@@ -74,7 +74,7 @@ fin = o.ocradalterproc(e)
 if not parmetry['datetime']:
 	import re
 	dejta = re.search(r'profile_20\d\d\d\d\d\d_\d\d\d\d\d\d',parmetry['fromimage'])
-	dtfromfilename = re.sub('_','',re.sub('profile_','',dejta.string)) if dejta is not None else False
+	dtfromfilename = re.sub('_','',re.sub('profile_','',dejta.group())) if dejta is not None else False
 
 
 if parmetry['writetodb'] and not parmetry['datetime'] and not dtfromfilename:
@@ -91,12 +91,12 @@ if parmetry['overs'] == 'None' or parmetry['overs'] is None:
 else:
 	overs = parmetry['overs']
 zocra=fin
-curinst = Current('ArchieT', interactively, parmetry, zocra, argumentydodane, overs)
+curinst = Current(parmetry['codename'], interactively, parmetry, zocra, argumentydodane, overs)
 curinst.percentofap()
 curinst.percentofdest()
 if parmetry['writetodb']:
 	if parmetry['dbtype'] == 'xml':
-		if int(parmetry['datetime']) > 20000000000000:
+		if int(parmetry['datetime'] or dtfromfilename) > 20000000000000:
 			strd = str(parmetry['datetime'] or dtfromfilename)
 			dy = strd[0]+strd[1]+strd[2]+strd[3]
 			dm = strd[4]+strd[5]

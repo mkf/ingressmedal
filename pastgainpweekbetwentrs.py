@@ -94,12 +94,21 @@ for param in head:
 	dpti[param] = {}
 	pert = pa.gainpertime(gain['d'],gain['f'])
 	for ent in entries.keys():
-		entries[ent][param] = pert[ent]
+		if ent in pert:
+			entries[ent][param] = pert[ent]
+		else:
+			juz = False
+			for i in range(sorted(entries.keys()).index(ent),0,-1):
+				if sorted(entries.keys())[i] in pert:
+					juz = True
+					entries[ent][param] = pert[sorted(entries.keys())[i]]
+			if not juz:
+				entries
 
 tabel = []
-for entry in entries.keys():
+for entry in sorted(entries.keys()):
 	subt = []
-	for par in head:
+	for par in sorted(entries[entry].keys(),key=head.index):
 		subt.append(float(float(entries[entry][par])*float(60*60*24*7)))
 	tabel.append(subt)
 if not parmetry['vertically']:
@@ -107,8 +116,8 @@ if not parmetry['vertically']:
 	aut = tabulate(tabel,headers=head,floatfmt=".4f")
 elif parmetry['vertically']:
 	vert = []
-	for i in head:
-		ind = head.index(i)
+	for i in sorted(entries[entry].keys(),key=head.index):
+		ind = sorted(entries[entry].keys(),key=head.index).index(i)
 		vert.append([i])
 		for a in tabel:
 			vert[ind].append(a[ind])
