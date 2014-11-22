@@ -30,10 +30,10 @@ class ocrorigstrs:
 		self.origstrsdictbef = {
 			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Un[il]qu[eP] Por[tf]als [Vv][il]s[il][tl][Pe]d ',
-			'seer':r'Portals Discovered ',
+			'seer':r'Por[tf]als [DO][il]s[cI]ov[eP]r[eP]d ',   #'Porfals OlsIovPrPd l'
 			'xm':r'XM Coll[eP][cI][tI][eP]d ',
 			'hack':r'Ha[cI]ks ',
-			'depl':r'R[eP]sona[tl]ors D[eP]ploy[eP]d ',
+			'depl':r'R[eP]sona[tl]ors [DO][eP]ploy[eP]d ',
 			'link':r'L[il]nks Cr[eP]a[tl][eP]d ',
 			'field':r'Con[tl]rol F[iI][eP]lds Cr[eP]a[tl][eP]d ',
 			'mu':r'M[il]nd Un[il][tl]s Cap[tl]ur[eP]d ',
@@ -42,19 +42,19 @@ class ocrorigstrs:
 			'rech':r'XM R[eP][cI]harg[eP]d ',
 			'capt':r'^Por[tlf]als Cap[tl]ur[eP]d ',
 			'uniqcapt':r'Un[il]qu[eP] Por[tlf]als Cap[tl]ur[eP]d ',
-			'destr':r'R[eP]sona[tl]ors D[eP]s[tl]roy[eP]d ',
+			'destr':r'R[eP]sona[tl]ors [DO][eP]s[tl]roy[eP]d ',
 			'neutr':r'Por[tlf]als N[eP]u[tl]ral[il][zI_][eP]d ', #'Porlals NPulrall_Pd IBT'
-			'destrlink':r'En[eP]my L[il]nks D[eP]s[tl]roy[eP]d ',
-			'destrfield':r'En[eP]my Con[tl]rol F[iI][eP]lds D[eP]s[tl]roy[eP]d ',
-			'walk':r'D[il]s[tl]a[nm]*[cm]*[eP] Walk[eP]d ',
+			'destrlink':r'En[eP]my L[il]nks [DO][eP]s[tl]roy[eP]d ',
+			'destrfield':r'En[eP]my Con[tl]rol F[iI][eP]lds [DO][eP]s[tl]roy[eP]d ',
+			'walk':r'[DO][il]s[tl]a[nm]*[cm]*[eP] Walk[eP]d ',   #'OlslamP WalkPd 9km'
 			'guard':r'Max T[il]m[eP] Por[tlf]al H[eP]ld ',  #'Max TlmP Porlal HPld 14 day5'
 			'guardlink':r'Max T[il]m[eP] L[il]nk Ma[il]n[tl]a[il]n[eP]d ',
-			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x Days ',
+			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x [DO]ays ',
 			'guardfield':r'Max T[il]m[eP] Fi[eP]ld H[eP]ld ',
-			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x Days '
+			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x [DO]ays '
 		}
 		self.origstrsdictaft = {
-			'ap':r'[ ]?A[Pp] .+A[Pp]',
+			'ap':r'[ ]?A[Pp][ \|Il_]+.+A[Pp]',
 			'xm': r' XM',
 			'mu': r'MUs',
 			'longestlink':r'km',

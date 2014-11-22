@@ -66,9 +66,9 @@ class OcrRead:
 					if raw_input("Write 'y' if the player seriously haven't %sed any %s yet, otherwise write 'n': " % (whatwasdonetothesth,whatshouldbedestroyed))=='y':
 						print "That's weird, but OK."
 						break
-					else:
+					elif loopinginging > 2:
 						pass
-						#print a  #debug
+						print a  #debug
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
