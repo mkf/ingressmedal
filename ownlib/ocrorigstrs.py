@@ -43,11 +43,11 @@ class ocrorigstrs:
 			'capt':r'^Por[tlf]als Cap[tl]ur[eP]d ',
 			'uniqcapt':r'Un[il]qu[eP] Por[tlf]als Cap[tl]ur[eP]d ',
 			'destr':r'R[eP]sona[tl]ors D[eP]s[tl]roy[eP]d ',
-			'neutr':r'Por[tf]als N[eP]u[tl]ral[il][zI\_][eP]d ', #'Porlals NPulrall_Pd IBT'
+			'neutr':r'Por[tlf]als N[eP]u[tl]ral[il][zI_][eP]d ', #'Porlals NPulrall_Pd IBT'
 			'destrlink':r'En[eP]my L[il]nks D[eP]s[tl]roy[eP]d ',
 			'destrfield':r'En[eP]my Con[tl]rol F[iI][eP]lds D[eP]s[tl]roy[eP]d ',
 			'walk':r'D[il]s[tl]a[nm]*[cm]*[eP] Walk[eP]d ',
-			'guard':r'Max T[il]m[eP] Por[tf]al H[eP]ld ',
+			'guard':r'Max T[il]m[eP] Por[tlf]al H[eP]ld ',  #'Max TlmP Porlal HPld 14 day5'
 			'guardlink':r'Max T[il]m[eP] L[il]nk Ma[il]n[tl]a[il]n[eP]d ',
 			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x Days ',
 			'guardfield':r'Max T[il]m[eP] Fi[eP]ld H[eP]ld ',
