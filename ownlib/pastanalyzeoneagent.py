@@ -172,3 +172,18 @@ class pastanalyzeoneagent:
 					givba[i][1].append(float(apcomputable[i]-prevapcomputable[i])/timebetween)
 					givba[i][0].append(int(e))
 		return givba
+
+
+	def gainpropmedalclimbing(self,wha):
+		new = {}
+		for par in wha.keys():
+			new[par]=[[],[]]
+			for indexon in range(0,len(wha[par][0])):
+				i = float(wha[par][0][indexon])
+				j = float(wha[par][1][indexon])
+				if indexon > 0:
+					ip = float(wha[par][0][indexon-1])
+					jp = float(wha[par][1][indexon-1])
+					new[par][0].append(i)
+					new[par][1].append((j-jp)/((i-ip)/3600/24))
+		return new
