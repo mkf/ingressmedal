@@ -146,7 +146,7 @@ class MainWindow(wx.Frame):
 		#print a
 
 	def OnOCRChoose(self,e):
-
+		pass
 
 
 
