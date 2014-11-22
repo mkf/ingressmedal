@@ -77,7 +77,7 @@ class MainWindow(wx.Frame):
 		vs = wx.BoxSizer(wx.HORIZONTAL)
 		#box1_title = wx.StaticBox(panel,-1,"Parameters")
 		#box1 = wx.StaticBoxSizer(box1_title,wx.VERTICAL)
-		grid1 = wx.FlexGridSizer(cols=2)
+		grid1 = wx.FlexGridSizer(cols=1)
 		self.group1_ctrls = []
 		# te1 = wx.StaticText(panel,-1,"Te")
 		# te1.SetFont(font)
@@ -144,6 +144,11 @@ class MainWindow(wx.Frame):
 		panel.Move((50,50))
 
 		#print a
+
+	def OnOCRChoose(self,e):
+
+
+
 
 
 
