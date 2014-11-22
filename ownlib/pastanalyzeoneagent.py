@@ -131,3 +131,44 @@ class pastanalyzeoneagent:
 				givba[i][1].append(apcomputable[i])
 				givba[i][0].append(int(pastia[e]['timed']))
 		return givba
+
+	def apgainavgperdaybetwentrs(self):
+		pastia = self.pastia
+		from gameinfo import gameinfo
+		g = gameinfo()
+		givba = {}
+		givba['ap'] = [[],[]]
+		givba['uncomputable']=[[],[]]
+		for p in g.outconvtoap:
+			givba[p] = [[],[]]
+		from singleentry import singleentry
+		for e in sorted(pastia.keys()):
+			if sorted(pastia.keys()).index(e)==0:
+				pass
+			else:
+				tb3a = int(e)
+				tb3b=int(sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1])
+				tb2 = tb3a-tb3b
+				tb1 = float(tb2)/3600/24
+				timebetween=float(tb1)
+				givba['ap'][1].append(float(int(pastia[e]['ap'])-int(pastia[sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1]]['ap']))/timebetween)
+				givba['ap'][0].append(int(e))
+				s = singleentry()
+				apcomputable = s.coUNTINGcurapcountable(pastia[e])
+				prevapcomputable = s.coUNTINGcurapcountable(pastia[int(sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1])])
+				prevapuncomputable = int(
+					int(
+						pastia[
+							sorted(pastia.keys())[
+								sorted(pastia.keys()).index(e)-1
+							]
+						]['ap']
+					)-sum(prevapcomputable.values())
+				)
+				apuncomputable = int(pastia[e]['ap'])-sum(apcomputable.values())
+				givba['uncomputable'][1].append(float(apuncomputable-prevapuncomputable)/timebetween)
+				givba['uncomputable'][0].append(int(e))
+				for i in apcomputable.keys():
+					givba[i][1].append(float(apcomputable[i]-prevapcomputable[i])/timebetween)
+					givba[i][0].append(int(e))
+		return givba
