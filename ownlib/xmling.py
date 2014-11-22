@@ -1,32 +1,42 @@
 # -*- coding: utf-8 -*-
+from ownlib.clarifydata import clarifydata
+
+
 class xmling:
 	def __init__(self):
-		self.versionhistory = ('0','1.0.1.0','1.1')
-		self.currentversion = '1.1'
+		self.versionhistory = ('0','1.0.1.0','1.1','1.2','1.2.1','1.3','1.4','1.5','1.5.2','1.5.4')
+		self.currentversion = '1.5.4'
 		self.progname = "ingressmedal by ArchieT"
 
 	def opening(self,filename):
 		from xml.etree import ElementTree as ET
 		with open(filename,'r') as f:
 			tree = ET.parse(f)
-		node = tree.find('./base')
+		#node = tree.find('./base')
+		node = tree.getroot()
 		for name, value in node.attrib.items():
 			if name == 'versioncreated':
 				versionc = value
 				if versionc == self.currentversion:
 					versioncsame = True
 				else:
-					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
+					try:
+						self.versionhistory.index(versionc)
+					except:
+						print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versioncsame = False
 			elif name == 'versionmodified':
 				versionm = value
 				if versionm == self.currentversion:
 					versionmsame = True
 				else:
-					print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
+					try:
+						self.versionhistory.index(versionm)
+					except:
+						print "Update your app by cloning https://github.com/ArchieT/ingressmedal.git"
 					versionmsame = False
 			elif name == 'progname':
-				if not name == self.progname:
+				if value != self.progname:
 					print "Not our file"
 					quit()
 		modifhist = node.find('./modifhist')
@@ -62,9 +72,10 @@ class xmling:
 		return dictback
 
 
-	def opendata(self,base):
+	@staticmethod
+	def opendata(base):
 		data = base.find('./data')
-		agents = []
+		agents = {}
 		for agento in data.findall('./agent'):
 			codename = agento.attrib.get('codename')
 			agents[codename] = agento
@@ -101,6 +112,18 @@ class xmling:
 			mhiste.set('timemodified',str(time.time()))
 		return dictofpower
 
+	@staticmethod
+	def readingentries(dictofpower,codename):
+		entryout = {}
+		clar = clarifydata()
+		for entry in dictofpower['agents'][codename].findall('./entry'):
+			entryh = {}
+			for par in clar.AskForTheListOfDataToBeSavedFromCurrent:
+				entryh[par] = entry.attrib.get(par)
+			entryh['timed'] = entry.attrib.get('time')
+			entryout[entryh['timed']] = entryh
+		return entryout
+
 
 
 	def appendentry(self,udictofpower,timed,dadict,codename):
@@ -111,6 +134,7 @@ class xmling:
 		if codename not in ydictofpower['agents']:
 			odictofpower = self.createagent(ydictofpower,codename)
 			dictofpower = odictofpower
+		else: dictofpower = ydictofpower
 		agent = dictofpower['agents'][codename]
 		e = SubElement(agent,'entry')
 		e.set('time',str(timed))
@@ -130,12 +154,14 @@ class xmling:
 	def importfile(self,filename,udictofpower):
 		pass
 
-	def saving(self,base,filename,really=True):
+	@staticmethod
+	def saving(base,filename,really=True):
 		from xml.etree import ElementTree as ET
-		from xml.dom import minidom
+		#from xml.dom import minidom
 		rough_string = ET.tostring(base,'utf-8')
-		reparsed = minidom.parseString(rough_string)
-		juz = reparsed.toprettyxml(indent="  ")
+		#reparsed = minidom.parseString(rough_string)
+		#juz = reparsed.toprettyxml(indent="  ")
+		juz = rough_string
 		if really:
 			with open(filename,'w') as f:
 				f.write(juz)
@@ -148,7 +174,7 @@ class xmling:
 	def justappendentrytoxml(filepath,giving,timed,codename,give):
 		import os
 		dadict = {}
-		from clarifydata import clarifydata
+		from ownlib.clarifydata import clarifydata
 		for i in clarifydata().AskForTheListOfDataToBeSavedFromCurrent:
 			dadict[i] = give[i]
 

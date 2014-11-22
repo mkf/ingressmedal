@@ -1,30 +1,37 @@
 # -*- coding: utf-8 -*-
+from ownlib.gameinfo import gameinfo
+from ownlib.xmling import xmling
+
 
 class Current:
 	"""This class applies only to current stats, it doesn't compare anything to the past"""
 
-	def __init__(self, codename, interactiveliness, currorg, argdod, overs):
-		#------------------------constant definitions----------------
-		from gameinfo import gameinfo
+	def __init__(self, codename, interactiveliness, currorg,zocra,argdod, overs):
+		# ------------------------constant definitions----------------
 		gameinf = gameinfo()
 		self.medaldict = gameinf.medaldict
 		self.lvldict = gameinf.lvldict
 		self.highestplaceofnoappearance = gameinf.highestplaceofnoappearance
 		self.namesforcurapcountable = gameinf.namesforcurapcountable
-		#---------------end of constant definitions-----------------
-		from interactive import Interactive
+		# ---------------end of constant definitions-----------------
+		from ownlib.interactive import Interactive
 
 		self.overs = overs
 
 		self.current = {}
-		self.current.update(currorg)
+		self.current.update(zocra)
+		for i in currorg.keys():
+			if currorg[i] is not None:
+				if not currorg[i] == False:
+					self.current.update({i: currorg[i]})
 
 		interaktywnosc = Interactive()
 		self.interaktywnosc = interaktywnosc
+		# noinspection PySimplifyBooleanCheck
 		if interactiveliness == False:
 			for kluczykoa in interaktywnosc.GivMeCurQSdict().keys():
 				try:
-					bzdurkaldkfh = str(currorg[kluczykoa])
+					bzdurkaldkfh = str(self.current[kluczykoa])
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -33,7 +40,7 @@ class Current:
 					quit()
 			for kluczykoa in interaktywnosc.GivMeCurQUSdict().keys():
 				try:
-					bzdurkafdhgljsdk = str(currorg[kluczykoa])
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
 					if bzdurkafdhgljsdk is None or bzdurkafdhgljsdk == "None":
 						print "Interactively is False. There is no %s, exiting." % kluczykoa
 						quit()
@@ -49,12 +56,12 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkaldkfh = str(currorg[kluczykoa])
+					bzdurkaldkfh = str(self.current[kluczykoa])
 					# print "jesttraj" #debug
 					# print bzdurkaldkfh #debug
 					# print "----------------" #debug
 					if bzdurkaldkfh is None or bzdurkaldkfh == "None" or not (type(int(bzdurkaldkfh)) == int):
-						print type(bzdurkaldkfh)
+						#print type(bzdurkaldkfh)
 						kluczykoal.append(str(kluczykoa))
 					# print "jestnolnem" #debug
 				except:
@@ -64,7 +71,7 @@ class Current:
 				# print kluczykoa #debug
 				# Why it doesn't append the kluczykoa at the kluczykoal??
 				try:
-					bzdurkafdhgljsdk = str(currorg[kluczykoa])
+					bzdurkafdhgljsdk = str(self.current[kluczykoa])
 					# print "jestTrajProba" #debug
 					# print bzdurkafdhgljsdk #debug
 					# print "--------" #debug
@@ -126,39 +133,24 @@ class Current:
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatek(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or isinstance(int(ciag),int):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or isinstance(int(ciag),
+																										   int):
 			return True
 		else:
 			return False
 
 	@staticmethod
 	def CzyLiczbaZeroDoPiecDziewiatekLUBn(ciag):
-		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (str(ciag) == 'n') or isinstance(int(ciag),int):
+		if (range(0, 99999).index(int(ciag)) > 0) or (range(0, 99999).index(int(ciag)) == 0) or (
+					str(ciag) == 'n') or isinstance(int(ciag), int):
 			return True
 		else:
 			return False
 
 	@property
 	def coUNTINGcurapcountable(self):
-		current = self.current
-		curapcountable = {'seer': int((int(current['seer']) * 1000)),
-						  'depllater': int((int((current['depl']) - int(current['capt'])) * 65)),
-						  'link': int((int(current['link']) * 313)),
-						  'field': int((int(current['field']) * 1250)),
-						  'rechmin': int(((int(current['rech']) / 1000) * 10)),
-						  'captres': int((int(current['capt']) * 625)),
-						  'destr': int((int(current['destr']) * 75)),
-						  'destrlink': int((int(current['destrlink']) * 187)),
-						  'destrfield': int((int(current['destrfield']) * 750))}
-		if current['photo'] == 'n':
-			print "That's your fault you don't know how much AP you've gained on photos."
-		else:
-			curapcountable['photo'] = (current['photo'] * 500)
-		if current['edit'] == 'n':
-			print "That's your fault you don't know how much AP you've gained on edits."
-		else:
-			curapcountable['edit'] = (current['edit'] * 200)
-		return curapcountable
+		from singleentry import singleentry
+		return singleentry().coUNTINGcurapcountable(self.current)
 
 	def percentofap(self):
 		things = self.coUNTINGcurapcountable
@@ -179,126 +171,44 @@ class Current:
 
 	@staticmethod
 	def minapfromact(name, value, apable):
-		# value is count of activities to calculate AP
-		# name is the identifier of an activity
-		# apable is a boolean information whether the activity brings you AP
-		if apable:
-			# noinspection PyUnreachableCode
-			if name == 'seer':
-				return value * 1000
-			elif name == 'depl':
-				# we don't know whether those resonators were deployments or upgrades,
-				# so we count'em as AT LEAST upgrades
-				return value * 65
-			elif name == 'link':
-				return value * 313
-			elif name == 'field':
-				return value * (1250 + 313)
-			elif name == 'rech':
-				# for each 1000XM recharged you've gained AT LEAST 10AP
-				return (value / 1000) * 10
-			elif name == 'capt':
-				return value * 625
-			elif name == 'uniqcapt':
-				return value * 625
-			elif name == 'destr':
-				return value * 75
-			else:
-				raise ValueError
-				return 0
-		else:
-			return 0
+		from ownlib.singleentry import singleentry
+		return singleentry().minapfromact(name,value,apable)
 
 
-	def calclvlbyap(self, ap):  # |
-		for lvltry in range(1, 17):  # |
-			if ap >= self.lvldict[lvltry]['ap']:  # |
-				lvlbyap = lvltry  # |
-		return lvlbyap  # |
+	@staticmethod
+	def calclvlbyap(ap):
+		from ownlib.singleentry import singleentry
 
-	def findcurrentmedals(self, current):
-		curmedals = {}
-		for medaltry in self.medaldict.keys():
-			curmedals[medaltry] = 'nothing'
-			for colortry in self.medaldict[medaltry]['walk'].keys():
-				if current[medaltry] >= self.medaldict[medaltry]['walk'][colortry]:
-					if curmedals[medaltry] == 'nothing':
-						curmedals[medaltry] = colortry
-					elif (
-						self.medaldict[medaltry]['walk'][curmedals[medaltry]] < \
-							self.medaldict[medaltry]['walk'][colortry]
-					):
-						curmedals[medaltry] = colortry
-		return curmedals
+		return singleentry().calclvlbyap(ap)
+
+	@staticmethod
+	def findcurrentmedals(current):
+		from ownlib.singleentry import singleentry
+		return singleentry().findcurrentmedals(current)
 
 
-	def findcurrentmedalsbycolor(self, what, cur):
-		curmedalsbycol = {}
-		if what == 'current':
-			curmedals = self.findcurrentmedals(cur)
-		elif what == 'curmedals':
-			curmedals = cur
-		else:
-			raise ValueError
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-		curmedalsbycol['nothing'] = []
-		for trycolor in colorpossibilities:
-			curmedalsbycol[trycolor] = []
-		for trymedal in curmedals.keys():
-			curmedalsbycol[curmedals[trymedal]].append(trymedal)
-		return curmedalsbycol
+	@staticmethod
+	def findcurrentmedalsbycolor(what, cur):
+		from ownlib.singleentry import singleentry
+		return singleentry().findcurrentmedalsbycolor(what,cur)
 
 
-	def calccountofmedalsonce(self, what, cur):
-		if what == 'current':
-			curmedalsbycol = self.findcurrentmedalsbycolor(what, cur)
-		elif what == 'curmedals':
-			curmedalsbycol = self.findcurrentmedalsbycolor(what, cur)
-		elif what == 'curmedalsbycol':
-			curmedalsbycol = cur
-		else:
-			raise ValueError
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-		countofmedalsonce = {}
-		for colorpossibility in colorpossibilities:
-			countofmedalsonce[colorpossibility] = 0
-		for countmedaltry in curmedalsbycol.keys():
-			for _ in curmedalsbycol[countmedaltry]:
-				countofmedalsonce[countmedaltry] += 1
-		return countofmedalsonce
+	@staticmethod
+	def calccountofmedalsonce(what, cur):
+		from ownlib.singleentry import singleentry
+		return singleentry().calccountofmedalsonce(what,cur)
 
 
-	def calcrealcountofmedalsonce(self, current, what='current', cur=None):
-		if what == 'current':
-			countofmedalsonce = self.calccountofmedalsonce(what, current)
-		elif what == 'curmedals':
-			countofmedalsonce = self.calccountofmedalsonce(what, cur)
-		elif what == 'curmedalsbycol':
-			countofmedalsonce = self.calccountofmedalsonce(what, cur)
-		elif what == 'countofmedalsonce':
-			countofmedalsonce = cur
-		else:
-			raise ValueError
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-		realcountofmedalsonce = {}
-		for anothercolorpossibility in colorpossibilities:
-			if current[anothercolorpossibility] == 'n':
-				realcountofmedalsonce[anothercolorpossibility] = countofmedalsonce[anothercolorpossibility]
-			elif type(int(current[anothercolorpossibility])) == int:
-				realcountofmedalsonce[anothercolorpossibility] = current[anothercolorpossibility]
-		return realcountofmedalsonce
+	@staticmethod
+	def calcrealcountofmedalsonce(current, what='current', cur=None):
+		from ownlib.singleentry import singleentry
+		return singleentry().calcrealcountofmedalsonce(current,what=what,cur=cur)
 
 
 	@staticmethod
 	def calcsomecountofmedalsmulti(once):
-		multi = {
-			'bronze': once['bronze'] + once['silver'] + once['gold'] + once['platinum'] + once['onyx'],
-			'silver': once['silver'] + once['gold'] + once['platinum'] + once['onyx'],
-			'gold': once['gold'] + once['platinum'] + once['onyx'],
-			'platinum': once['platinum'] + once['onyx'],
-			'onyx': once['onyx']
-		}
-		return multi
+		from ownlib.singleentry import singleentry
+		return singleentry().calcsomecountofmedalsmulti(once)
 
 	@staticmethod
 	def diffrealvscalculatedmedals(real, calc):
@@ -339,118 +249,15 @@ class Current:
 				real = t
 		return real
 
-	def calclvlbycol(self, realcountofmedalsmulti):
-		lvlbycol = {}
-		for trykiolor in ('silver', 'gold', 'platinum', 'onyx'):
-			lvlbycol[trykiolor] = self.highestplaceofnoappearance[trykiolor]
-		for trycollvl in range(9, 17):
-			reqmed = self.lvldict[trycollvl]['reqmed']
-			for tryreqmed in reqmed.keys():
-				if lvlbycol[tryreqmed] < trycollvl:
-					if reqmed[tryreqmed] <= realcountofmedalsmulti[tryreqmed]:
-						lvlbycol[tryreqmed] = trycollvl
-					# print "Poniewaz %d <= %d" % (reqmed[tryreqmed], realcountofmedalsmulti[tryreqmed]) #debug
-					# print "Przyszlo %2d do %s" % (trycollvl, tryreqmed) #debug
-		return lvlbycol
+	@staticmethod
+	def calclvlbycol(realcountofmedalsmulti):
+		from singleentry import singleentry
+		return singleentry().calclvlbycol(realcountofmedalsmulti)
 
-	def findaspirujacy(self, curmedalsbycol, current):
-		aspirujacy = {}
-		testulist = []
-		colorpossibilitiesnothing = ('nothing', 'bronze', 'silver', 'gold', 'platinum', 'onyx')
-		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
-
-		for kolor in colorpossibilities:
-			if not kolor == 'onyx':
-				aspirujacy[kolor] = []
-
-		for kolor in colorpossibilitiesnothing:
-			if kolor == 'onyx':
-				pass
-			else:
-				ckolorkis = {1: 'bronze', 2: 'silver', 3: 'gold', 4: 'platinum', 5: 'onyx'}
-				ackolorkis = {'nothing': 0, 'bronze': 1, 'silver': 2, 'gold': 3, 'platinum': 4, 'onyx': 5}
-				#colowr = colorpossibilities[colorpossibilitiesnothing.index(kolor)]
-				colowr = str(ckolorkis[int(ackolorkis[str(kolor)])+1])
-				aspirujacy[colowr] = []
-				if len(curmedalsbycol[colowr]) > 0:
-					for wklej in curmedalsbycol[kolor]:
-						aspirujacy[colowr].append(wklej)
-						newcolowr = colowr
-						newkolor = kolor
-						#print "current[wklej]: %s" % current[wklej]
-						#print "self.medaldict[wklej]['walk'][newcolowr]: %s" % self.medaldict[wklej]['walk'][newcolowr]
-						#print "self.medaldict[wklej]['walk'][newkolor]: %s" % self.medaldict[wklej]['walk'][newkolor]
-						#if (
-						#	(int(self.medaldict[wklej]['walk'][newkolor])) < (int(current[wklej])) < (int(self.medaldict[wklej]['walk'][newcolowr]))
-						#):
-						#	aspirujacy[colowr].append(wklej)
-						#elif ((int(self.medaldict[wklej]['walk'][newcolowr])) == (int(current[wklej]))):
-						#	aspirujacy[colowr].append(wklej)
-						#while True:
-						#	if (
-						#		(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-						#						(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-						#		):
-						#		while (
-						#			(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-						#				(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-						#					(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-						#						(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-						#							(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-						#		):
-						#			if (
-						#			(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
-						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
-						#			):
-						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-						#				print "a1 %s %s" % (newkolor, newcolowr)  # debug
-						#			elif (
-						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
-						#				(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-						#			):
-						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-						#				print "a2 %s %s" % (newkolor, newcolowr)  # debug
-						#			else:
-						#				print "Co jest?"
-						#		if (
-						#			(int(self.medaldict[wklej]['walk'][newcolowr]) - int(current[wklej]) < 0) or \
-						#				(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor]) < 0) or \
-						#					(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-						#						(current[wklej] > self.medaldict[wklej]['walk'][newcolowr]) or \
-						#							(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-						#		):
-						#			if (
-						#			(int(self.medaldict[wklej]['walk'][newcolowr] - current[wklej] < 0)) or \
-						#				(current[wklej] == self.medaldict[wklej]['walk'][newcolowr]) or \
-						#					(current[wklej] > self.medaldict[wklej]['walk'][newcolowr])
-						#			):
-						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-						#				print "a1 %s %s" % (newkolor, newcolowr)  # debug
-						#			elif (
-						#			(int(current[wklej]) - int(self.medaldict[wklej]['walk'][newkolor] < 0)) or \
-						#				(current[wklej] < self.medaldict[wklej]['walk'][newkolor])
-						#			):
-						#				newcolowr = colorpossibilities[colorpossibilitiesnothing.index(newkolor)]
-						#				newkolor = colorpossibilitiesnothing[colorpossibilities.index(newcolowr)]
-						#				print "a2 %s %s" % (newkolor, newcolowr)  # debug
-						#			else:
-						#				print "Co jest?"
-						#	else:
-						#		testu = str(colorpossibilities[colorpossibilities.index(str(newcolowr))+1])
-						#		testulist.append(testu)
-						#		if not (testu == 'onyx'):
-						#		#if True:
-						#			aspirujacy[testu].append(wklej)
-						#			print "QQQQQQQQQQQQ %s : %s %s a testu to %s" % (wklej,newkolor,newcolowr,testu)
-						#		break
-		return aspirujacy
+	@staticmethod
+	def findaspirujacy(curmedalsbycol, current):
+		from singleentry import singleentry
+		return singleentry().findaspirujacy(curmedalsbycol,current)
 
 	@staticmethod
 	def findaspirmulti(aspirujacy):
@@ -473,7 +280,7 @@ class Current:
 		return aspirmulti
 
 
-	def calcweneedleft(self,lvlbycol):
+	def calcweneedleft(self, lvlbycol):
 		weneedleft = {}
 		for ckolor in lvlbycol.keys():
 			if not (lvlbycol[ckolor] == 16):
@@ -485,7 +292,8 @@ class Current:
 				weneedleft[ckolor] = False
 		return weneedleft
 
-	def clarifytowinidleft(selfself,weneedleft,lvlbycol):
+	@staticmethod
+	def clarifytowinidleft(weneedleft, lvlbycol):
 		winidleft = {}
 
 		for ckolor in weneedleft.keys():
@@ -493,22 +301,25 @@ class Current:
 				winidleft[ckolor] = (lvlbycol[ckolor], weneedleft[ckolor])
 		return winidleft
 
-	def stdouta(self,reallvl,ap,lvlbyap,lvlbymed):
+	def stdouta(self, reallvl, ap, lvlbyap, lvlbymed):
 		print " "
 		print "Codename: %s      Level: %2d " % (self.codename, reallvl)
 		print "AP: %d    lvl_by_AP: %2d " % (ap, lvlbyap)
 		if lvlbyap < 16:
-			abs = float(float(ap)/float(self.lvldict[lvlbyap+1]['ap']))
-			rel = float(float(ap-self.lvldict[lvlbyap]['ap'])/float(self.lvldict[lvlbyap+1]['ap']-self.lvldict[lvlbyap]['ap']))
-			print "Absolute AP % of the next ({:2}) lvl_by_AP: {:.5%}   Relative AP % of the next ({:2}) lvl_by_AP: {:.5%}".format(lvlbyap+1,abs,lvlbyap+1,rel)
+			abs = float(float(ap) / float(self.lvldict[lvlbyap + 1]['ap']))
+			rel = float(float(ap - self.lvldict[lvlbyap]['ap']) / float(
+				self.lvldict[lvlbyap + 1]['ap'] - self.lvldict[lvlbyap]['ap']))
+			print "Absolute AP % of the next ({:2}) lvl_by_AP: {:.5%}   Relative AP % of the next ({:2}) lvl_by_AP: {:.5%}".format(
+				lvlbyap + 1, abs, lvlbyap + 1, rel)
 		print "lvl_by_medals: %2d " % lvlbymed
 
-	def stdoutb(self,lvlbycol):
+	@staticmethod
+	def stdoutb(lvlbycol):
 		for blah in ('silver', 'gold', 'platinum', 'onyx'):
 			if not lvlbycol[blah] == 8:
 				print "Level for medals' colour %s: %2d" % (blah, lvlbycol[blah])
 
-	def stdoutc(self,lvlbycol,winidleft,realcountofmedalsmulti,aspirmulti,current,curmedals,):
+	def stdoutc(self, lvlbycol, winidleft, realcountofmedalsmulti, aspirmulti, current, curmedals, ):
 		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
 		for bleh in ('silver', 'gold', 'platinum', 'onyx'):
 			if (
@@ -557,10 +368,10 @@ class Current:
 							curr,
 							self.medaldict[espir]['walk'][str(bleh)] - curr,
 							self.medaldict[espir]['walk'][bleh],
-							float(curr*100) / float(self.medaldict[espir]['walk'][bleh]),
+							float(curr * 100) / float(self.medaldict[espir]['walk'][bleh]),
 							float(
 								float(curr - self.medaldict[espir]['walk'][
-									colorpossibilities[colorpossibilities.index(bleh) - 1]])*100 / \
+									colorpossibilities[colorpossibilities.index(bleh) - 1]]) * 100 / \
 								float(
 									self.medaldict[espir]['walk'][bleh] - \
 									self.medaldict[espir]['walk'][
@@ -584,7 +395,7 @@ class Current:
 									colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
 								],
 								float(
-									float(current[tenover])*100 / \
+									float(current[tenover]) * 100 / \
 									float(
 										self.medaldict[tenover]['walk'][
 											colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
@@ -592,7 +403,8 @@ class Current:
 									)
 								),
 								float(
-									float(current[tenover] - self.medaldict[tenover]['walk'][curmedals[tenover]])*100 / \
+									float(
+										current[tenover] - self.medaldict[tenover]['walk'][curmedals[tenover]]) * 100 / \
 									float(
 										self.medaldict[tenover]['walk'][
 											colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
@@ -608,13 +420,13 @@ class Current:
 								0,
 								0,
 								0,
-								float(self.medaldict[espir]['walk'][bleh] - curr)*100 / \
+								float(self.medaldict[espir]['walk'][bleh] - curr) * 100 / \
 								float(self.medaldict[tenover]['walk'][
 									colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
 								]),
-								float(self.medaldict[espir]['walk'][bleh] - curr)*100 / \
+								float(self.medaldict[espir]['walk'][bleh] - curr) * 100 / \
 								float(self.medaldict[tenover]['walk'][
-								colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
+									colorpossibilities[colorpossibilities.index(curmedals[tenover]) + 1]
 								]),
 								self.minapfromact(tenover, self.medaldict[espir]['walk'][bleh] - curr,
 												  self.medaldict[tenover]['apable']),
@@ -630,9 +442,10 @@ class Current:
 										tonover],
 									self.medaldict[tonover]['walk'][
 										colorpossibilities[colorpossibilities.index(curmedals[tonover]) + 1]],
-									float(current[tonover])*100 / float(self.medaldict[tonover]['walk'][
+									float(current[tonover]) * 100 / float(self.medaldict[tonover]['walk'][
 										colorpossibilities[colorpossibilities.index(curmedals[tonover]) + 1]]),
-									float(current[tonover] - self.medaldict[tonover]['walk'][curmedals[tonover]])*100 / \
+									float(
+										current[tonover] - self.medaldict[tonover]['walk'][curmedals[tonover]]) * 100 / \
 									float(
 										self.medaldict[tonover]['walk'][
 											colorpossibilities[colorpossibilities.index(curmedals[tonover]) + 1]
@@ -648,14 +461,16 @@ class Current:
 									0,
 									0,
 									0,
-									float(self.medaldict[tenover]['walk'][curmedals[tenover]] - current[tenover])*100 / \
+									float(
+										self.medaldict[tenover]['walk'][curmedals[tenover]] - current[tenover]) * 100 / \
 									float(
 										self.medaldict[tonover]['walk'][
 											colorpossibilities[colorpossibilities.index(curmedals[tonover]) + 1]
 										]
 									),
 									float(
-										self.medaldict[tenover]['walk'][curmedals[tenover]] - current[tenover])*100 / float(
+										self.medaldict[tenover]['walk'][curmedals[tenover]] - current[
+											tenover]) * 100 / float(
 										self.medaldict[tonover]['walk'][
 											colorpossibilities[colorpossibilities.index(curmedals[tonover]) + 1]]),
 									self.minapfromact(tenover,
@@ -668,8 +483,8 @@ class Current:
 				print tabulate(tabelka['t'], headers=tabelka['h'], floatfmt=".5f")
 			else:
 				# doprintatupel = tuple([
-				# 	realcountofmedalsmulti[bleh],
-				# 	bleh,
+				# realcountofmedalsmulti[bleh],
+				# bleh,
 				# 	self.lvldict[lvlbycol[bleh]][bleh],
 				# 	lvlbycol[bleh],
 				# 	bleh
@@ -700,14 +515,13 @@ class Current:
 		aspirujacy = self.findaspirujacy(curmedalsbycol, current)
 		aspirmulti = self.findaspirmulti(aspirujacy)
 		weneedleft = self.calcweneedleft(lvlbycol)
-		winidleft = self.clarifytowinidleft(weneedleft,lvlbycol)
-		self.stdouta(reallvl,ap,lvlbyap,lvlbymed)
+		winidleft = self.clarifytowinidleft(weneedleft, lvlbycol)
+		self.stdouta(reallvl, ap, lvlbyap, lvlbymed)
 		self.stdoutb(lvlbycol)
-		self.stdoutc(lvlbycol,winidleft,realcountofmedalsmulti,aspirmulti,current,curmedals)
+		self.stdoutc(lvlbycol, winidleft, realcountofmedalsmulti, aspirmulti, current, curmedals)
 
-	#def appendtocsv(self,filename):
-	#	pass
+	# def appendtocsv(self,filename):
+	# pass
 
-	def savetoxml(self,filename,timed):
-		from xmling import xmling
-		xmling.justappendentrytoxml(filename,"self.current",timed,self.codename,give=self.current)
+	def savetoxml(self, filename, timed):
+		xmling.justappendentrytoxml(filename, "self.current", timed, self.codename, give=self.current)

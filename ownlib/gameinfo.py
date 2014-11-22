@@ -92,6 +92,16 @@ class gameinfo:
 			'guard': 'Current max time portal held in days: ',
 			'destrlink': 'Current count of enemy links destroyed: ',
 			'destrfield': 'Current count of enemy Control Fields destroyed: ',
+			'xm':'Current count of XM collected: ',
+			'mu':'Current count of Mind Units captured: ',
+			'longestlink':'Currently longst link ever: ',
+			'largestfield':'Currently largest field ever: ',
+			'neutr':'Current count of neutralized portals: ',
+			'walk':'Current distance walked: ',
+			'guardlink':'Current max time link maintained: ',
+			'guardfield':'Current max time field held: ',
+			'longxguardlink':'Current max lenght*time for a link: ',
+			'longxguardfield':'Current max MUs*time for a link: '
 		}
 		self.currentquestionUSdict = {
 			'photo': "Current count of photos approved to portals (check mail) (number (even if it's 0) or 'n' character if you don't know): ",
@@ -103,3 +113,55 @@ class gameinfo:
 			'onyx': "Current amount of onyx (black) medals (count only the badges' icons of exactly that color), you may write 'n' if you have the maximum level already: ",
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
+
+		self.outconvtoap = (
+			'seer',
+			'depllater',
+			'link',
+			'field',
+			'rechmin',
+			'captres',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
+		self.namesforoutconvtoap = {
+			'seer':"Discovered Portals",
+			'depllater':"Resonators depl&upgr except for the capturing one",
+			'link':"Links created",
+			'field':"Fields created",
+			'rechmin':"Recharging: minimum AP gained on",
+			'captres':"Capturing portals + 1st res",
+			'destr':"Destroyed resonators",
+			'destrlink':"Enemy links destroyed",
+			'destrfield':"enemy Control Fields destroyed",
+			'uncomputable':"Uncomputable",
+			'ap':"AP"
+		}
+
+		self.inconvtoap = (
+			'seer',
+			'depl',
+			'capt',
+			'link',
+			'field',
+			'rech',
+			'capt',
+			'destr',
+			'destrlink',
+			'destrfield'
+		)
+
+	def reqmed(self,lvl):
+		colorpossibilities = ('bronze', 'silver', 'gold', 'platinum', 'onyx')
+		if True:
+			medlvltrytab = []
+			for possicolor in colorpossibilities:
+				if possicolor in self.lvldict[lvl]:
+					if int(self.lvldict[lvl][possicolor]) > 0:
+						medlvltrytab.append({possicolor: int(self.lvldict[lvl][possicolor])})
+			give = {}
+			for a in medlvltrytab:
+				give.update(a)
+		return give
