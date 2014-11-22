@@ -114,6 +114,43 @@ class gameinfo:
 			'guardnow': "Current top max time portal held still alive in days, if you absolutely don't know write an 'n' character: "
 		}
 
+		self.listcurrentquestionS = {
+			'ap',
+			'uniqvis',
+			'seer',
+			'hack',
+			'depl',
+			'link',
+			'field',
+			'rech',
+			'capt',
+			'uniqcapt',
+			'destr',
+			'guard',
+			'destrlink',
+			'destrfield',
+			'xm',
+			'mu',
+			'longestlink',
+			'largestfield',
+			'neutr',
+			'walk',
+			'guardlink',
+			'guardfield',
+			'longxguardlink',
+			'longxguardfield'
+		}
+		self.listcurrentquestionUS = {
+			'photo',
+			'edit',
+			'bronze',
+			'silver',
+			'gold',
+			'platinum',
+			'onyx',
+			'guardnow'
+		}
+
 		self.outconvtoap = (
 			'seer',
 			'depllater',
