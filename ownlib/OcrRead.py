@@ -79,6 +79,8 @@ class OcrRead:
 			p7 = re.sub('g','9',p6)
 			p8 = re.sub('O','0',p7)
 			p9 = re.sub('S|s','6',p8)
-			pf = re.sub(r'\D','',p9)
+			pdigA = re.sub('n','77',p9) if eje == 'ap' else p9
+			pf = re.sub(r'\D','',pdigA)
 			elementojn[eje] = int(pf)
+		#print a
 		return elementojn
