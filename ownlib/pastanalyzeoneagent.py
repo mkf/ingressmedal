@@ -155,7 +155,7 @@ class pastanalyzeoneagent:
 				givba['ap'][0].append(int(pastia[e]['time']))
 				s = singleentry()
 				apcomputable = s.coUNTINGcurapcountable(pastia[e])
-				prevapcomputable = s.coUNTINGcurapcountable(pastia[int(sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1])
+				prevapcomputable = s.coUNTINGcurapcountable(pastia[int(sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1])])
 				prevapuncomputable = int(
 					int(
 						pastia[
