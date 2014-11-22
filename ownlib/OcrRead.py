@@ -68,7 +68,7 @@ class OcrRead:
 						break
 					else:
 						pass
-						print a  #debug
+						#print a  #debug
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
