@@ -152,7 +152,7 @@ class pastanalyzeoneagent:
 				tb1 = float(tb2)/3600/24
 				timebetween=float(tb1)
 				givba['ap'][1].append(float(int(pastia[e]['ap'])-int(pastia[sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1]]['ap']))/timebetween)
-				givba['ap'][0].append(int(pastia[e]['time']))
+				givba['ap'][0].append(int(e))
 				s = singleentry()
 				apcomputable = s.coUNTINGcurapcountable(pastia[e])
 				prevapcomputable = s.coUNTINGcurapcountable(pastia[int(sorted(pastia.keys())[sorted(pastia.keys()).index(e)-1])])
@@ -167,8 +167,8 @@ class pastanalyzeoneagent:
 				)
 				apuncomputable = int(pastia[e]['ap'])-sum(apcomputable.values())
 				givba['uncomputable'][1].append(float(apuncomputable-prevapuncomputable)/timebetween)
-				givba['uncomputable'][0].append(int(pastia[e]['time']))
+				givba['uncomputable'][0].append(int(e))
 				for i in apcomputable.keys():
 					givba[i][1].append(float(apcomputable[i]-prevapcomputable[i])/timebetween)
-					givba[i][0].append(int(pastia[e]['time']))
+					givba[i][0].append(int(e))
 		return givba
