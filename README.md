@@ -21,11 +21,12 @@ Usage
  * ./entryandcuranalyze.py — the same, except it doesn't have OCR (using tabulate)
  * ./pastgainpweekbetwentrs.py — calculates your average gain of parameters per week between entries and shows it as an ASCII table (using tabulate)
  * ./plotmedalclimbing.py — plot a chart containing climbing to medals based on the XML database file, at the moment you can only view it from pyplot GUI, change the view (crop,resize), and save
- * ./plotapclimbing.py — same as above, axcept for that it cointains AP climbing data for total and for the 'apables' — actions which bring you AP
+ * ./plotmedalclimbgainavgperdaybetwentrs.py — same as above, except it contains the difference in medals' progress in percents divided by days between entries
+ * ./plotapclimbing.py — same as above*2, axcept for that it cointains AP climbing data for total and for the 'apables' — actions which bring you AP
  * ./plotapgainavgperdaybetwentrs.py — difference in ap and apables between entries divided by days between entries
  
 
-Program currently works only in text-only mode, except for sometimes pyplot GUI being opened.
+Program currently works only in text-only mode, except for pyplot GUI being opened.
 
 ###Search GMail for mails:
  * **edits**: *"Ingress Portal Data Edit Accepted:"*
@@ -40,9 +41,15 @@ Why
 
  * I'm learning Python
  * I'm playin' Ingress
- * I may accidentally create something... useful ;p
+ * I may accidentally create something.... useful ;p
  
 Credits
 ---------
 
 During the creation of the OCR class, [https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php](https://github.com/BlueHerons/StatTracker/blob/master/code/OCR.class.php) [BlueHerons' StatTracker: master: commit [6650d1f](https://github.com/BlueHerons/StatTracker/commit/6650d1fff374af07d0d9a92beadd627bc428cdeb)] was very helpful, and some ideas in [ownlib/OcrRead.py](https://github.com/ArchieT/ingressmedal/blob/master/ownlib/OcrRead.py) are copied from it; Thanks!
+
+
+Contributions
+---------
+
+If you want to fork my project, please send pull requests and consider my repositoryy as the main repository, and let me be the project's master (and) owner — I'm learning Python for a fairly short time and I want everything to be my own achievement in 100% or at least 85% ;p.
