@@ -115,7 +115,7 @@ class MainWindow(wx.Frame):
 			grid1.Add(text,0,wx.ALIGN_CENTRE|wx.LEFT|wx.RIGHT|wx.TOP)
 
 		#midPan = wx.Panel(panel)
-		vs.Add(grid1,1,wx.EXPAND,20)
+		vs.Add(grid1,1,wx.EXPAND,5)
 		exampel = {'sth':[float(2.86),float(2.56),float(5.23)],'asdf':[float(567.3),float(43.5),float(78.4)]}
 
 		mleng = max([len([test for test in exampel[i]]) for i in exampel.keys()])+1
