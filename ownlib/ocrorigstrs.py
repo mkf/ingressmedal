@@ -31,27 +31,27 @@ class ocrorigstrs:
 			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Un[il]qu[eP] Por[tf]als [Vv][il]s[il][tl][Pe]d ',
 			'seer':r'Portals Discovered ',
-			'xm':r'XM Coll[eP][cI][tI][eP]d ','XM CollPIIPd 2,BT0,T95 XM'
-			'hack':r'Hacks ',
-			'depl':r'Resonators Deployed ',
-			'link':r'Links Created ',
-			'field':r'Control Fields Created ',
-			'mu':r'Mind Units Captured ',
-			'longestlink':r'Longest Link Ever Created ',
-			'largestfield':r'Largest Control Field ',
-			'rech':r'XM Recharged ',
-			'capt':r'^Portals Captured ',
-			'uniqcapt':r'Unique Portals Captured ',
-			'destr':r'Resonators Destroyed ',
-			'neutr':r'Portals Neutralized ',
-			'destrlink':r'Enemy Links Destroyed ',
-			'destrfield':r'Enemy Control Fields Destroyed ',
-			'walk':r'Distance Walked ',
-			'guard':r'Max Time Portal Held ',
-			'guardlink':r'Max Time Link Maintained ',
-			'longxguardlink':r'Max Link Length x Days ',
-			'guardfield':r'Max Time Field Held ',
-			'longxguardfield':r'Largest Field MUs x Days '
+			'xm':r'XM Coll[eP][cI][tI][eP]d ',
+			'hack':r'Ha[cI]ks ',
+			'depl':r'R[eP]sona[tl]ors D[eP]ploy[eP]d ',
+			'link':r'L[il]nks Cr[eP]a[tl][eP]d ',
+			'field':r'Con[tl]rol F[iI][eP]lds Cr[eP]a[tl][eP]d ',
+			'mu':r'M[il]nd Un[il][tl]s Cap[tl]ur[eP]d ',
+			'longestlink':r'Long[eP]s[tl] L[il]nk Ev[eP]r Cr[eP]a[tl][eP]d ',
+			'largestfield':r'Larg[eP]s[tl] Con[tl]rol F[iI][eP]ld ',
+			'rech':r'XM R[eP][cI]harg[eP]d ',
+			'capt':r'^Por[tf]als Cap[tl]ur[eP]d ',
+			'uniqcapt':r'Un[il]qu[eP] Por[tf]als Cap[tl]ur[eP]d ',
+			'destr':r'R[eP]sona[tl]ors D[eP]s[tl]roy[eP]d ',
+			'neutr':r'Por[tf]als N[eP]u[tl]ral[il][zI][eP]d ',
+			'destrlink':r'En[eP]my L[il]nks D[eP]s[tl]roy[eP]d ',
+			'destrfield':r'En[eP]my Con[tl]rol F[iI][eP]lds D[eP]s[tl]roy[eP]d ',
+			'walk':r'D[il]s[tl]an?c?[eP] Walk[eP]d ',
+			'guard':r'Max T[il]m[eP] Por[tf]al H[eP]ld ',
+			'guardlink':r'Max T[il]m[eP] L[il]nk Ma[il]n[tl]a[il]n[eP]d ',
+			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x Days ',
+			'guardfield':r'Max T[il]m[eP] Fi[eP]ld H[eP]ld ',
+			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x Days '
 		}
 		self.origstrsdictaft = {
 			'ap':r' A[Pp] .+A[Pp]',
@@ -63,9 +63,9 @@ class ocrorigstrs:
 			'walk':r'km',
 			'guard':r' days',
 			'guardlink':r' days',
-			'longxguardlink':r' km-days',
+			'longxguardlink':r' km-day[s5]',
 			'guardfield':r' days',
-			'longxguardfield':r' MU-days'
+			'longxguardfield':r' MU-day[s5]'
 		}
 		#self.sortedbypositionwithheaders = (
 		#
