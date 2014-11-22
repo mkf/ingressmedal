@@ -101,26 +101,6 @@ class MainWindow(wx.Frame):
 		#midPan = wx.Panel(panel)
 		vs.Add(grid1,1,wx.EXPAND,20)
 		exampel = {'sth':[float(2.86),float(2.56),float(5.23)],'asdf':[float(567.3),float(43.5),float(78.4)]}
-		#leng = []
-		#for i in exampel.keys():
-		#	lengt = len(exampel[i])
-		#	leng.append(lengt)
-		#mleng = max(leng)
-		#mleng = max(
-		#	[
-		#		sum([
-		#			len(str(test).split('.') if isinstance(test,float) else ["test"]) for test in exampel[i]
-		#		]) for i in exampel.keys()
-		#	]
-		#)+1
-
-		#mleng = max(
-		#	[
-		#		sum([
-		#			len(str(test) if isinstance(test,float) else [test]) for test in exampel[i]
-		#		]) for i in exampel.keys()
-		#	]
-		#)+1
 
 		mleng = max([len([test for test in exampel[i]]) for i in exampel.keys()])+1
 
@@ -129,7 +109,6 @@ class MainWindow(wx.Frame):
 		# ---------------------------\/---there will be a key=head here in sorted() also
 		for i in sorted(exampel.keys()):
 			whathastobe.append(i)
-			#for j in exampel[i]: whathastobe.append(j)
 
 		grid2 = wx.grid.Grid(self,-1)
 		grid2.CreateGrid(len(whathastobe),mleng)
@@ -141,40 +120,6 @@ class MainWindow(wx.Frame):
 				grid2.SetReadOnly(whathastobe.index(i),exampel[i].index(j)+1)
 		for k in range(1,mleng): grid2.SetColFormatFloat(k,6,3)
 
-		#whathascharbychar = []
-		#dictofdotsandpresuffixes = {}
-		#for s in whathastobe:
-		#	aftdotcount = 0
-		#	befdotcount = 0
-		#	wasthereadot = False
-		#	if isinstance(s,float):  # and s-float(str(s).split('.')[0])>0:
-		#		for d in str(s):
-		#			if d == '.':
-		#				wasthereadot = True
-		#			elif d in range(0,10):
-		#				if not wasthereadot:
-		#					befdotcount+=1
-		#				elif wasthereadot:
-		#					aftdotcount+=1
-		#		dictofdotsandpresuffixes[s] = {'aft':aftdotcount,'bef':befdotcount,'dot':wasthereadot}
-		#
-		#mxbef = max([i['bef'] for i in dictofdotsandpresuffixes.values()])
-		#mxaft = max([i['aft'] for i in dictofdotsandpresuffixes.values()])
-		#
-		#grid2 = wx.FlexGridSizer(cols=(((mleng-1)*(1+mxbef+1+mxaft+1))+1)/2)
-		#
-		#
-		#for s in whathastobe:
-		#	if isinstance(s,float):
-		#		d = dictofdotsandpresuffixes[s]
-		#		for _ in range(d['bef'],mxbef+1): whathascharbychar.append(' ')
-		#		for strg in str(s): whathascharbychar.append(strg)
-		#		for _ in range(d['aft'],mxaft+1): whathascharbychar.append(' ')
-		#	elif isinstance(s,str):
-		#		whathascharbychar.append(s)
-		#
-		#
-		#for k in whathascharbychar: grid2.Add(wx.StaticText(panel,-1,str(k)),0,wx.ALIGN_RIGHT)
 
 		vs.Add(grid2,1,wx.EXPAND,20)
 
