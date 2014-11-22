@@ -41,7 +41,7 @@ class ocrorigstrs:
 			'largestfield':r'Larg[eP]s[tl] Con[tl]rol F[iI][eP]ld ',
 			'rech':r'XM R[eP][cI]harg[eP]d ',
 			'capt':r'^Por[tlf]als Cap[tl]ur[eP]d ',
-			'uniqcapt':r'Un[il]qu[eP] Por[tf]als Cap[tl]ur[eP]d ',
+			'uniqcapt':r'Un[il]qu[eP] Por[tlf]als Cap[tl]ur[eP]d ',
 			'destr':r'R[eP]sona[tl]ors D[eP]s[tl]roy[eP]d ',
 			'neutr':r'Por[tf]als N[eP]u[tl]ral[il][zI][eP]d ',
 			'destrlink':r'En[eP]my L[il]nks D[eP]s[tl]roy[eP]d ',
