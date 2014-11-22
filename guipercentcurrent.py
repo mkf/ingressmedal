@@ -43,6 +43,10 @@ interaktywnosciowo = Interactive()
 #	argumentydodane.append(keyowo)
 #argh.add_argument('-o', '--overs', type=TrueOrFalse, help="Show overs (True/False)")
 
+class NewEntryDialog(wx.Dialog):
+	def __init__(self,*args,**kw):
+		pass
+
 class MainWindow(wx.Frame):
 	def __init__(self,parent,title):
 		super(MainWindow,self).__init__(parent,title=title,size=(1200,720))
@@ -77,7 +81,7 @@ class MainWindow(wx.Frame):
 		vs = wx.BoxSizer(wx.HORIZONTAL)
 		#box1_title = wx.StaticBox(panel,-1,"Parameters")
 		#box1 = wx.StaticBoxSizer(box1_title,wx.VERTICAL)
-		grid1 = wx.FlexGridSizer(cols=1)
+		grid1 = wx.FlexGridSizer(cols=2)
 		self.group1_ctrls = []
 		# te1 = wx.StaticText(panel,-1,"Te")
 		# te1.SetFont(font)
@@ -103,10 +107,12 @@ class MainWindow(wx.Frame):
 		curQdict = {}
 		curQdict.update(gi.currentquestionSdict)
 		curQdict.update(gi.currentquestionUSdict)
+		from re import sub
 		for gitr in gitrmer:
-			ted[gitr] = (wx.StaticText(panel,-1,curQdict[gitr]),wx.SpinCtrl(panel,-1,""))
+			ted[gitr] = (wx.StaticText(panel,-1,sub(r', ','\n',curQdict[gitr])),wx.SpinCtrl(panel,-1,""))
 			ted[gitr][0].SetFont(font)
 			self.group1_ctrls.append(ted[gitr])
+
 
 		for tuptetex in self.group1_ctrls:
 			te = tuptetex[0]
@@ -137,7 +143,7 @@ class MainWindow(wx.Frame):
 		for k in range(1,mleng): grid2.SetColFormatFloat(k,6,3)
 
 
-		vs.Add(grid2,1,wx.EXPAND,20)
+		vs.Add(grid2,1,wx.EXPAND|wx.ALIGN_RIGHT,40)
 
 		panel.SetSizer(vs)
 		vs.Fit(panel)
