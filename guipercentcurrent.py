@@ -98,7 +98,13 @@ class MainWindow(wx.Frame):
 			grid1.Add(text,0,wx.ALIGN_CENTRE|wx.LEFT|wx.RIGHT|wx.TOP)
 
 		#midPan = wx.Panel(panel)
-		vs.Add(grid1,1,wx.EXPAND|wx.ALL,20)
+		vs.Add(grid1,1,wx.EXPAND,20)
+		exampel = {'sth':float(2.86),'asdf':float(567.3)}
+		#for i
+
+		grid2 = wx.FlexGridSizer(cols=2)
+
+
 		panel.SetSizer(vs)
 		vs.Fit(panel)
 		panel.Move((50,50))
