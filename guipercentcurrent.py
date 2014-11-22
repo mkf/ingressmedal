@@ -227,6 +227,9 @@ class MainWindow(wx.Frame):
 		#box1 = wx.StaticBoxSizer(box1_title,wx.VERTICAL)
 
 		butgrid = wx.FlexGridSizer(cols=3)
+		opencreateentrybut = wx.Button(panel,label="Create New Entry")
+		opencreateentrybut.Bind(wx.EVT_BUTTON,self.OnCreateEntryChoose)
+		butgrid.Add(opencreateentrybut,0,wx.EXPAND)
 		vs.Add(butgrid,1,wx.EXPAND,40)
 
 		panel.SetSizer(vs)
@@ -235,8 +238,8 @@ class MainWindow(wx.Frame):
 
 		#print a
 
-	def OnOCRChoose(self,e):
-		pass
+	def OnCreateEntryChoose(self,e):
+		print e
 
 
 
