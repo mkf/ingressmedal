@@ -15,6 +15,7 @@ Usage
  * It can read your data from XML and tell you your average number of [attribute] per week between entries.
  * It can plot you a chart containing climbing to medals based on the XML database file, at the moment you can only view it from pyplot GUI, change the view (crop,resize), and save it from pyplot GUI.
 
+####List of programs:
 
  * ./ocrentryandcuranalyze.py — analyze single entry and/or append it to the database (using ocrad and Pillow) (using tabulate)
  * ./entryandcuranalyze.py — the same, except it doesn't have OCR (using tabulate)
