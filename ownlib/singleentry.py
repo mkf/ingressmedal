@@ -103,7 +103,8 @@ class singleentry:
 		elif what == 'currentbutstr':
 			curi = {}
 			for i in current.keys():
-				curi[i] = int(current[i])
+				if current[i] != 'n':
+					curi[i] = int(current[i])
 			countofmedalsonce = self.calccountofmedalsonce('current', curi)
 		elif what == 'curmedals':
 			countofmedalsonce = self.calccountofmedalsonce(what, cur)

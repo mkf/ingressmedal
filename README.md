@@ -15,11 +15,14 @@ Usage
  * It can read your data from XML and tell you your average number of [attribute] per week between entries.
  * It can plot you a chart containing climbing to medals based on the XML database file, at the moment you can only view it from pyplot GUI, change the view (crop,resize), and save it from pyplot GUI.
 
+####List of programs:
 
- * ./ocrentryandcuranalyze.py — analyze single entry and/or append it to the database
- * ./entryandcuranalyze.py — the same, except it doesn't have OCR
- * ./pastgainpweekbetwentrs.py — calculates your average gain of parameters per week between entries
+ * ./ocrentryandcuranalyze.py — analyze single entry and/or append it to the database (using ocrad and Pillow) (using tabulate)
+ * ./entryandcuranalyze.py — the same, except it doesn't have OCR (using tabulate)
+ * ./pastgainpweekbetwentrs.py — calculates your average gain of parameters per week between entries and shows it as an ASCII table (using tabulate)
  * ./plotmedalclimbing.py — plot a chart containing climbing to medals based on the XML database file, at the moment you can only view it from pyplot GUI, change the view (crop,resize), and save
+ * ./plotapclimbing.py — same as above, axcept for that it cointains AP climbing data for total and for the 'apables' — actions which bring you AP
+ * ./plotapgainavgperdaybetwentrs.py — difference in ap and apables between entries divided by days between entries
  
 
 Program currently works only in text-only mode, except for sometimes pyplot GUI being opened.

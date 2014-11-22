@@ -80,13 +80,15 @@ from matplotlib.ticker import FuncFormatter
 #	for o in range(0,len(pa.givemetimes())):
 #		plt.plot(back[i][0][o],back[i][1][o],color=dictclrs[i])
 plotting = {}
-fig, ax = plt.subplots()
+fig=plt.figure(figsize=(12,10))
+ax = fig.add_subplot(111)
+ax.set_position([0.05,0.05,0.8,0.9])
 for i in back.keys():
-	plotting[i] = plt.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
+	plotting[i] = ax.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
 from matplotlib.font_manager import FontProperties
 fontP = FontProperties()
 fontP.set_size('small')
-ax.legend(bbox_to_anchor=(1, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
+ax.legend(bbox_to_anchor=(1.0, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
 plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
 plt.title('Medals aspiring to %s' % coler)
 plt.ylabel('Percent of %s medal' % coler)
