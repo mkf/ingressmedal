@@ -3,6 +3,10 @@ ingressmedal
 
 AP and medals counting for Ingress (game from Niantic Labs (a Google company))
 
+Branches
+---------
+*`master`* branch is *always stable*, so you can safely just clone it for the latest version
+
 Usage
 ---------
 
