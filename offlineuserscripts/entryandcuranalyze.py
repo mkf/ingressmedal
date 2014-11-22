@@ -3,7 +3,7 @@
 import argparse
 
 #from ownlib.Current import Current
-from ..ownlib.Current import Current
+from ownlib.Current import Current
 
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
@@ -34,7 +34,7 @@ def between(ciag):
 
 
 argh = argparse.ArgumentParser()
-from ..ownlib.interactive import Interactive
+from ownlib.interactive import Interactive
 
 interaktywnosciowo = Interactive()
 argumentydodane = []

@@ -1,7 +1,7 @@
 #!/usr/bin/python2.7
 #  -*- coding: utf-8 -*-
 import argparse
-from ..ownlib.pastanalyzeoneagent import pastanalyzeoneagent
+from ownlib.pastanalyzeoneagent import pastanalyzeoneagent
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
 		return True

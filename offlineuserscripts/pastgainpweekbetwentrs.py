@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 #  -*- coding: utf-8 -*-
-from ..ownlib.pastanalyzeoneagent import pastanalyzeoneagent
+from ownlib.pastanalyzeoneagent import pastanalyzeoneagent
 import argparse
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
@@ -79,7 +79,7 @@ elif overs:
 else:
 	pa = pastanalyzeoneagent(codename)
 
-from ..ownlib.clarifydata import clarifydata
+from ownlib.clarifydata import clarifydata
 clar = clarifydata()
 head = clar.AskForTheListOfDataToBeSavedFromCurrent
 entries = {}

@@ -1,7 +1,7 @@
 #!/usr/bin/python2.7
 #  -*- coding: utf-8 -*-
 import argparse
-from ..ownlib.pastanalyzeoneagent import pastanalyzeoneagent
+from ownlib.pastanalyzeoneagent import pastanalyzeoneagent
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
 		return True
@@ -27,9 +27,9 @@ if parmetry['dbfilepath']:
 else:
 	pa = pastanalyzeoneagent(codename)
 
-from ..ownlib.clarifydata import clarifydata
+from ownlib.clarifydata import clarifydata
 clar = clarifydata()
-from ..ownlib.gameinfo import gameinfo
+from ownlib.gameinfo import gameinfo
 ginf = gameinfo()
 clrs = clar.colorsqua
 
