@@ -21,10 +21,12 @@ SECRET_KEY = 'jonutx)j_@w!8cleclgazp8+q&_k9yv#%191ztlmkfifa&4@gh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
+
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -36,7 +38,7 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-#	'ingressmedal.ocrentry'
+	'ingressmedal.statsanalyze'
 )
 
 MIDDLEWARE_CLASSES = (
