@@ -69,7 +69,6 @@ class NewEntryDialog(wx.Dialog):
 		self.SetTitle("New Entry")
 
 	def InitUI(self):
-		def InitUI(self):
 		panel = wx.Panel(self,-1)
 
 		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
