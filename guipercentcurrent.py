@@ -99,15 +99,31 @@ class MainWindow(wx.Frame):
 
 		#midPan = wx.Panel(panel)
 		vs.Add(grid1,1,wx.EXPAND,20)
-		exampel = {'sth':float(2.86),'asdf':float(567.3)}
-		#for i
+		exampel = {'sth':[float(2.86),float(2.56),float(5.23)],'asdf':[float(567.3),float(43.5),float(78.4)]}
+		leng = []
+		#for i in exampel.keys():
+		#	lengt = len(exampel[i])
+		#	leng.append(lengt)
+		#mleng = max(leng)
+		mleng = max([len([str(test).split('.') for test in exampel[i]]) for i in exampel.keys()])+1
 
-		grid2 = wx.FlexGridSizer(cols=2)
+		grid2 = wx.FlexGridSizer(cols=mleng)
+		whathastobe = []
+		# ---------------------------\/---there will be a key=head here in sorted() also
+		for i in sorted(exampel.keys()):
+			whathastobe.append(i)
+			for j in exampel[i]: whathastobe.append(j)
 
+		for k in whathastobe:
+			for l in str(k).split('.'): grid2.Add(wx.StaticText(panel,-1,str(l)),0,wx.ALIGN_RIGHT)
+
+		vs.Add(grid2,1,wx.EXPAND,20)
 
 		panel.SetSizer(vs)
 		vs.Fit(panel)
 		panel.Move((50,50))
+
+		#print a
 
 
 
