@@ -1,7 +1,7 @@
 #!/usr/bin/python2.7
 #  -*- coding: utf-8 -*-
 import argparse
-from ownlib.pastanalyzeoneagent import pastanalyzeoneagent
+from ..ownlib.pastanalyzeoneagent import pastanalyzeoneagent
 
 def TrueOrFalse(ciag):
 	if (ciag == "True") or (ciag == "y") or (ciag == "yes"):
@@ -35,9 +35,9 @@ if parmetry['dbfilepath']:
 else:
 	pa = pastanalyzeoneagent(codename)
 
-from ownlib.clarifydata import clarifydata
+from ..ownlib.clarifydata import clarifydata
 clar = clarifydata()
-from ownlib.gameinfo import gameinfo
+from ..ownlib.gameinfo import gameinfo
 ginf = gameinfo()
 clrs = clar.colorsqua
 dor = pa.medalclimbing()
@@ -65,7 +65,7 @@ if not jestcoler:
 			coler = i
 			jestcoler = True
 			break
-barck = pa.propmedalclimbingrelative(dor,coler)
+barck = pa.gainpropmedalclimbing(pa.propmedalclimbingrelative(dor,coler))
 back = {}
 for i in barck.keys():
 	if not(len(barck[i][1]) == 0):
@@ -82,18 +82,20 @@ from matplotlib.ticker import FuncFormatter
 plotting = {}
 fig=plt.figure(figsize=(12,10))
 ax = fig.add_subplot(111)
-ax.set_position([0.05,0.05,0.8,0.9])
+ax.set_position([0.065,0.05,0.8,0.9])
+maximal = []
 for i in back.keys():
 	plotting[i] = ax.plot(back[i][0],back[i][1],color=dictclrs[i],linewidth=2.0,label=ginf.medaldict[i if i != 'guardnow' else 'guard']['name'])
+	maximal.append(max(back[i][1]))
 from matplotlib.font_manager import FontProperties
 fontP = FontProperties()
 fontP.set_size('small')
 ax.legend(bbox_to_anchor=(1.0, 0.5), fancybox=True, shadow=True, loc='center left', ncol=1, prop=fontP)
-plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,1])
+plt.axis([min(pa.givemetimes()),max(pa.givemetimes()),0,max(maximal)])
 plt.title('Medals aspiring to %s' % coler)
-plt.ylabel('Percent of %s medal' % coler)
+plt.ylabel('Percent of %s medal / days' % coler)
 def dtformater(x,pos): from datetime import datetime; return datetime.utcfromtimestamp(int(x)).isoformat(sep='\n')
-def percformater(x,pos): return '%2.f%%' % (x*100)
+def percformater(x,pos): return '%2.2f%%' % (x*100)
 ax.yaxis.set_major_formatter(FuncFormatter(percformater))
 ax.xaxis.set_major_formatter(FuncFormatter(dtformater))
 #if not parmetry['nogui']:

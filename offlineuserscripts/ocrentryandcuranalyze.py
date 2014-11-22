@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from ownlib.OcrRead import OcrRead
+from ..ownlib.OcrRead import OcrRead
 import argparse
 argh = argparse.ArgumentParser()
 argh.add_argument('-p','--fromimage',type=str,help="Specify image file",required=True)
@@ -9,7 +9,7 @@ argh.add_argument('-p','--fromimage',type=str,help="Specify image file",required
 
 
 
-from ownlib.Current import Current
+from ..ownlib.Current import Current
 
 
 def TrueOrFalse(ciag):
@@ -39,7 +39,7 @@ def between(ciag):
 		raise argparse.ArgumentTypeError('It is a wrong date')
 
 
-from ownlib.interactive import Interactive
+from ..ownlib.interactive import Interactive
 
 interaktywnosciowo = Interactive()
 argumentydodane = []
