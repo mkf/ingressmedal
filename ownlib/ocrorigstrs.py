@@ -43,7 +43,7 @@ class ocrorigstrs:
 			'capt':r'^Por[tlf]als Cap[tl]ur[eP]d ',
 			'uniqcapt':r'Un[il]qu[eP] Por[tlf]als Cap[tl]ur[eP]d ',
 			'destr':r'R[eP]sona[tl]ors D[eP]s[tl]roy[eP]d ',
-			'neutr':r'Por[tf]als N[eP]u[tl]ral[il][zI][eP]d ',
+			'neutr':r'Por[tf]als N[eP]u[tl]ral[il][zI_][eP]d ', #'Porlals NPulrall_Pd IBT'
 			'destrlink':r'En[eP]my L[il]nks D[eP]s[tl]roy[eP]d ',
 			'destrfield':r'En[eP]my Con[tl]rol F[iI][eP]lds D[eP]s[tl]roy[eP]d ',
 			'walk':r'D[il]s[tl]a[nm]*[cm]*[eP] Walk[eP]d ',
