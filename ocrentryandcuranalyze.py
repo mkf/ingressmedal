@@ -117,4 +117,3 @@ else:
 	print "WARNING: Data were not saved - use -w parameter"
 	print " "
 	print " "
-from os import remove
