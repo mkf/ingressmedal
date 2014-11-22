@@ -105,17 +105,63 @@ class MainWindow(wx.Frame):
 		#	lengt = len(exampel[i])
 		#	leng.append(lengt)
 		#mleng = max(leng)
-		mleng = max([len([str(test).split('.') for test in exampel[i]]) for i in exampel.keys()])+1
+		#mleng = max(
+		#	[
+		#		sum([
+		#			len(str(test).split('.') if isinstance(test,float) else ["test"]) for test in exampel[i]
+		#		]) for i in exampel.keys()
+		#	]
+		#)+1
 
-		grid2 = wx.FlexGridSizer(cols=mleng)
+		mleng = max(
+			[
+				sum([
+					len(str(test) if isinstance(test,float) else [test]) for test in exampel[i]
+				]) for i in exampel.keys()
+			]
+		)+1
+
+
 		whathastobe = []
 		# ---------------------------\/---there will be a key=head here in sorted() also
 		for i in sorted(exampel.keys()):
 			whathastobe.append(i)
 			for j in exampel[i]: whathastobe.append(j)
 
-		for k in whathastobe:
-			for l in str(k).split('.'): grid2.Add(wx.StaticText(panel,-1,str(l)),0,wx.ALIGN_RIGHT)
+		whathascharbychar = []
+		dictofdotsandpresuffixes = {}
+		for s in whathastobe:
+			aftdotcount = 0
+			befdotcount = 0
+			wasthereadot = False
+			if isinstance(s,float):  # and s-float(str(s).split('.')[0])>0:
+				for d in str(s):
+					if d == '.':
+						wasthereadot = True
+					elif d in range(0,10):
+						if not wasthereadot:
+							befdotcount+=1
+						elif wasthereadot:
+							aftdotcount+=1
+				dictofdotsandpresuffixes[s] = {'aft':aftdotcount,'bef':befdotcount,'dot':wasthereadot}
+
+		mxbef = max([i['bef'] for i in dictofdotsandpresuffixes.values()])
+		mxaft = max([i['aft'] for i in dictofdotsandpresuffixes.values()])
+
+		grid2 = wx.FlexGridSizer(cols=(((mleng-1)*(1+mxbef+1+mxaft+1))+1)/2)
+
+
+		for s in whathastobe:
+			if isinstance(s,float):
+				d = dictofdotsandpresuffixes[s]
+				for _ in range(d['bef'],mxbef+1): whathascharbychar.append(' ')
+				for strg in str(s): whathascharbychar.append(strg)
+				for _ in range(d['aft'],mxaft+1): whathascharbychar.append(' ')
+			elif isinstance(s,str):
+				whathascharbychar.append(s)
+
+
+		for k in whathascharbychar: grid2.Add(wx.StaticText(panel,-1,str(k)),0,wx.ALIGN_RIGHT)
 
 		vs.Add(grid2,1,wx.EXPAND,20)
 
