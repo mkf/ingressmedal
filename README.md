@@ -41,7 +41,7 @@ Why
 
  * I'm learning Python
  * I'm playin' Ingress
- * I may accidentally create something.... useful ;p
+ * I may accidentally create something... useful ;p
  
 Credits
 ---------
