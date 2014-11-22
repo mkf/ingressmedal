@@ -16,7 +16,7 @@ class OcrRead:
 		im.save(cache,format='PPM')
 		from os import popen
 		#ocradin = system('ocrad -i %s' % cache)
-		ocradin = popen('ocrad -i %s' % namecache).read()
+		ocradin = popen('ocrad -i --scale=-1 %s' % namecache).read()
 		#import subprocess
 		#outpoot=""
 		#proc = subprocess.Popen(["ocrad","-i"],stdout=outpoot,stdin=cache,shell=True)

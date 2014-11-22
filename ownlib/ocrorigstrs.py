@@ -29,9 +29,9 @@ class ocrorigstrs:
 		)
 		self.origstrsdictbef = {
 			'ap':r'^[_-]{0,3} ?',
-			'uniqvis':r'Unique Portals Visited ',
+			'uniqvis':r'Un[il]qu[eP] Por[tf]als [Vv][il]s[il][tl][Pe]d ',
 			'seer':r'Portals Discovered ',
-			'xm':r'XM Collected ',
+			'xm':r'XM Coll[eP][cI][tI][eP]d ','XM CollPIIPd 2,BT0,T95 XM'
 			'hack':r'Hacks ',
 			'depl':r'Resonators Deployed ',
 			'link':r'Links Created ',
