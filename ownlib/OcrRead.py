@@ -5,17 +5,27 @@ class OcrRead:
 		pass
 
 	@staticmethod
-	def ocrad_get(thefile,cache):
+	def ocrad_get(thefile):
 		from PIL import Image
 		im = Image.open(thefile)
-		im.save(cache)
+		import tempfile
+		cache = tempfile.NamedTemporaryFile()
+		namecache=cache.name
+		#print namecache  #debug
+		#outpoot = tempfile.TemporaryFile()
+		im.save(cache,format='PPM')
 		from os import popen
 		#ocradin = system('ocrad -i %s' % cache)
-		ocradin = popen('ocrad -i %s' % cache).read()
+		ocradin = popen('ocrad -i %s' % namecache).read()
 		#import subprocess
-		#proc = subprocess.Popen(["ocrad -i",cache],stdout=subprocess.PIPE,shell=True)
-		#(out,err)=proc.communicate()
-		#return out
+		#outpoot=""
+		#proc = subprocess.Popen(["ocrad","-i"],stdout=outpoot,stdin=cache,shell=True)
+		#proc.wait()
+		#outpoot = ""
+		#for linia in proc.stdout:
+		#	outpoot+=linia+"\n"
+		#print a     # debug
+		#return outpoot.read()
 		return ocradin
 
 
@@ -45,7 +55,7 @@ class OcrRead:
 					hey = True
 				if loopinginging > 100:
 					print "My loopinginging is too high thus exiting.",loopinginging
-					#print a   #debug - causes crash and thus I can view the variables in pycharm easily
+					print a   #debug - causes crash and thus I can view the variables in pycharm easily
 					quit()
 				if ejo == 'seer' and not hey:
 					print "Contribute to Ingress and submit at least one portal, please"
