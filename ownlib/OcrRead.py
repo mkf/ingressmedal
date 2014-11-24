@@ -16,7 +16,7 @@ class OcrRead:
 		im.save(cache,format='PPM')
 		from os import popen
 		#ocradin = system('ocrad -i %s' % cache)
-		ocradin = popen('ocrad -i %s' % namecache).read()
+		ocradin = popen('ocrad -i --scale=-1 %s' % namecache).read()
 		#import subprocess
 		#outpoot=""
 		#proc = subprocess.Popen(["ocrad","-i"],stdout=outpoot,stdin=cache,shell=True)
@@ -66,6 +66,9 @@ class OcrRead:
 					if raw_input("Write 'y' if the player seriously haven't %sed any %s yet, otherwise write 'n': " % (whatwasdonetothesth,whatshouldbedestroyed))=='y':
 						print "That's weird, but OK."
 						break
+					else:
+						pass
+						#print a  #debug
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
@@ -74,10 +77,13 @@ class OcrRead:
 			p2 = re.sub('o','0',p1,re.I)
 			p3 = re.sub(r'\||l|i|I','1',p2,re.I)
 			p4 = re.sub('q','4',p3,re.I)
-			p5 = re.sub('t','7',p4,re.I)
-			p6 = re.sub('a|e','8',p5,re.I)
+			p5 = re.sub('t|T','7',p4,re.I)
+			p6 = re.sub('a|e|B','8',p5,re.I)
 			p7 = re.sub('g','9',p6)
 			p8 = re.sub('O','0',p7)
-			pf = re.sub(r'\D','',p8)
+			p9 = re.sub('S|s','6',p8)
+			pdigA = re.sub('n','77',p9) if eje == 'ap' else p9
+			pf = re.sub(r'\D','',pdigA)
 			elementojn[eje] = int(pf)
+		#print a
 		return elementojn
