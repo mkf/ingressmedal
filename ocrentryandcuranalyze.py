@@ -4,7 +4,7 @@ from ownlib.OcrRead import OcrRead
 import argparse
 argh = argparse.ArgumentParser()
 argh.add_argument('-p','--fromimage',type=str,help="Specify image file",required=True)
-argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",default='cache.pbm')
+#argh.add_argument('-c','--cache',type=str,help="Specify .pbm image cache file",default='cache.pbm')
 
 
 
@@ -68,7 +68,7 @@ argh.add_argument('-n','--codename',type=str,help="Agent's codename",required=Tr
 
 parmetry = vars(argh.parse_args())
 o = OcrRead()
-e = o.ocrad_get(parmetry['fromimage'],parmetry['cache'])
+e = o.ocrad_get(parmetry['fromimage'])
 fin = o.ocradalterproc(e)
 
 if not parmetry['datetime']:
@@ -117,5 +117,3 @@ else:
 	print "WARNING: Data were not saved - use -w parameter"
 	print " "
 	print " "
-from os import remove
-remove(parmetry['cache'])
