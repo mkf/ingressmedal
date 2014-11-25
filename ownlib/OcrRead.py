@@ -66,24 +66,26 @@ class OcrRead:
 					if raw_input("Write 'y' if the player seriously haven't %sed any %s yet, otherwise write 'n': " % (whatwasdonetothesth,whatshouldbedestroyed))=='y':
 						print "That's weird, but OK."
 						break
-					else:
+					elif loopinginging > 2:
 						pass
-						#print a  #debug
+						print a  #debug
 		elementojn = {}
 		for eje in elements.keys():
 			pbef = re.sub(o.origstrsdictbef[eje],'',elements[eje])
 			paft = re.sub(o.origstrsdictaft[eje] if eje in o.origstrsdictaft else r'','',pbef)
 			p1 = re.sub(r'[.]|,|\s/','',paft)
 			p2 = re.sub('o','0',p1,re.I)
-			p3 = re.sub(r'\||l|i|I','1',p2,re.I)
-			p4 = re.sub('q','4',p3,re.I)
+			p3 = re.sub(r'[\|]|l|i|I','1',p2,re.I)
+			p3a = re.sub(r'\|','1',p3)
+			p4 = re.sub('q','4',p3a,re.I)
 			p5 = re.sub('t|T','7',p4,re.I)
 			p6 = re.sub('a|e|B','8',p5,re.I)
 			p7 = re.sub('g','9',p6)
 			p8 = re.sub('O','0',p7)
 			p9 = re.sub('S|s','6',p8)
-			pdigA = re.sub('n','77',p9) if eje == 'ap' else p9
-			pf = re.sub(r'\D','',pdigA)
+			pdigA = re.sub('z|Z','2',p9)
+			pdigB = re.sub('n','77',pdigA) if eje == 'ap' else pdigA
+			pf = re.sub(r'\D','',pdigB)
 			elementojn[eje] = int(pf)
 		#print a
 		return elementojn
