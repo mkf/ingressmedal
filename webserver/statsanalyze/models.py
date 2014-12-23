@@ -6,7 +6,7 @@ from django.utils import timezone
 class Entry(models.Model):
 	agentdb = models.ForeignKey('Agent')
 	creator = models.ForeignKey('auth.User')
-	currentowner = models.ForeignKey('auth.User')
+	owner = models.ForeignKey('auth.User')
 	public = models.BooleanField()
 	ocreddirectly = models.BooleanField()
 	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
