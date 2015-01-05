@@ -3,6 +3,8 @@ ingressmedal
 
 AP and medals counting for Ingress (game from Niantic Labs (a Google company))
 
+* At the moment, no new medals are counted, the data format will also change, as I'm moving my whole project into Django, while learning Django at the same time. If you're interested in my project, click Watch so you will get known when something happens.
+
 Branches
 ---------
 *`master`* branch is *always stable*, so you can safely just clone it for the latest version
