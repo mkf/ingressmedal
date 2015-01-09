@@ -48,9 +48,6 @@ class Entry(models.Model):
 	edits = models.PositiveIntegerField()
 	photos = models.PositiveIntegerField()
 
-
-
-
 	def addentry(self):
 		self.added_time = timezone.now()
 		self.save()
