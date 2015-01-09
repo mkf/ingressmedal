@@ -12,7 +12,7 @@ class Entry(models.Model):
 	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
 	codename = models.CharField(max_length=50)
 	entry_date = models.DateTimeField('Entry datetime')
-	added_time = models.DateTimeField(blank=True,null=True)
+	added_time = models.DateTimeField(default=timezone.now())
 	ap = models.PositiveIntegerField()
 	bronze = models.PositiveIntegerField()
 	silver = models.PositiveIntegerField()
@@ -48,9 +48,6 @@ class Entry(models.Model):
 	edits = models.PositiveIntegerField()
 	photos = models.PositiveIntegerField()
 
-	def addentry(self):
-		self.added_time = timezone.now()
-		self.save()
 
 	def __str__(self):
 		return str(self.codename)+" "+str(self.idnumber)
