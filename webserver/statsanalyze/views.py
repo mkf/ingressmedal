@@ -5,4 +5,4 @@ from .models import *
 
 def agents_list(request):
 	agents = Agent.objects.filter(public=True).order_by('codename')
-	return render(request,'statsanalyze/agents_list.html',{'agents': agents})
+	return render(request,'agents_list.html',{'agents': agents})
