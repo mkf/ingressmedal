@@ -5,8 +5,8 @@ from django.utils import timezone
 
 class Entry(models.Model):
 	agentdb = models.ForeignKey('Agent')
-	creator = models.ForeignKey('User')
-	owner = models.ForeignKey('User')
+	creator = models.ForeignKey('User',related_name='entrycreator')
+	owner = models.ForeignKey('User',related_name='entryowner')
 	public = models.BooleanField()
 	ocreddirectly = models.BooleanField()
 	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
@@ -61,8 +61,8 @@ class Entry(models.Model):
 
 class Agent(models.Model):
 	codename = models.CharField(max_length=50)
-	dbowner = models.ForeignKey('User')
-	creator = models.ForeignKey('User')
+	dbowner = models.ForeignKey('User',related_name='agentdbowner')
+	creator = models.ForeignKey('User',related_name='agentcreator')
 	public = models.BooleanField()
 	knownemailone = models.EmailField()
 	knownemailtwo = models.EmailField()
