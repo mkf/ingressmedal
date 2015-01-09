@@ -12,7 +12,7 @@ class Entry(models.Model):
 	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
 	codename = models.CharField(max_length=50)
 	entry_date = models.DateTimeField('Entry datetime')
-	added_time = models.DateTimeField(default=timezone.now)
+	added_time = models.DateTimeField(blank=True,null=True)
 	ap = models.PositiveIntegerField()
 	bronze = models.PositiveIntegerField()
 	silver = models.PositiveIntegerField()
