@@ -46,6 +46,9 @@ class Entry(models.Model):
 	hack = models.PositiveIntegerField()
 	edits = models.PositiveIntegerField(blank=True)
 	photos = models.PositiveIntegerField(blank=True)
+	mods = models.PositiveIntegerField
+	recruiter = models.PositiveIntegerField(blank=True)
+
 
 
 	def __str__(self):
