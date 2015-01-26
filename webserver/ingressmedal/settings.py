@@ -38,7 +38,8 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'social.apps.django_app.default',
+#	'social.apps.django_app.default',
+	'social_auth',
 	'statsanalyze'
 )
 
@@ -50,12 +51,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.static',
 	'django.core.context_processors.tz',
 	'django.contrib.messages.context_processors.messages',
-	'social.apps.django_app.context_processors.backends',
-	'social.apps.django_app.context_processors.login_redirect',
+#	'social.apps.django_app.context_processors.backends',
+#	'social.apps.django_app.context_processors.login_redirect',
 )
 
 AUTHENTICATION_BACKENDS = (
-	'social.backends.google.GoogleOAuth2',
+#	'social.backends.google.GoogleOAuth2',
+	'social_auth.backends.google.GoogleOAuth2Backend',
 	'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -103,3 +105,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/login.html'
+LOGIN_REDIRECT_URL = '/agents_list.html'
+LOGIN_ERROR_URL = '/login_error.html'
+

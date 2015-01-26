@@ -10,3 +10,5 @@ def agents_list(request):
 	return render(request,'agents_list.html',{'agents': agents})
 def login(request):
 	return render(request,'login.html',{})
+def login_error(request):
+	return render(request,'login_error.html',{})
