@@ -58,4 +58,6 @@ During the creation of the OCR class, [https://github.com/BlueHerons/StatTracker
 Contributions
 ---------
 
-If you want to fork my project, please send pull requests and consider my repository as the main repository, and let me be the project's master (and) owner — I'm learning Python for a fairly short time and I want everything to be my own achievement in 100% or at least 85% ;p.
+If you want to fork my project, please send pull requests and regard my repository as the main repository, and let me be the project's main creator and owner — I'm learning Python for a fairly short time and I want everything to be presented as my own achievement. Of course, some help would be appreciated ;)
+
+This code is shared to make it possible for people to help me create it. Please do not host it for regular use for more than a few people on your own without talking to me (and if I will allow to do so, I will require my name presented with a non-small font on the top of the front page).
