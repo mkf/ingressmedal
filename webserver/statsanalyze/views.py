@@ -3,6 +3,8 @@ from .models import *
 
 # Create your views here.
 
+def glowna(request):
+	return render(request,'glowna.html',{})
 def agents_list(request):
 	agents = Agent.objects.filter(public=True).order_by('codename')
 	return render(request,'agents_list.html',{'agents': agents})
