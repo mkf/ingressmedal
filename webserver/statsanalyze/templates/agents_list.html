@@ -15,6 +15,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <h1>IngressMedal</h1>
 <h3>agents list</h3>
-{{ agents }}
+{% for agent in agents %}
+	<div>
+		<hr>
+		<a href=""><h4>codename: {{ agent.codename }}</h4></a>
+		<p>Database creator: {{ agent.creator }}
+		<br>Public: {{ agent.public }}
+		<br>Last entry: <i>This feature ain't available yet</i>
+		<br>Last all-time-entry: <i>This feature ain't available yet</i>
+		<br>Last month-entry: <i>This feature ain't available yet</i>
+		<br>Last week-entry: <i>This feature ain't available yet</i>
+		<br><a href="">More...</a></p>
+		<hr><br>
+	</div>
+{% endfor %}
 </body>
 </html>
