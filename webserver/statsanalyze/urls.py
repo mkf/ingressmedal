@@ -6,7 +6,7 @@ from . import views
 urlpatterns = patterns(
 	'',
 	url(r'^$',views.glowna),
-	url(r'^agent_list.html$',views.agents_list),
+	url(r'^agents_list.html$',views.agents_list),
 	url(r'^login.html$',views.login),
 	url(r'^login_error.html$',views.login_error),
 #	url('', include('social.apps.django_app.urls', namespace='social')),
