@@ -53,10 +53,10 @@ class Entry(models.Model):
 	guardfield = models.PositiveIntegerField()
 	maxfieldmuxdays = models.PositiveIntegerField()
 	hack = models.PositiveIntegerField()
-	edits = models.PositiveIntegerField(blank=True)
-	photos = models.PositiveIntegerField(blank=True)
+	edits = models.PositiveIntegerField(blank=True,null=True)
+	photos = models.PositiveIntegerField(blank=True,null=True)
 	mods = models.PositiveIntegerField()
-	recruiter = models.PositiveIntegerField(blank=True)
+	recruiter = models.PositiveIntegerField(blank=True,null=True)
 
 	def __str__(self):
 		return str(self.agentdb.codename)+" "+str(self.idnumber)
