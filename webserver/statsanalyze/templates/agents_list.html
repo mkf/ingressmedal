@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+		{% block title %}Agents list{% endblock %}
 {% block content %}
 <h3>agents list</h3>
 {% for agent in agents %}
 	<div>
 		<hr>
-		<a href=""><h4>codename: {{ agent.codename }}</h4></a>
+		<a href="{% url 'statsanalyze.views.agentdetails' codename=agent.codename %}"><h4>codename: {{ agent.codename }}</h4></a>
 		<p>Database creator: {{ agent.creator }}
 		<br>Public: {{ agent.public }}
 		<br>Last entry: <i>This feature ain't available yet</i>

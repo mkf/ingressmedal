@@ -7,6 +7,7 @@ urlpatterns = patterns(
 	'',
 	url(r'^$',views.glowna),
 	url(r'^agents_list.html$',views.agents_list),
+	url(r'^agentdetails/(?P<codename>[A-Za-z]+)/$', views.agentdetails),
 	url(r'^login.html$',views.login),
 	url(r'^login_error.html$',views.login_error),
 #	url('', include('social.apps.django_app.urls', namespace='social')),

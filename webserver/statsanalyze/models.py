@@ -82,6 +82,7 @@ class Agent(models.Model):
 
 class User(models.Model):
 	personality = models.ForeignKey('auth.User')
+#	ownagent = models.ForeignKey(Agent) # TODO: to be uncommented (I just don't want to do migrations at the moment)
 
 	def __str__(self):
 		return str(self.personality)
