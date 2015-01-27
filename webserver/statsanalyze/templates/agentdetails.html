@@ -3,5 +3,7 @@
 	{% block title %}{{ agent.codename }}{% endblock %}
 
 	{% block content %}
-		{{ agent.codename }}<br>{{ agent.creator }}
+		{{ agent.codename }}
+		<br><a href="{% url 'statsanalyze.views.newentry' codename=agent.codename %}" class="top-menu">Add Entry</a>
+		<br>{{ agent.creator }}
 	{% endblock %}

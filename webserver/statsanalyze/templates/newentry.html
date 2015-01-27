@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ agent.codename }}: New entry{% endblock %}
+{% block content %}
+	<h3>New entry</h3>
+	<form method="POST" class="entry-form">{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="save btn btn-default">Save</button>
+	</form>
+{% endblock %}

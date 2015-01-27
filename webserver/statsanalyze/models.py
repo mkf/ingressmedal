@@ -55,14 +55,15 @@ class Entry(models.Model):
 	hack = models.PositiveIntegerField()
 	edits = models.PositiveIntegerField(blank=True,null=True)
 	photos = models.PositiveIntegerField(blank=True,null=True)
-	mods = models.PositiveIntegerField()
 	recruiter = models.PositiveIntegerField(blank=True,null=True)
 
 	def __str__(self):
 		return str(self.agentdb.codename)+" "+str(self.idnumber)
 
 class Agent(models.Model):
-	codename = models.CharField(max_length=50)
+	codename = models.CharField(max_length=30,unique=True)
+	created = models.DateTimeField()
+	modified = models.DateTimeField()
 	dbowner = models.ForeignKey('User',related_name='agentdbowner')
 	creator = models.ForeignKey('User',related_name='agentcreator')
 	public = models.BooleanField()
@@ -82,7 +83,7 @@ class Agent(models.Model):
 
 class User(models.Model):
 	personality = models.ForeignKey('auth.User')
-	owncodename = models.CharField(max_length=50, blank=True, null=True)
+	owncodename = models.CharField(max_length=30, blank=True, null=True)
 
 	def __str__(self):
 		return str(self.personality)
