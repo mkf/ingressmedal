@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class OcrRead:
-	def __init__(self):
-		pass
+	def __init__(self,czasowe=True):
+		self.czasowe=czasowe
 
 	@staticmethod
 	def ocrad_get(thefile):
@@ -29,13 +29,12 @@ class OcrRead:
 		return ocradin
 
 
-	@staticmethod
-	def ocradalterproc(ocradin):
+	def ocradalterproc(self,ocradin):
 		elements={}
 		import re
 		lines = ocradin.split('\n')
 		from ocrorigstrs import ocrorigstrs
-		o = ocrorigstrs()
+		o = ocrorigstrs(czasowe=self.czasowe)
 		from collections import deque
 		so1 = deque(list(o.sortedbyposition))
 		while len(so1)>0:
@@ -61,8 +60,8 @@ class OcrRead:
 					print "Contribute to Ingress and submit at least one portal, please"
 					break
 				if (ejo == 'destr' or ejo == 'destrlink' or ejo == 'destrfield' or ejo=='neutr') and not hey:
-					whatwasdonetothesth = "destroy" if (ejo == 'destr' or ejo=='destrlink' or ejo=='destrfield') else "neutraliz" if ejo=='neutr' else 'something'
-					whatshouldbedestroyed = "resonator" if ejo == 'destr' else "enemy link" if ejo == 'destrlink' else "enemy Control Field" if ejo == 'destrfield' else 'portal' if ejo == 'neutr' else "something that was wrong"
+					whatwasdonetothesth = "destroy" if (ejo == 'destr' or ejo=='destrlink' or ejo=='destrfield') else "neutraliz" if ejo=='neutr' else 'glyph' if ejo=='glyph' else 'complet' if ejo=='uniqmis' else 'something'
+					whatshouldbedestroyed = "resonator" if ejo == 'destr' else "enemy link" if ejo == 'destrlink' else "enemy Control Field" if ejo == 'destrfield' else 'portal' if ejo == 'neutr' else 'hacks' if ejo=='glyph' else 'missions' if ejo=='uniqmis' else "something that was wrong"
 					if raw_input("Write 'y' if the player seriously haven't %sed any %s yet, otherwise write 'n': " % (whatwasdonetothesth,whatshouldbedestroyed))=='y':
 						print "That's weird, but OK."
 						break
