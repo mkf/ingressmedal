@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 class ocrorigstrs:
-	def __init__(self):
+	def __init__(self, czasowe=True):
 		self.sortedbyposition = (
 			'ap',
 			'uniqvis',
 			'seer',
 			'xm',
-			'hack',
+			'walk',
 			'depl',
 			'link',
 			'field',
@@ -16,17 +16,20 @@ class ocrorigstrs:
 			'rech',
 			'capt',
 			'uniqcapt',
+			'mods',
 			'destr',
 			'neutr',
 			'destrlink',
 			'destrfield',
-			'walk',
 			'guard',
 			'guardlink',
 			'longxguardlink',
 			'guardfield',
-			'longxguardfield'
-		)
+			'longxguardfield',
+			'uniqmis',
+			'hack',
+			'glyph',
+		) if czasowe else ('linksactiv','pwned','fieldsactiv','mucontrol')
 		self.origstrsdictbef = {
 			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Un[il]qu[eP] Por[tf]als [Vv][il]s[il][tl][Pe]d ',
@@ -51,7 +54,15 @@ class ocrorigstrs:
 			'guardlink':r'Max T[il]m[eP] L[il]nk Ma[il]n[tl]a[il]n[eP]d ',
 			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x [DO]ays ',
 			'guardfield':r'Max T[il]m[eP] Fi[eP]ld H[eP]ld ',
-			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x [DO]ays '
+			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x [DO]ays ',
+			'mods':r'Mods [DO][il]s[cI]ov[eP]r[eP]d ',
+			'uniqmis':r'Un[il]qu[eP] m[il][sS5][sS5][il]on[sS5] completed ',
+			'glyph':r'Glyph Hack Points ',
+		} if czasowe else {
+			'linksactiv':r'L[il]nks Active ',
+			'pwned':r'Por[tlf]als Owned ',
+			'fieldsactiv':r'Con[tl]rol F[iI][eP]lds Active ',
+			'mucontrol':r'M[il]nd Un[il][tl] Control ',
 		}
 		self.origstrsdictaft = {
 			'ap':r'[ ]?A[Pp][ \|Il_]+.+A[Pp]',
@@ -66,7 +77,7 @@ class ocrorigstrs:
 			'longxguardlink':r' km-day[s5]',
 			'guardfield':r' days',
 			'longxguardfield':r' MU-day[s5]'
-		}
+		} if czasowe else {'mucontrol':r'MUs'}
 		#self.sortedbypositionwithheaders = (
 		#
 		#)
