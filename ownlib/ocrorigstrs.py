@@ -55,7 +55,7 @@ class ocrorigstrs:
 			'longxguardlink':r'Max L[il]nk L[eP]ng[tl]h x [DO]ays ',
 			'guardfield':r'Max T[il]m[eP] Fi[eP]ld H[eP]ld ',
 			'longxguardfield':r'Larg[eP]s[tl] F[iI][eP]ld MUs x [DO]ays ',
-			'mods':r'Mods [DO][il]s[cI]ov[eP]r[eP]d ',
+			'mods':r'Mods [DO][eP]ploy[eP]d ',
 			'uniqmis':r'Un[il]qu[eP] m[il][sS5][sS5][il]on[sS5] completed ',
 			'glyph':r'Glyph Hack Points ',
 		} if czasowe else {
