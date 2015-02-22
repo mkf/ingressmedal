@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class OcrRead:
-	def __init__(self):
-		pass
+	def __init__(self,czasowe=True):
+		self.czasowe=czasowe
 
 	@staticmethod
 	def ocrad_get(thefile):
@@ -35,7 +35,7 @@ class OcrRead:
 		import re
 		lines = ocradin.split('\n')
 		from ocrorigstrs import ocrorigstrs
-		o = ocrorigstrs()
+		o = ocrorigstrs(czasowe=self.czasowe)
 		from collections import deque
 		so1 = deque(list(o.sortedbyposition))
 		while len(so1)>0:

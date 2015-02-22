@@ -29,7 +29,7 @@ class ocrorigstrs:
 			'uniqmis',
 			'hack',
 			'glyph',
-		) if czasowe else ('linksactiv','pwned','fieldsactiv','mucontrol')
+		) if czasowe else ('ap','linksactiv','pwned','fieldsactiv','mucontrol')
 		self.origstrsdictbef = {
 			'ap':r'^[_-]{0,3} ?',
 			'uniqvis':r'Un[il]qu[eP] Por[tf]als [Vv][il]s[il][tl][Pe]d ',
@@ -59,6 +59,7 @@ class ocrorigstrs:
 			'uniqmis':r'Un[il]qu[eP] m[il][sS5][sS5][il]on[sS5] completed ',
 			'glyph':r'Glyph Hack Points ',
 		} if czasowe else {
+			'ap':r'^[_-]{0,3} ?',
 			'linksactiv':r'L[il]nks Active ',
 			'pwned':r'Por[tlf]als Owned ',
 			'fieldsactiv':r'Con[tl]rol F[iI][eP]lds Active ',
@@ -77,7 +78,7 @@ class ocrorigstrs:
 			'longxguardlink':r' km-day[s5]',
 			'guardfield':r' days',
 			'longxguardfield':r' MU-day[s5]'
-		} if czasowe else {'mucontrol':r'MUs'}
+		} if czasowe else {'ap':r'[ ]?A[Pp][ \|Il_]+.+A[Pp]','mucontrol':r'MUs'}
 		#self.sortedbypositionwithheaders = (
 		#
 		#)
