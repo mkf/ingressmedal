@@ -64,8 +64,8 @@ class Entry(models.Model):
 
 class NowEntry(models.Model):
 	agentdb = models.ForeignKey('Agent')
-	creator = models.ForeignKey('User',related_name='entrycreator')
-	owner = models.ForeignKey('User',related_name='entryowner')
+	creator = models.ForeignKey('User',related_name='nowentrycreator')
+	owner = models.ForeignKey('User',related_name='nowentryowner')
 	public = models.BooleanField()
 	ocreddirectly = models.BooleanField()
 	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
