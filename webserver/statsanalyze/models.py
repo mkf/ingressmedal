@@ -53,9 +53,35 @@ class Entry(models.Model):
 	guardfield = models.PositiveIntegerField()
 	maxfieldmuxdays = models.PositiveIntegerField()
 	hack = models.PositiveIntegerField()
+	uniqmis = models.PositiveIntegerField()
+	glyph = models.PositiveIntegerField()
 	edits = models.PositiveIntegerField(blank=True,null=True)
 	photos = models.PositiveIntegerField(blank=True,null=True)
 	recruiter = models.PositiveIntegerField(blank=True,null=True)
+
+	def __str__(self):
+		return str(self.agentdb.codename)+" "+str(self.idnumber)
+
+class NowEntry(models.Model):
+	agentdb = models.ForeignKey('Agent')
+	creator = models.ForeignKey('User',related_name='entrycreator')
+	owner = models.ForeignKey('User',related_name='entryowner')
+	public = models.BooleanField()
+	ocreddirectly = models.BooleanField()
+	idnumber = models.CharField(max_length=50) # unix time + 10 random characters
+	entry_date = models.DateTimeField('Entry datetime')
+	added_time = models.DateTimeField(default=timezone.now())
+	ap = models.PositiveIntegerField()
+	bronze = models.PositiveIntegerField()
+	silver = models.PositiveIntegerField()
+	gold = models.PositiveIntegerField()
+	platinum = models.PositiveIntegerField()
+	onyx = models.PositiveIntegerField()
+	nomedal = models.PositiveIntegerField()
+	linksactiv = models.PositiveIntegerField()
+	fieldsactiv = models.PositiveIntegerField()
+	pwned = models.PositiveIntegerField()
+	mucontrol = models.PositiveIntegerField()
 
 	def __str__(self):
 		return str(self.agentdb.codename)+" "+str(self.idnumber)

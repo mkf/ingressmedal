@@ -18,12 +18,7 @@ class EntryForm(forms.ModelForm):
 			'public',
 			'entry_date',
 			'ap',
-			'bronze',
-			'silver',
-			'gold',
-			'platinum',
-			'onyx',
-			'nomedal',
+			'bronze','silver','gold','platinum','onyx','nomedal',
 			'uniqvis',
 			'seer',
 			'xm',
@@ -51,4 +46,16 @@ class EntryForm(forms.ModelForm):
 			'edits',
 			'photos',
 			'recruiter',
+		)
+
+class NowEntryForm(forms.ModelForm):
+	class Meta:
+		model = NowEntry
+		fields=(
+			'agentdb',
+			'public',
+			'entry_date',
+			'ap',
+			'bronze','silver','gold','platinum','onyx','nomedal',
+			'linksactiv','fieldsactiv','pwned','mucontrol',
 		)
